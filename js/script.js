@@ -59,7 +59,7 @@ function stuff() {
 		choiceElem[0].innerHTML = "<h3> Aktivitet </h3>";
 		choiceElem[1].innerHTML = "<h3> Restaurang </h3>";
 		choiceElem[2].innerHTML = "";
-		choiceElem[2].style.opacity = "0%";
+		choiceElem[2].style.width = "0%"; // Ändrar vi något som t.ex "opacity" så kan man fortfarande klicka på den
 		return;
 	}
 
@@ -70,14 +70,14 @@ function stuff() {
 
 	let fr = fraga-1; // :(
 
-	choiceElem[2].style.opacity = "0%";
+	choiceElem[2].style.width = "0%";
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns
 		choiceElem[2].innerHTML = "<h3>" + chosenThing[fr].altC +"</h3>" + "<p>" + chosenThing[fr].descC +"</p>";
-		choiceElem[2].style.opacity = "100%";
+		choiceElem[2].style.width = "100%";
 	}
 }
 
