@@ -1,9 +1,9 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
 	{altA:"Lugn", descA:"Vi vill ha en lugn aktivitet.", altB:"Aktiv", descB:"En aktivitet där man rör på sig passar oss."},
-	{altA:"Inomhus", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Utomhus", descB:"Vi skulle vilja ha en utomhus aktivitet."},
-	{altA:"Billigt", descA:"Aktiviteter under 500.", altB:"Dyrt", descB:"Aktiviteter övre 500.", altC:"Gratis", descC:"Gratis är gott!"},
-	{altA:"Småland", descA:"Visa bara aktiviterer i Småland.", altB:"Öland", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
+	{altA:"Vatten ja", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Vatten nej", descB:"Vi skulle vilja ha en utomhus aktivitet."},
+	{altA:"Heldagsaktivitet", descA:"Aktiviteter under 500.", altB:"Halvdagsaktivitet", descB:"Aktiviteter övre 500.", altC:"Halv/heldagsaktivitet", descC:"Gratis är gott!"},
+	{altA:"18års gräns", descA:"Visa bara aktiviterer i Småland.", altB:"Ingen 18års gräns", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
 ];
 const chosenRes = [
 	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},

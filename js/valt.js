@@ -3,10 +3,10 @@ var fixedCode;
 var api_key = "FqZF2ASN";
 const chosenAct = [
     {urlA:"activity"},
-    {urlA:"xd", urlB:"x3"},
-    {urlA:"xd", urlB:"x3"},
-    {urlA:"xd", urlB:"x3", urlC:"uwu"},
-    {urlA:"", urlB:"", urlC:""},
+    {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
+    {urlA:"&involves_water=Y", urlB:"&involves_water=N"},
+    {urlA:"&estimated_duration=DAYS", urlB:"&estimated_duration=MINUTES,HOURS", urlC:"&estimated_duration=DAYS,MINUTES,HOURS"},
+    {urlA:"num_reviews=3", urlB:"", urlC:""},
 ];
 const chosenFood = [
     {urlB:"food"},
