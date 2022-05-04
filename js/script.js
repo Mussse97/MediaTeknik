@@ -1,9 +1,9 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
 	{altA:"Lugn", descA:"Vi vill ha en lugn aktivitet.", altB:"Aktiv", descB:"En aktivitet där man rör på sig passar oss."},
-	{altA:"Inomhus", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Utomhus", descB:"Vi skulle vilja ha en utomhus aktivitet."},
-	{altA:"Billigt", descA:"Aktiviteter under 500.", altB:"Dyrt", descB:"Aktiviteter övre 500.", altC:"Gratis", descC:"Gratis är gott!"},
-	{altA:"Småland", descA:"Visa bara aktiviterer i Småland.", altB:"Öland", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
+	{altA:"Vatten ja", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Vatten nej", descB:"Vi skulle vilja ha en utomhus aktivitet."},
+	{altA:"Heldagsaktivitet", descA:"Aktiviteter under 500.", altB:"Halvdagsaktivitet", descB:"Aktiviteter övre 500.", altC:"Halv/heldagsaktivitet", descC:"Gratis är gott!"},
+	{altA:"18års gräns", descA:"Visa bara aktiviterer i Småland.", altB:"Ingen 18års gräns", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
 ];
 const chosenRes = [
 	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
@@ -62,7 +62,7 @@ return;
 		choiceElem[0].innerHTML = "<h3> Aktivitet </h3>";
 		choiceElem[1].innerHTML = "<h3> Restaurang </h3>";
 		choiceElem[2].innerHTML = "";
-		choiceElem[2].style.opacity = "0%";
+		choiceElem[2].style.width = "0%"; // Ändrar vi något som t.ex "opacity" så kan man fortfarande klicka på den
 		return;
 	}
 
@@ -73,14 +73,14 @@ return;
 
 	let fr = fraga-1; // :(
 
-	choiceElem[2].style.opacity = "0%";
+	choiceElem[2].style.width = "0%";
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns
 		choiceElem[2].innerHTML = "<h3>" + chosenThing[fr].altC +"</h3>" + "<p>" + chosenThing[fr].descC +"</p>";
-		choiceElem[2].style.opacity = "100%";
+		choiceElem[2].style.width = "100%";
 	}
 }
 

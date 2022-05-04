@@ -4,9 +4,15 @@ var api_key = "FqZF2ASN";
 const chosenAct = [
     {urlA:"establishment&types=activity"},
     {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
+<<<<<<< HEAD
     {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
     {urlA:"&price_range=0-499", urlB:"&price_range=500-1000", urlC:""},
     {urlA:"&province=Sm\u00e5land", urlB:"", urlC:""},
+=======
+    {urlA:"&involves_water=Y", urlB:"&involves_water=N"},
+    {urlA:"&estimated_duration=DAYS", urlB:"&estimated_duration=MINUTES,HOURS", urlC:"&estimated_duration=DAYS,MINUTES,HOURS"},
+    {urlA:"num_reviews=3", urlB:"", urlC:""},
+>>>>>>> 9dc5ca9b0084b2a9c689bdb6651dbf711c5e41aa
 ];
 const chosenFood = [
     {urlB:"food"},
