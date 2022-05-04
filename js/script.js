@@ -40,7 +40,10 @@ window.addEventListener("load",init);
 // Typ allt
 function stuff() { 
 	if (fraga == 5) { // ändra den här om du lägger till flera frågor
-		window.location.href += "valt.html?val=" + choices.toString(); 
+		let x = window.location.href;
+		x = x.replace('index.html','');
+		x += "valt.html?val=" + choices.toString(); 
+		window.location.href = x;
 		return;
 	}
 	
