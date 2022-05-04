@@ -26,7 +26,7 @@ function init() {
     
     fixedCode = fixCode(window.location.search);
 
-    if (fixCode[0] == 0) getController(chosenAct);
+    if (fixedCode[0] == 0) getController(chosenAct);
     else getController(chosenFood);
 }
 
@@ -62,6 +62,7 @@ function applyController(xd) {
             if (request.status == 200) listAlts(request.responseText);
             else stepElem.innerHTML = "Nåt gick fel";
     };
+    console.log(fixCode)
 }
 
 function listAlts(owo) {
