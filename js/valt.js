@@ -3,9 +3,9 @@ var fixedCode;
 var api_key = "FqZF2ASN";
 const chosenAct = [
     {urlA:"activity"},
-    {urlA:"xd", urlB:"x3"},
-    {urlA:"xd", urlB:"x3"},
-    {urlA:"xd", urlB:"x3", urlC:"uwu"},
+    {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
+    {urlA:"", urlB:""},
+    {urlA:"", urlB:"", urlC:""},
     {urlA:"", urlB:"", urlC:""},
 ];
 const chosenFood = [
@@ -26,7 +26,7 @@ function init() {
     
     fixedCode = fixCode(window.location.search);
 
-    if (fixCode[0] == 0) getController(chosenAct);
+    if (fixedCode[0] == 0) getController(chosenAct);
     else getController(chosenFood);
 }
 
@@ -62,6 +62,7 @@ function applyController(xd) {
             if (request.status == 200) listAlts(request.responseText);
             else stepElem.innerHTML = "Nåt gick fel";
     };
+    console.log(fixCode)
 }
 
 function listAlts(owo) {
