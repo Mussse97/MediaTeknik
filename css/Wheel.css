@@ -13,7 +13,11 @@ body{
     overflow: hidden;
 }
 
-.container{
+span {
+    clip-path: polygon(100% 0, 0 50%, 0 0);
+}
+
+#container{
     width: 500px;
     height: 500px;
     background-color: white;
@@ -24,7 +28,7 @@ body{
     transition: 5s;
 }
 
-.container div{
+#container div{
     height: 50%;
     width: 200px;
     position: absolute;
@@ -41,19 +45,19 @@ body{
     left: 140px;
 }
 
-.container .one{
+#container .one{
     background-color: blue;
     left: 50%;
 }
-.container .two{
+#container .two{
     background-color: orange;
     transform: rotate(45deg);
 }
-.container .three{
+#container .three{
     background-color: pink;
 }
-.container .four{}
-.container .five{}
-.container .six{}
-.container .seven{}
-.container .eight{}
+#container .four{}
+#container .five{}
+#container .six{}
+#container .seven{}
+#container .eight{}
