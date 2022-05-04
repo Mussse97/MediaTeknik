@@ -2,11 +2,11 @@ var stepElem;
 var fixedCode;
 var api_key = "FqZF2ASN";
 const chosenAct = [
-    {urlA:"activity"},
+    {urlA:"establishment&types=activity"},
     {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
-    {urlA:"", urlB:""},
-    {urlA:"", urlB:"", urlC:""},
-    {urlA:"", urlB:"", urlC:""},
+    {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
+    {urlA:"&price_range=0-499", urlB:"&price_range=500-1000", urlC:""},
+    {urlA:"&province=Sm\u00e5land", urlB:"", urlC:""},
 ];
 const chosenFood = [
     {urlB:"food"},
