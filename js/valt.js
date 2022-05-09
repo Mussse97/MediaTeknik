@@ -71,10 +71,22 @@ function listAlts(owo) {
     owo = owo.payload;
 
     for (let i = 0; i < owo.length; i++) {
-        if (owo[i].description == "Simhall") owo.splice(i,1);
-        else if (owo[i].description == "Golfbana") owo.splice(i,1);
-        else if (owo[i].description == "Nattklubb") owo.splice(i,1);
-        else if (owo[i].description == "Lekland") owo.splice(i,1);
+        if (owo[i].description == "Simhall") {
+            owo.splice(i,1);
+            i--;
+        }
+        else if (owo[i].description == "Golfbana") {
+            owo.splice(i,1);
+            i--;
+        }
+        else if (owo[i].description == "Nattklubb") {
+            owo.splice(i,1);
+            i--;
+        }
+        else if (owo[i].description == "Lekland") {
+            owo.splice(i,1);
+            i--;
+        };
         //if (owo[i].description == "") owo.splice(i,1);
         
         if (owo.length == 0) {
