@@ -2,7 +2,7 @@ var api_key = "FqZF2ASN";
 
 function xd() {
     let request = new XMLHttpRequest(); 
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=attraction&method=getall",true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=description&method=getall",true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)

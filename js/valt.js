@@ -3,18 +3,21 @@ var fixedCode;
 var api_key = "FqZF2ASN";
 var resultat = 3; // Hur många resultat vi vill ha
 const chosenAct = [
-    {urlA:"activity"},
-    {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
-    {urlA:"&estimated_duration=DAYS", urlB:"&estimated_duration=MINUTES,HOURS", urlC:"&estimated_duration=DAYS,MINUTES,HOURS"},
-    {urlA:"&involves_water=Y", urlB:"&involves_water=N"},
-    {urlA:"num_reviews=3", urlB:"", urlC:""}
+    {urlA:"establishment&type=activity"},
+  
+    {urlA:"&description=Gokart", urlB:"&description=Zipline", urlC:"&description=N\u00f6jescenter"},
+   
+    {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
+   
+    {urlA:"&provinces=Småland", urlB:"&provinces=öland"},
+   
 ];
 const chosenFood = [
     {urlB:"food"},
-    {urlA:"&types=FINE_DINING", urlB:"&types=FAST", urlC:"&types=ETHNIC"},
+    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL", urlC:"&sub_types=PASTRIES"},
+    {urlA:"&sub_types=LOCAL", urlB:"&sub_types=A_LA_CARTE"},
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
-    {urlA:"&max_avg_dinner_pricing=500", urlB:"&min_avg_dinner_pricing=500"},
-    {urlA:"", urlB:"", urlC:""} //Provinces finns bara i establshment taggen...
+    {urlA:"&vegetarian_option=N", urlB:""} //Provinces finns bara i establshment taggen...
 ];
 
 //{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
@@ -61,9 +64,10 @@ function applyController(xd) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) listAlts(request.responseText);
+            if (request.status == 200)listAlts(request.responseText);
             else stepElem.innerHTML = "Nåt gick fel";
     };
+    
 }
 
 function listAlts(owo) {
@@ -75,6 +79,7 @@ function listAlts(owo) {
         else if (owo[i].description == "Golfbana") owo.splice(i,1);
         else if (owo[i].description == "Nattklubb") owo.splice(i,1);
         else if (owo[i].description == "Lekland") owo.splice(i,1);
+        else if (owo[i].description == "Temapark")owo.splice(i,1);
         //if (owo[i].description == "") owo.splice(i,1);
         
         if (owo.length == 0) {
