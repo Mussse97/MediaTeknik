@@ -186,58 +186,40 @@ html, #body2 {
     position: absolute;
     top: 700px;
     right: 0;
-    width: 350px;
-    height: 450px;
-    border: 3px solid #111111;  
     margin-right: 30px;
-    background-color: green;
 }
 
 .div4 {
     position: absolute;
     top: 450px;
     right: 450px;
-    width: 350px;
-    height: 450px;
-    border: 3px solid #000000;  
     margin-right: 30px;
-    background-color: purple;
 }
+   
 
 .div5 {
     position: absolute;
     top: 700px;
     right: 900px;
-    width: 350px;
-    height: 450px;
-    border: 3px solid #000000;  
     margin-right: 30px;
-    background-color: rgb(42, 138, 170);
+   
 }
 
 .div6 {
     position: absolute;
     top: 250px;
     right: 1400px;
-    width: 350px;
-    height: 450px;
-    border: 3px solid #000000;  
     margin-right: 30px;
-    background-color: rgb(236, 158, 55);
+   
 }
 
 .div7 {
     position: absolute;
     top: 150px;
     right: 1850px;
-    width: 350px;
-    height: 450px;
-    border: 3px solid #000000;  
     margin-right: 30px;
-    background-color: rgb(224, 42, 42);
+   
 }
-
-
 
 .div9 {
     position: absolute;
@@ -247,11 +229,25 @@ html, #body2 {
     text-align: center;
 }
 
+.p9 {
+    position:absolute;
+    bottom: 200px;
+    right: 150px;
+    font : bold 25px arial;
+    text-align:center;
+    width: 250px;
+}
+
 img {
     height: 450px;
     width: 550px;
-    margin:30px;
 }
+
+.headerimg {
+    height: 100px;
+    width: 100px;
+}
+
 .Button {
     font: bold 11px Arial;
   text-decoration: none;
@@ -262,5 +258,4 @@ img {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-
 }
