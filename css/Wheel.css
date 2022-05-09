@@ -13,10 +13,6 @@ body{
     overflow: hidden;
 }
 
-span {
-    clip-path: polygon(100% 0, 0 50%, 0 0);
-}
-
 #container{
     width: 500px;
     height: 500px;
@@ -25,39 +21,12 @@ span {
     border: 15px solid #dde;
     position: relative;
     overflow: hidden;
-    transition: 5s;
+    background-image:url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);
+    background-size: contain;
 }
 
-#container div{
-    height: 50%;
-    width: 200px;
-    position: absolute;
-    clip-path: polygon(100% 0, 50% 100%, 0 0);
-    transform-origin:bottom ;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: sans-serif;
-    color: #fff;
-    left: 140px;
+#spin {
+    position: relative;
+    left: 275px;
+    z-index: 100;
 }
-
-#container .one{
-    background-color: blue;
-    left: 50%;
-}
-#container .two{
-    background-color: orange;
-    transform: rotate(45deg);
-}
-#container .three{
-    background-color: pink;
-}
-#container .four{}
-#container .five{}
-#container .six{}
-#container .seven{}
-#container .eight{}

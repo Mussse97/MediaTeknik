@@ -6,7 +6,7 @@ const chosenAct = [
 	{altA:"18års gräns", descA:"Visa bara aktiviterer i Småland.", altB:"Ingen 18års gräns", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
 ];
 const chosenRes = [
-	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
+	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Vanliga restauranger", descB:"Typ McDonalds HAHA"},
 	{altA:"Uteservering", descA:"Det måste finnas uteservering!", altB:"Inomhus", descB:"Vi vill sitta inne."},
 	{altA:"Billigt", descA:"Restauranger som går under en 500 lapp.", altB:"Dyrt", descB:"Kostar över 500."},
 	{altA:"Småland", descA:"Visa bara restauranger i Småland.", altB:"Öland", descB:"Visa bara restauranger i Öland.", altC:"Båda", descC:"Visa restauranger i både Småland och Öland."}
@@ -41,7 +41,7 @@ window.addEventListener("load",init);
 function stuff() { 
 	if (fraga == 5) { // ändra den här om du lägger till flera frågor
 		let x = window.location.href;
-		x = x.replace('index.html','');
+		x = x.replace('start.html','');
 		x += "valt.html?val=" + choices.toString(); 
 		window.location.href = x;
 		return;
