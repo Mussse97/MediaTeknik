@@ -1,15 +1,15 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
-	{altA:"Lugn", descA:"Vi vill ha en lugn aktivitet.", altB:"Aktiv", descB:"En aktivitet där man rör på sig passar oss."},
-	{altA:"Heldagsaktivitet", descA:"Aktiviteter under 500.", altB:"Halvdagsaktivitet", descB:"Aktiviteter övre 500.", altC:"Halv/heldagsaktivitet", descC:"Gratis är gott!"},
-	{altA:"Vatten ja", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Vatten nej", descB:"Vi skulle vilja ha en utomhus aktivitet."},
-	{altA:"18års gräns", descA:"Visa bara aktiviterer i Småland.", altB:"Ingen 18års gräns", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
+	{altA:"Lugn", descA:"Vi vill ha en lugn aktivitet.", altB:"Aktiv", descB:"En aktivitet där man rör på sig passar oss.", urlA:"lugn.jpeg", urlB:"lugn.jpeg"},
+	{altA:"Heldagsaktivitet", descA:"Aktiviteter under 500.", altB:"Halvdagsaktivitet", descB:"Aktiviteter övre 500.", altC:"Halv/heldagsaktivitet", descC:"Gratis är gott!", urlA:"lugn.jpeg", urlB:"lugn.jpeg", urlC:"lugn.jpeg"},
+	{altA:"Vatten ja", descA:"Det är viktigt att aktiviteten är inomhus.", altB:"Vatten nej", descB:"Vi skulle vilja ha en utomhus aktivitet.", urlA:"lugn.jpeg", urlB:"lugn.jpeg"},
+	{altA:"18års gräns", descA:"Visa bara aktiviterer i Småland.", altB:"Ingen 18års gräns", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland.", urlA:"lugn.jpeg", urlB:"lugn.jpeg", urlC:"lugn.jpeg"}
 ];
 const chosenRes = [
-	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Vanliga restauranger", descB:"Typ McDonalds HAHA"},
-	{altA:"Uteservering", descA:"Det måste finnas uteservering!", altB:"Inomhus", descB:"Vi vill sitta inne."},
-	{altA:"Billigt", descA:"Restauranger som går under en 500 lapp.", altB:"Dyrt", descB:"Kostar över 500."},
-	{altA:"Småland", descA:"Visa bara restauranger i Småland.", altB:"Öland", descB:"Visa bara restauranger i Öland.", altC:"Båda", descC:"Visa restauranger i både Småland och Öland."}
+	{altA:"Fint", descA:"Bara fina restauranger.", altB:"Vanliga restauranger", descB:"Typ McDonalds HAHA", urlA:"lugn.jpeg", urlB:"lugn.jpeg"},
+	{altA:"Uteservering", descA:"Det måste finnas uteservering!", altB:"Inomhus", descB:"Vi vill sitta inne.", urlA:"lugn.jpeg", urlB:"lugn.jpeg"},
+	{altA:"Billigt", descA:"Restauranger som går under en 500 lapp.", altB:"Dyrt", descB:"Kostar över 500.", urlA:"lugn.jpeg", urlB:"lugn.jpeg"},
+	{altA:"Småland", descA:"Visa bara restauranger i Småland.", altB:"Öland", descB:"Visa bara restauranger i Öland.", altC:"Båda", descC:"Visa restauranger i både Småland och Öland.", urlA:"lugn.jpeg", urlB:"lugn.jpeg", urlC:"lugn.jpeg"}
 ];
 		// Förslag: Buffe, vegetarisk, alkohol, 
 const choices = []; // Vilket alternativ som är valt
@@ -76,6 +76,7 @@ function stuff() {
 	choiceElem[2].style.width = "0%";
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
+	choiceElem[0].style.backgroundImage = "url(../bilder/lugn.jpg);" //"url('../bilder/"+ chosenThing[fr].urlA +"')";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns

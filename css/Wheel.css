@@ -21,7 +21,8 @@ body{
     border: 15px solid #dde;
     position: relative;
     overflow: hidden;
-    background-image:url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);
+    /*background-image: url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);  Lägg in ett fint hjul här */
+    background-image: url(../bilder/lugn.jpg);
     background-size: contain;
 }
 
