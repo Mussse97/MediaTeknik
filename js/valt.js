@@ -17,7 +17,7 @@ const chosenFood = [
     {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL", urlC:"&sub_types=PASTRIES"},
     {urlA:"&sub_types=LOCAL", urlB:"&sub_types=A_LA_CARTE"},
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
-    {urlA:"&vegetarian_option=N", urlB:""} //Provinces finns bara i establshment taggen...
+    {urlA:"&vegetarian_option=N", urlB:"  "} //Provinces finns bara i establshment taggen...
 ];
 
 //{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
