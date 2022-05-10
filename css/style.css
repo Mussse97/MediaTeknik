@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 #one {
@@ -110,7 +111,9 @@ html, #body1 {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
     background-image: linear-gradient(to bottom right, rgba(90, 5, 90, 0.952), rgb(247, 114, 181));
+    
 }
 
 /*HEADER*/
@@ -141,7 +144,6 @@ width: 200px;
     text-align: right;
     padding:14px 16px;
     text-decoration: none;
-
 }
 
 .header a:hover {
@@ -153,16 +155,16 @@ width: 200px;
     background-color: purple;
     border-radius: 0px;
     border: 2px solid #0f0f0f;
-    width: 130px;
+    width: 160px;
     height: 45px;
-    font-size: 20px;
+    font-size: 25px;
     display:block;
 }
 
 .headerimg {
     height: 40px;
     width: 40px;
-    padding: none;
+    padding-right: 50px;
 }
 
 .main2 {
@@ -175,10 +177,12 @@ width: 200px;
 }
 
 html, #body2 {
-    margin: 0;
+    margin: auto;
     padding: 0;
-    height: 100%;
+
+    width: 100%;
     background-image: linear-gradient(to bottom right, rgba(90, 5, 90, 0.952), rgb(247, 114, 181));
+    position: fixed;
 }
 
 .p3 {

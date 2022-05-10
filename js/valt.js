@@ -3,18 +3,23 @@ var fixedCode;
 var api_key = "FqZF2ASN";
 var resultat = 3; // Hur många resultat vi vill ha
 const chosenAct = [
-    {urlA:"activity"},
-    {urlA:"&physical_effort=LOW", urlB:"&physical_effort=MEDIUM,HIGH"},
-    {urlA:"&estimated_duration=DAYS", urlB:"&estimated_duration=MINUTES,HOURS", urlC:"&estimated_duration=DAYS,MINUTES,HOURS"},
-    {urlA:"&involves_water=Y", urlB:"&involves_water=N"},
-    {urlA:"num_reviews=3", urlB:"", urlC:""}
+    {urlA:"establishment&types=activity"},
+
+    {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
+
+    {urlA:"&price_ranges=100-250", urlB:""},
+
+    {urlA:"&outdoors=Y", urlB:""},
+
+    {urlA:"&provinces=småland", urlB:"&provinces=öland"},
+
 ];
 const chosenFood = [
     {urlB:"food"},
-    {urlA:"&types=FINE_DINING", urlB:"&types=FAST", urlC:"&types=ETHNIC"},
+    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL", urlC:"&sub_types=PASTRIES"},
+    {urlA:"&sub_types=LOCAL", urlB:"&sub_types=A_LA_CARTE"},
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
-    {urlA:"&max_avg_dinner_pricing=500", urlB:"&min_avg_dinner_pricing=500"},
-    {urlA:"", urlB:"", urlC:""} //Provinces finns bara i establshment taggen...
+    {urlA:"&vegetarian_option=N", urlB:"  "} //Provinces finns bara i establshment taggen...
 ];
 
 //{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
