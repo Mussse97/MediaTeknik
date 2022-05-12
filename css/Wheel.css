@@ -1,7 +1,5 @@
-*{
-    box-sizing: border-box;
-}
 
+/* ---
 body{
     margin: 0;
     padding: 0;
@@ -12,6 +10,11 @@ body{
     height: 100vh;
     overflow: hidden;
 }
+ --- */
+
+.wheelbody {
+    
+}
 
 #container{
     width: 500px;
@@ -19,15 +22,17 @@ body{
     background-color: white;
     border-radius: 50%;
     border: 15px solid #dde;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     /*background-image: url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);  Lägg in ett fint hjul här */
     background-image: url(../bilder/lugn.jpg);
     background-size: contain;
+    left: 1300px;
+    top: 300px;
 }
 
 #spin {
-    position: relative;
-    left: 275px;
-    z-index: 100;
+    position: absolute;
+    left: 1200px;
+    top: 550px;
 }
