@@ -291,3 +291,30 @@ font: bold 11px Arial;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
 }
+
+#stepElement div{
+    margin: 40px;
+    padding-left: 15px ;
+    background-color: white;
+    outline: thick solid black;
+    width: 1100px;
+    height: 350px;
+    font-size: 25px;
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+#extraInfo  {
+    background-color: white;
+    outline: thick solid black;
+    position: absolute;
+    left: 1500px;
+    top: 300px;
+    width: 900px;
+    height: 900px;
+    font-size: 25px;
+    font-style: italic;
+    word-wrap: break-word;
+    padding-left: 15px;
+}
