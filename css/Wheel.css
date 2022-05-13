@@ -12,7 +12,19 @@ body{
 }
  --- */
 
-
+#wheelBody {
+    background-image:url(../bilder/wheel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/wheel.jpg);
+    height: 100vh;
+}
 
 #container{
     width: 500px;
@@ -30,7 +42,6 @@ body{
 
 #spin {
     z-index: 100;
-
     position: absolute;
     top: 50%;
     right: 55%;
@@ -40,7 +51,7 @@ body{
 	font-size: 20px;
 	font-family: 'Staatliches', cursive;
 	letter-spacing: 5px;
-	background: #ffc421;
+	background: #6b1702;
 	border: 2px solid black;
 	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
 	transition: 500ms;

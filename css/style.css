@@ -24,7 +24,7 @@ body {
     position: sticky;
     top: 0;
     padding-left: 15px;
-    background-color: #f8f8f8;
+    background-color: #4b0202;
     border: 2px solid #000000;
     
 }
@@ -45,8 +45,8 @@ body {
     text-align: right;
     padding:14px 16px;
     text-decoration: none;
-
-    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    background-color: #4b0202;
     width: 160px;
     height: 45px;
     font-size: 25px;
@@ -80,13 +80,22 @@ body {
 
 #firstPage h1 {
     font-size: 40px;
-    margin-top: 250px;
+    margin-top: 500px;
+    color: white;
 }
 
 #firstPage {
     background-image:url(../bilder/förstasida.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/förstasida.jpg);
+    height: 100vh;
 }
 
 
@@ -104,6 +113,20 @@ body {
 #indexDiv p {
     font-size: 40px;
     margin: 300px;
+    color: white;
+}
+
+#indexBody {
+    background-image: url(../bilder/andrasida.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/andrasida.jpg);
+    height: 100vh;
 }
 
 
@@ -173,7 +196,19 @@ body {
     top: 65%;
 }
 
-
+#tillbaka {
+    z-index: 50000;
+    position:absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+    background-color: rgb(85, 85, 85);
+    width: 200px;
+    height: 200px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
 
 
 
@@ -244,6 +279,21 @@ body {
     margin-right: 30px;
 }
 
+#notesDiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../bilder/tips.jpg);
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/tips.jpg);
+}
+
 #notesDiv img {
     height: 450px;
     max-width: 100%;
@@ -311,7 +361,7 @@ body {
  /* Knapp 1, Stor , sätt class till "button" */
 
  .button {
-    background: #ffc421;
+    background: #5e1401;
     border-radius: 25px;
     border: 2px solid #0f0f0f;
     color: black;
