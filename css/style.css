@@ -50,6 +50,7 @@ body {
     width: 100px;
     height: 100px;
     background-color: black;
+    background-size: cover;
 }
 
 #one p, #one h3, #two p, #two h3 {

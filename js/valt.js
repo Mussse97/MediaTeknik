@@ -4,13 +4,9 @@ var api_key = "FqZF2ASN";
 var resultat = 3; // Hur många resultat vi vill ha
 const chosenAct = [
     {urlA:"establishment&types=activity"},
-
     {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
-
     {urlA:"&price_ranges=100-250", urlB:""},
-
     {urlA:"&outdoors=Y", urlB:""},
-
     {urlA:"&provinces=småland", urlB:"&provinces=öland"},
 
 ];
@@ -22,12 +18,16 @@ const chosenFood = [
     {urlA:"&vegetarian_option=N", urlB:"  "} //Provinces finns bara i establshment taggen...
 ];
 
+var nerd = [];
+var extraElem;
+
 //{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
 //{altA:"Uteservering", descA:"Det måste finnas uteservering!", altB:"Inomhus", descB:"Vi vill sitta inne."},
 //{altA:"Billigt", descA:"Restauranger som går under en 500 lapp.", altB:"Dyrt", descB:"Kostar över 500."},
 //{altA:"Småland", descA:"Visa bara aktiviterer i Småland.", altB:"Öland", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
 
 function init() {
+    extraElem = document.getElementById("extraInfo");
     stepElem = document.getElementById("stepElement");
     
     fixedCode = fixCode(window.location.search);
@@ -61,8 +61,7 @@ function getController(uwu) {
 function applyController(xd) {
     let request = new XMLHttpRequest(); 
 
-    //request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2] + xd[3],true);
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2],true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
@@ -74,35 +73,55 @@ function applyController(xd) {
 function listAlts(owo) {
     owo = JSON.parse(owo);
     owo = owo.payload;
+    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"];
+
+    console.log(owo);
 
     for (let i = 0; i < owo.length; i++) {
-        if (owo[i].description == "Simhall") {
-            owo.splice(i,1);
-            i--;
+        for (let k = 0; k < bad.length; k++) {
+            if (owo[i].description == bad[k]) {
+                owo.splice(i,1);
+                i--;
+                break;
+            }
         }
-        else if (owo[i].description == "Golfbana") {
-            owo.splice(i,1);
-            i--;
-        }
-        else if (owo[i].description == "Nattklubb") {
-            owo.splice(i,1);
-            i--;
-        }
-        else if (owo[i].description == "Lekland") {
-            owo.splice(i,1);
-            i--;
-        };
-        //if (owo[i].description == "") owo.splice(i,1);
         
+
+
         if (owo.length == 0) {
             stepElem.innerHTML = "Finns inga resultat :<"
             return;
         }
     }
     
-    console.log(owo);
+    nerd = [];
 
     for (let i = 0; i < resultat; i++) {
-        stepElem.innerHTML += "<h3>" + owo[i].name + "</h3>"
+
+        let baby = document.createElement("div");
+        baby.innerHTML = "<h1>" + (i+1) + "</h1><h3>"+ owo[i].name +"</h3><p>" + owo[i].abstract + "</p><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>";
+        
+        nerd.push(owo[i]);
+        baby.setAttribute("data-ix",i);
+        baby.addEventListener("click",extraInfo);
+
+        stepElem.appendChild(baby);
+
+        if (owo.length == 0) {
+            stepElem.innerHTML += "Finns inga resultat :<"
+            return;
+        }
     }
+}
+
+function extraInfo() {
+    let wow = this.getAttribute("data-ix");
+    wow = nerd[wow];
+    extraElem.innerHTML = "<h3>"+ wow[i].name +"</h3><p>" + wow[i].abstract + "</p><p>Betyg: " + Math.round(wow[i].rating * 10) /10 +"</p>"
+    let gay = document.querySelectorAll("#extraInfo div");
+    gay.style.outline = ;
+}
+
+if (uwu[0].comment != undefined) {
+    
 }

@@ -8,13 +8,17 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden;
 }
  --- */
 
-.wheelbody {
-    
+body {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 #container{
     width: 500px;
@@ -32,7 +36,11 @@ body{
 }
 
 #spin {
-    position: absolute;
-    left: 1200px;
-    top: 550px;
+    position: relative;
+    left: 40%;
+    top: 40%;
+    width: 20%;
+    height: 20%;
+    border-radius: 100%;
+    border-width: 10px;
 }
