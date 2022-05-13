@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%);
 }
 
 #one {
@@ -72,12 +73,10 @@ body {
 
 /*CSS första sidan*/
 
-#button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  }
+
 
 #button1 {
-    background-color: purple;
+    background: #ffc421;
     border-radius: 25px;
     border: 2px solid #0f0f0f;
     color: black;
@@ -89,6 +88,25 @@ body {
     text-decoration: none;
     margin: 0 auto;
     display:block;
+    transition: 500ms;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+}
+
+#button1:after {
+    content: '';
+	position: absolute;
+	transform: translateX(-55px) translateY(-40px);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0px 0px 50px transparent;
+	transition: 500ms;
+}
+
+#button1:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
 }
 
 #h1 {
@@ -107,12 +125,14 @@ body {
 }
 
 
-html, #body1 {
+#body1 {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to bottom right, rgba(90, 5, 90, 0.952), rgb(247, 114, 181));
+    background-image:url(../bilder/förstasida.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     
 }
 
@@ -120,10 +140,11 @@ html, #body1 {
 .header {
     position: sticky;
     top: 0;
-    padding: 10px;
+    padding: 0px;
     padding-left: 15px;
-    background-color: #55054e;
+    background-color: #f8f8f8;
     border: 2px solid #000000;
+    
 }
 
 .header ul {
@@ -144,27 +165,34 @@ width: 200px;
     text-align: right;
     padding:14px 16px;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .header a:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     border-style:black ;
+    background-color: rgb(184, 181, 181);
   }
 
 .header a {
-    background-color: purple;
+    background-color: rgb(255, 255, 255);
     border-radius: 0px;
-    border: 2px solid #0f0f0f;
+    border: 2px solid #888181;
     width: 160px;
     height: 45px;
     font-size: 25px;
     display:block;
 }
 
-.headerimg {
+.header img {
     height: 40px;
     width: 40px;
     padding-right: 50px;
+}
+
+.active {
+    background-color: green;
+    
 }
 
 .main2 {
@@ -181,11 +209,7 @@ width: 200px;
     margin: 300px;
 }
 
-.body2 {
-    margin: auto;
-    padding: 0;
-    background-image: linear-gradient(to bottom right, rgba(90, 5, 90, 0.952), rgb(247, 114, 181));
-}
+
 
 .p3 {
     font-size: 30px;
@@ -257,7 +281,7 @@ img {
 
 
 .Button {
-    font: bold 11px Arial;
+font: bold 11px Arial;
   text-decoration: none;
   background-color: #EEEEEE;
   color: #333333;
@@ -266,4 +290,31 @@ img {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+}
+
+#stepElement div{
+    margin: 40px;
+    padding-left: 15px ;
+    background-color: white;
+    outline: thick solid black;
+    width: 1100px;
+    height: 350px;
+    font-size: 25px;
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+#extraInfo  {
+    background-color: white;
+    outline: thick solid black;
+    position: absolute;
+    left: 1500px;
+    top: 300px;
+    width: 900px;
+    height: 900px;
+    font-size: 25px;
+    font-style: italic;
+    word-wrap: break-word;
+    padding-left: 15px;
 }

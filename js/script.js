@@ -95,6 +95,7 @@ function stuff() {
 	let fr = fraga-1; // :(
 
 	choiceElem[2].style.width = "0%";
+	
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
 	choiceElem[0].style.backgroundImage = "url(../bilder/lugn.jpg);" //"url('../bilder/"+ chosenThing[fr].urlA +"')";
