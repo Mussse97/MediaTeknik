@@ -202,26 +202,35 @@ body {
 }
 
 #stepElement div{
+    padding: 9px;
     margin: 40px;
-    padding-left: 15px ;
+    overflow-y: auto;
     background-color: white;
     outline: thick solid black;
-    width: 1100px;
-    height: 350px;
-    font-size: 25px;
+    width: 40%;
+    height: 230%;
+    text-size-adjust: auto;
     font-weight: 200;
     font-style: italic;
+    line-height: 1.0;
+    word-wrap: break-word;
+    text-align: left;
 }
-
+h1{
+    text-align: center;
+}
+.inteh1{
+    text-align: center;
+}
 
 #extraInfo  {
     background-color: white;
     outline: thick solid black;
     position: absolute;
-    left: 1500px;
+    left: 1000px;
     top: 300px;
-    width: 900px;
-    height: 900px;
+    width: 30%;
+    height: 60%;
     font-size: 25px;
     font-style: italic;
     word-wrap: break-word;
