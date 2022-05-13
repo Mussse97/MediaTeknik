@@ -3,12 +3,11 @@
 
 /* Generellt */
 body {
+    background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%);
     margin: 0;
     padding: 0;
-    width: 100%;
     text-align: center;
-    overflow-x: hidden;
-    background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%);
+    overflow: hidden;               /* GÖR SÅ ATT MAN INTE KAN SKROLLA */
 }
 
 
@@ -21,12 +20,18 @@ body {
 
 /*HEADER*/
 .header {
+    z-index: 1000;
     position: sticky;
     top: 0;
     padding-left: 15px;
-    background-color: #f8f8f8;
+
+    background-color: #4b0202;
     border: 2px solid #000000;
     
+
+    background-color: #f8f8f8;
+    border-bottom:  2px solid #000000;
+
 }
 
 .header ul {
@@ -37,18 +42,22 @@ body {
 
 .header li {
     display: inline-flex;
-    float:left;
+    float: left;
 }
 
 .header a {
     color:rgb(3, 3, 3);
-    text-align: right;
     padding:14px 16px;
     text-decoration: none;
 
-    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    background-color: #4b0202;
     width: 160px;
     height: 45px;
+
+    background-color: #f8f8f8;
+    width: auto;
+
     font-size: 25px;
 }
 
@@ -80,13 +89,22 @@ body {
 
 #firstPage h1 {
     font-size: 40px;
-    margin-top: 250px;
+    margin-top: 500px;
+    color: white;
 }
 
 #firstPage {
-    background-image:url(../bilder/förstasida.jpg);
+    background-image: url(../bilder/förstasida.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/förstasida.jpg);
+    height: 100vh;
 }
 
 
@@ -104,7 +122,26 @@ body {
 #indexDiv p {
     font-size: 40px;
     margin: 300px;
+    color: white;
 }
+
+#indexBody {
+    background-image: url(../bilder/andrasida.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/andrasida.jpg);
+    height: 100vh;
+}
+
+
+
+
+
 
 
 
@@ -173,7 +210,19 @@ body {
     top: 65%;
 }
 
-
+#tillbaka {
+    z-index: 50000;
+    position:absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+    background-color: rgb(85, 85, 85);
+    width: 200px;
+    height: 200px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
 
 
 
@@ -223,6 +272,14 @@ h1{
     text-align: center;
 }
 
+=======
+
+#stepElement h2 {
+    background-color: red;
+}
+
+
+
 #extraInfo  {
     background-color: white;
     outline: thick solid black;
@@ -246,11 +303,28 @@ h1{
 
 
 
+
 /*dejtingtips*/
 
 #notesDiv div {
     position: absolute;
     margin-right: 30px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+#notesDiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../bilder/tips.jpg);
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/tips.jpg);
 }
 
 #notesDiv img {
@@ -309,6 +383,39 @@ h1{
 
 
 
+/* Hjulet */
+
+#container{
+    width: 50vh;
+    height: 50vh;
+    background-color: white;
+    border-radius: 50%;
+    border: 15px solid #dde;
+    position: absolute;
+    background-image:url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);
+    background-size: contain;
+    right: 30%;
+    top: 30%;
+}
+
+#spin {
+    position: absolute;
+    top: 80%;
+    right: 37.5%;
+    width: 20vh;
+}
+
+#wheelStyle {
+    
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -320,7 +427,7 @@ h1{
  /* Knapp 1, Stor , sätt class till "button" */
 
  .button {
-    background: #ffc421;
+    background: #5e1401;
     border-radius: 25px;
     border: 2px solid #0f0f0f;
     color: black;
@@ -353,6 +460,48 @@ h1{
     transform: translateY(-5px);
 	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.spinbutton {
+    z-index: 100;
+
+    width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: 'Staatliches', cursive;
+	letter-spacing: 5px;
+	background: #ffc421;
+	border: 2px solid black;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+	transition: 500ms;
+}
+
+.spinbutton:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+
+
+
+
+
+
+
 
 
 
