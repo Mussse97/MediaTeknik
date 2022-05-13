@@ -84,6 +84,7 @@ function stuff() {
 	
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
+	choiceElem[0].style.backgroundImage = "url(../bilder/lugn.jpg);" //"url('../bilder/"+ chosenThing[fr].urlA +"')";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns

@@ -1,13 +1,13 @@
 let containElem;
-let timeout = 2;
-const val = [11,22,24,215,125,214,211,163,233,777,55,24]; // Lägg i relevant skit här
+let timeout = 2; // Hur länge hjulet ska snurra
+const val = [30,32,40,46,99,106,113,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
 var api_key = "FqZF2ASN";
 let spin;
 
 function init() {
     containElem = document.getElementById("container");
-    spin = document.getElementById("spin");
-    spin.addEventListener("click",spinny)
+    spin = document.getElementsByClassName("spinbutton");
+    spin[0].addEventListener("click",spinny);
 }
 
 window.addEventListener("load",init);
@@ -25,7 +25,7 @@ function spinny() {
 function work() {
     let owo = Math.floor(Math.random()*val.length)
     let request = new XMLHttpRequest(); 
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&ids=" + owo + "&method=getall",true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&ids=" + val[owo] + "&method=getall",true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)

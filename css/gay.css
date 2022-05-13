@@ -79,7 +79,7 @@
 
 
 
-
+/*
 .header {
     position: sticky;
     top: 0;
@@ -120,4 +120,54 @@
 .header img {
     height: 100%;
     padding-right: 0;
+}
+
+*/
+
+
+
+
+
+
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  background-color: #530000;
+  border: 2px solid #000000;
+}
+
+.header ul {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.header li {
+  display:inline-flex;
+}
+
+.header li a {
+  display:block;
+  color:rgb(3, 3, 3);
+  text-align: right;
+  text-decoration: none;
+}
+
+.header a:hover {
+  background-color: rgb(255, 0, 0);
+  border-style:black ;
+}
+
+.header a {
+  background-color: white;
+  width: auto;
+  height: 50px;
+}
+
+.header img {
+  height: 100%;
+  padding-right: 0;
 }
