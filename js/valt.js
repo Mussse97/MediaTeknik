@@ -11,7 +11,7 @@ var myApiKey = "DIN-API-KEY"; // Ersätt DIN-API-KEY med din egen Flickr API key
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
+    {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
 
     {urlA:"&price_ranges=100-250", urlB:""},
 
@@ -108,7 +108,9 @@ function listAlts(owo) {
     for (let i = 0; i < resultat; i++) {
 
         let baby = document.createElement("div");
-        baby.innerHTML = "<h1>" + (i+1) + "</h1>" +"<h3>"+ owo[i].name +"</h3><p>" + owo[i].abstract +"</p><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
+        let number = document.createElement("h1");
+        number.innerHTML = (i+1) + ".";
+        baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>" + owo[i].abstract +"</p><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
         "<p>Pris:" + owo[i].price_range + "kr" +"</p>";
 
         nerd.push(owo[i]);
@@ -116,6 +118,7 @@ function listAlts(owo) {
         baby.addEventListener("click",extraInfo);
 
         stepElem.appendChild(baby);
+        stepElem.insertBefore(number, baby);
 
         if (owo.length == 0) {
             stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"

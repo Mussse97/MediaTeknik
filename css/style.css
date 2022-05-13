@@ -43,7 +43,7 @@ body {
     color:rgb(3, 3, 3);
     padding:14px 16px;
     text-decoration: none;
-    background-color: rgb(255, 255, 255);
+    background-color: #f8f8f8;
     width: auto;
     font-size: 25px;
 }
@@ -80,7 +80,7 @@ body {
 }
 
 #firstPage {
-    background-image:url(../bilder/förstasida.jpg);
+    background-image: url(../bilder/förstasida.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -101,6 +101,11 @@ body {
     font-size: 40px;
     margin: 300px;
 }
+
+
+
+
+
 
 
 
@@ -305,8 +310,8 @@ body {
 /* Hjulet */
 
 #container{
-    width: 500px;
-    height: 500px;
+    width: 50vh;
+    height: 50vh;
     background-color: white;
     border-radius: 50%;
     border: 15px solid #dde;
@@ -315,6 +320,17 @@ body {
     background-size: contain;
     right: 30%;
     top: 30%;
+}
+
+#spin {
+    position: absolute;
+    top: 80%;
+    right: 37.5%;
+    width: 20vh;
+}
+
+#wheelStyle {
+    
 }
 
 
@@ -386,9 +402,6 @@ body {
 .spinbutton {
     z-index: 100;
 
-    position: absolute;
-    top: 50%;
-    right: 55%;
     width: 150px;
 	height: 50px;
 	cursor: pointer;
