@@ -150,9 +150,15 @@ function extraInfo() {
 
 function musse(lol,wow) {
     uwu = JSON.parse(lol).payload;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a href='"+ wow.website +"'> Webbplats</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews + "</p>";
-    if (uwu[0] != undefined) {
-        extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment + "</p>"
+
+   console.log(uwu)
+    
+    var a = document.createElement('a');
+    a.href = wow.website;
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews + "</p><p>"+ "Adress:" + wow.address + "</p>";
+    if (uwu[0].comment != undefined) {
+     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment + "</p>"
+
     }
     else {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
