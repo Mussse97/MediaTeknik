@@ -21,9 +21,7 @@ body{
     border-radius: 50%;
     border: 15px solid #dde;
     position: absolute;
-    overflow: hidden;
-    /*background-image: url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);  Lägg in ett fint hjul här */
-    background-image: url(../bilder/lugn.jpg);
+    background-image:url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);
     background-size: contain;
     right: 30%;
     top: 30%;
@@ -31,6 +29,8 @@ body{
 }
 
 #spin {
+    z-index: 100;
+
     position: absolute;
     top: 50%;
     right: 55%;
@@ -46,9 +46,15 @@ body{
 	transition: 500ms;
 }
 
+#spin:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+/*                  :after gör typ inget...
 #spin:after {
     content: '';
-	position: absolute;
+    position: absolute;
 	transform: translateX(-55px) translateY(-40px);
 	width: 25px;
 	height: 25px;
@@ -57,16 +63,5 @@ body{
 	box-shadow: 0px 0px 50px transparent;
 	transition: 500ms;
 }
+*/
 
-#spin:hover {
-    transform: translateY(-5px);
-	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
-}
-
-
-
-
-
-button:focus {
-	outline: none;
-}

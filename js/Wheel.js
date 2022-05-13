@@ -6,8 +6,8 @@ let spin;
 
 function init() {
     containElem = document.getElementById("container");
-    spin = document.getElementById("spin");
-    spin.addEventListener("click",spinny)
+    spin = document.getElementsByClassName("spinbutton");
+    spin[0].addEventListener("click",spinny);
 }
 
 window.addEventListener("load",init);

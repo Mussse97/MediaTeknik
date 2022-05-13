@@ -9,7 +9,7 @@ var mapLocationElem; // Element för utskrift av koordinater
 var myApiKey = "DIN-API-KEY"; // Ersätt DIN-API-KEY med din egen Flickr API key
 
 const chosenAct = [
-    {urlA:"establishment&types=activity"},
+    {urlA:"establishment&types=activity"}, // Controller
 
     {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
 
@@ -21,17 +21,17 @@ const chosenAct = [
 
 ];
 const chosenFood = [
-    {urlB:"food"},
+    {urlB:"food"}, // Controller
+
     {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL", urlC:"&sub_types=PASTRIES"},
+
     {urlA:"&sub_types=LOCAL", urlB:"&sub_types=A_LA_CARTE"},
+
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
+
     {urlA:"&vegetarian_option=N", urlB:"  "} //Provinces finns bara i establshment taggen...
 ];
 
-//{altA:"Fint", descA:"Bara fina restauranger.", altB:"Snabbmat", descB:"Typ McDonalds HAHA", altC:"Exotiskt", descC:"Exotiska restauranger"},
-//{altA:"Uteservering", descA:"Det måste finnas uteservering!", altB:"Inomhus", descB:"Vi vill sitta inne."},
-//{altA:"Billigt", descA:"Restauranger som går under en 500 lapp.", altB:"Dyrt", descB:"Kostar över 500."},
-//{altA:"Småland", descA:"Visa bara aktiviterer i Småland.", altB:"Öland", descB:"Visa bara aktiviteter i Öland.", altC:"Båda", descC:"Visa aktiviteter i både Småland och Öland."}
 
 function init() {
     stepElem = document.getElementById("stepElement");
@@ -68,8 +68,7 @@ function getController(uwu) {
 
 function applyController(xd) {
     let request = new XMLHttpRequest(); 
-
-    //request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2] + xd[3],true);
+    
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
@@ -83,32 +82,28 @@ function listAlts(owo) {
     owo = JSON.parse(owo);
     owo = owo.payload;
 
+    if (owo.length == 0) {
+        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
+        return;
+    }
+    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
+
     for (let i = 0; i < owo.length; i++) {
-        if (owo[i].description == "Simhall") {
-            owo.splice(i,1);
-            i--;
+        for (let k = 0; k < bad.length; k++) {
+            if (owo[i].description == bad[k]) {
+                owo.splice(i,1);
+                i--;
+                break;
+            }
         }
-        else if (owo[i].description == "Golfbana") {
-            owo.splice(i,1);
-            i--;
-        }
-        else if (owo[i].description == "Nattklubb") {
-            owo.splice(i,1);
-            i--;
-        }
-        else if (owo[i].description == "Lekland") {
-            owo.splice(i,1);
-            i--;
-        };
-        //if (owo[i].description == "") owo.splice(i,1);
         
         if (owo.length == 0) {
-            stepElem.innerHTML = "Finns inga resultat :<"
+            stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
             return;
         }
     }
     
-  nerd= []
+    nerd = [];
 
     for (let i = 0; i < resultat; i++) {
 
@@ -123,41 +118,40 @@ function listAlts(owo) {
         stepElem.appendChild(baby);
 
         if (owo.length == 0) {
-            stepElem.innerHTML = "Finns inga resultat :<"
+            stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
             return;
         }
     }
     
 }
+
 function extraInfo() {
-    let request = new XMLHttpRequest(); 
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
+    
+    // Valda alternativet
+    let fix = document.querySelectorAll("#stepElement div")
+    for (let i = 0; i < fix.length; i++) fix[i].style.outline = "thick solid black";
+    this.style.outline = "thick solid red";
+    
+    
+    let request = new XMLHttpRequest(); 
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) musse(request.responseText,wow)
-            
+            if (request.status == 200) musse(request.responseText,wow);
             else stepElem.innerHTML = "Nåt gick fel";
     };
-
-    
-    
 }
+
 function musse(lol,wow) {
     uwu = JSON.parse(lol).payload;
-   console.log(uwu)
-    console.log(wow);
-    var a = document.createElement('a');
-    a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews + "</p>";
-    if (uwu[0].comment != undefined) {
-     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment + "</p>"
-
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a href='"+ wow.website +"'> Webbplats</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews + "</p>";
+    if (uwu[0] != undefined) {
+        extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment + "</p>"
     }
     else {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
-    this.style.outline = "thick solid red";
 };
