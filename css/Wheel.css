@@ -8,23 +8,17 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden;
 }
  --- */
 
-#wheelBody {
-    background-image:url(../bilder/wheel.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+body {
     overflow: hidden;
-    background-image:
-    linear-gradient(
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-    ),
-    url(../bilder/wheel.jpg);
-    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 #container{
     width: 500px;

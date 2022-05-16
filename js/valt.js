@@ -14,9 +14,7 @@ const chosenAct = [
     {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
 
     {urlA:"&price_ranges=100-250", urlB:""},
-
     {urlA:"&outdoors=Y", urlB:""},
-
     {urlA:"&provinces=småland", urlB:"&provinces=öland"},
 
 ];
@@ -29,12 +27,11 @@ const chosenFood = [
 
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
 
-    {urlA:"&vegetarian_option=N", urlB:"  "} //Provinces finns bara i establshment taggen...
+    {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"} //Provinces finns bara i establshment taggen...
 ];
 
 
 function init() {
-   
     stepElem = document.getElementById("stepElement");
     infoElem = document.getElementById ("priset");
     fixedCode = fixCode(window.location.search);
@@ -70,25 +67,48 @@ function getController(uwu) {
 function applyController(xd) {
     let request = new XMLHttpRequest(); 
     
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating" + xd[1] + xd[2] + xd[3] + xd[4],true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page=3" + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) listAlts(request.responseText);
-            else stepElem.innerHTML = "Nåt gick fel";
+            if (request.status == 200) {
+                let uwu = request.responseText;
+                if (xd[0] == "food") {
+                    let owo = JSON.parse(uwu).payload;
+                    let quickFix = [];
+                    for (let i = 0; i < owo.length; i++) {
+                        quickFix.push(owo[i].id);
+                    }
+                    quickFix.toString();
+                    request = new XMLHttpRequest();
+                    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&id=" + quickFix,true);
+                    request.send(null); 
+                    request.onreadystatechange = function () {
+                        if (request.readyState == 4)
+                            if (request.status == 200) listAlts(request.responseText)
+                            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+                    };
+                }
+            }
+            else listAlts(uwu);
+        else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
 function listAlts(owo) {
-    owo = JSON.parse(owo);
-    owo = owo.payload;
+    owo = JSON.parse(owo).payload;
+    
+
+    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
+
+    console.log(owo);
 
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
         return;
     }
-    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
 
+    // Gör inget just nu
     for (let i = 0; i < owo.length; i++) {
         for (let k = 0; k < bad.length; k++) {
             if (owo[i].description == bad[k]) {
@@ -98,6 +118,8 @@ function listAlts(owo) {
             }
         }
         
+
+
         if (owo.length == 0) {
             stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
             return;
@@ -127,7 +149,6 @@ function listAlts(owo) {
             return;
         }
     }
-    
 }
 
 function lploss() {
@@ -146,7 +167,7 @@ function lploss() {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) musse(request.responseText,wow);
-            else stepElem.innerHTML = "Nåt gick fel";
+            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
@@ -167,6 +188,7 @@ function musse(lol,wow) {
     else {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
+  
     let markeroption = {
         position: new google.maps.LatLng(wow.lat, wow.lng),
         center:{lat: wow.lat, lng: wow.lng},

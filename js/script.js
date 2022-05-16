@@ -24,6 +24,7 @@ var fraga = 0; // Vilken fråga är vi på?
 var progressElem; // Bollarna
 var chosenThing; // Vad är valt, aktivitet eller restaurang?
 
+
 // Initiera skit
 function init() {
     choiceElem = document.querySelectorAll("#choice div");
@@ -84,11 +85,13 @@ function stuff() {
 	
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
-	choiceElem[0].style.backgroundImage = "url(../bilder/lugn.jpg);" //"url('../bilder/"+ chosenThing[fr].urlA +"')";
+	choiceElem[0].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlA +")";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
+	choiceElem[1].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlB +")";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns
 		choiceElem[2].innerHTML = "<h3>" + chosenThing[fr].altC +"</h3>" + "<p>" + chosenThing[fr].descC +"</p>";
+		choiceElem[2].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlC +")";
 		choiceElem[2].style.width = "100%";
 	}
 }
