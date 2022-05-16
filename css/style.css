@@ -1,47 +1,192 @@
 @charset "UTF-8";
 
+
+/* Generellt */
 body {
+    background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%);
     margin: 0;
     padding: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%);
+    text-align: center;
+    overflow: hidden;               /* GÖR SÅ ATT MAN INTE KAN SKROLLA */
+}
+
+
+
+
+
+
+
+
+
+/*HEADER*/
+.header {
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    padding-left: 15px;
+
+    background-color: #4b0202;
+    border: 2px solid #000000;
+    
+
+    background-color: #f8f8f8;
+    border-bottom:  2px solid #000000;
+
+}
+
+.header ul {
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+
+.header li {
+    display: inline-flex;
+    float: left;
+}
+
+.header a {
+    color:rgb(3, 3, 3);
+    padding:14px 16px;
+    text-decoration: none;
+
+    border-radius:10px;
+    background-color: #4b0202;
+    width: 160px;
+    height: 45px;
+
+    background-color: #f8f8f8;
+    width: auto;
+
+    font-size: 25px;
+}
+
+.header a:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: rgb(184, 181, 181);
+}
+
+.header img {
+    height: 40px;
+    width: 40px;
+    padding-right: 50px;
+}
+
+.active {
+    background-color: green;
+}
+
+
+
+
+
+
+
+
+
+
+/*CSS första sidan*/
+
+#firstPage h1 {
+    font-size: 40px;
+    margin-top: 500px;
+    color: white;
+}
+
+#firstPage {
+    background-image: url(../bilder/förstasida.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/förstasida.jpg);
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Index */
+
+#indexDiv p {
+    font-size: 40px;
+    margin: 300px;
+    color: white;
+}
+
+#indexBody {
+    background-image: url(../bilder/andrasida.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/andrasida.jpg);
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Start */
+
+#choice div {
+    position: fixed;
+    height: 100%;
+    top: 0;
 }
 
 #one {
-    position: fixed;
-    top: 0;
     left: 0;
     background-color: blue;
     width: 50%;
-    height: 100%;
 }
 
 #two {
-    position: fixed;
-    top: 0;
     right: 0;
     background-color: blueviolet;
     width: 50%;
-    height: 100%;
 }
+
 #three {
     background-color: palevioletred;
-    position: fixed;
     right: 0%;
-    top: 0%;
     clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
     width: 0%;
-    height: 100%;
 }
 
 #progress {
     position: fixed;
     bottom: 0%;
-    left: 25%;
-    width: 1000px;
+    left: 30%;
+    width: 40%;
     height: 10%;
     background-color: rgb(85, 85, 85);
-    /*clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);*/
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
 #progress div {
@@ -54,7 +199,7 @@ body {
     background-size: cover;
 }
 
-#one p, #one h3, #two p, #two h3 {
+#choice p, #choice h3 {
     position: relative;
     top: 35%;
     text-align: center;
@@ -63,205 +208,159 @@ body {
 }
 
 #three p, #three h3 {
-    position: relative;
     top: 65%;
-    text-align: center;
-    color:white;
-    font-size: xx-large;
 }
 
-
-
-/*CSS första sidan*/
-
-
-
-#button1 {
-    background: #ffc421;
-    border-radius: 25px;
-    border: 2px solid #0f0f0f;
-    color: black;
-    padding: 20px;
-    width: 300px;
-    height: 100px;
-    font-size: 30px;
-    text-align:center;
-    text-decoration: none;
-    margin: 0 auto;
-    display:block;
-    transition: 500ms;
-    box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
-}
-
-#button1:after {
-    content: '';
-	position: absolute;
-	transform: translateX(-55px) translateY(-40px);
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: transparent;
-	box-shadow: 0px 0px 50px transparent;
-	transition: 500ms;
-}
-
-#button1:hover {
-    transform: translateY(-5px);
-	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
-}
-
-#h1 {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 250px;
-    display:block;
-}
-
-.div1 {  
-    width:100%;
-    height:100vh;
-    position: relative;
-    float:left;
-    box-sizing: border-box;
-}
-
-
-#body1 {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    background-image:url(../bilder/förstasida.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-}
-
-/*HEADER*/
-.header {
-    position: sticky;
+#tillbaka {
+    z-index: 50000;
+    position:absolute;
     top: 0;
-    padding: 0px;
-    padding-left: 15px;
-    background-color: #f8f8f8;
-    border: 2px solid #000000;
-    
-}
-
-.header ul {
-    list-style-type: none;
-    margin:0;
-    padding:0;
-    overflow:hidden;
-}
-
-.header li {
-float:left;
-width: 200px;
-}
-
-.header li a {
-    display:block;
-    color:rgb(3, 3, 3);
-    text-align: right;
-    padding:14px 16px;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+    background-color: rgb(85, 85, 85);
+    width: 200px;
+    height: 200px;
+    color: white;
     text-decoration: none;
-    border-radius: 5px;
-}
-
-.header a:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    border-style:black ;
-    background-color: rgb(184, 181, 181);
-  }
-
-.header a {
-    background-color: rgb(255, 255, 255);
-    border-radius: 0px;
-    border: 2px solid #888181;
-    width: 160px;
-    height: 45px;
     font-size: 25px;
-    display:block;
 }
 
-.header img {
-    height: 40px;
-    width: 40px;
-    padding-right: 50px;
+
+
+
+
+
+
+
+
+
+/* Valt */
+
+#goBack {
+    position: absolute;
+    left: 6%;
+    top: 10%;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
 }
 
-.active {
-    background-color: green;
-    
+#stepElement div{
+    padding: 9px;
+    margin: 40px;
+    overflow-y: auto;
+    background-color: white;
+    outline: thick solid black;
+    width: 40%;
+    height: 230%;
+    text-size-adjust: auto;
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1.0;
+    word-wrap: break-word;
+    text-align: left;
 }
-
-.main2 {
+h1{
     text-align: center;
-    height:100%;
-    width: 100%;
-    margin: auto;
-    position: fixed;
-    overflow: auto;
 }
-
-.p2 {
-    font-size: 40px;
-    margin: 300px;
-}
-
-
-
-.p3 {
-    font-size: 30px;
+.inteh1{
     text-align: center;
-    margin: 100px;
 }
+
+=======
+
+#stepElement h2 {
+    background-color: red;
+}
+
+
+
+#extraInfo  {
+    background-color: white;
+    outline: thick solid black;
+    position: absolute;
+    left: 1000px;
+    top: 300px;
+    width: 30%;
+    height: 60%;
+    font-size: 25px;
+    font-style: italic;
+    word-wrap: break-word;
+    padding-left: 15px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /*dejtingtips*/
 
-.div3 {
+#notesDiv div {
     position: absolute;
+    margin-right: 30px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+#notesDiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../bilder/tips.jpg);
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/tips.jpg);
+}
+
+#notesDiv img {
+    height: 450px;
+    max-width: 100%;
+}
+
+.div3 {
     top: 700px;
     right: 0;
-    margin-right: 30px;
 }
 
 .div4 {
-    position: absolute;
     top: 450px;
     right: 450px;
-    margin-right: 30px;
 }
    
 .div5 {
-    position: absolute;
     top: 700px;
     right: 900px;
-    margin-right: 30px;
-   
 }
 
 .div6 {
-    position: absolute;
     top: 250px;
     right: 1400px;
-    margin-right: 30px;
-   
 }
 
 .div7 {
-    position: absolute;
     top: 150px;
     right: 1850px;
-    margin-right: 30px;
 }
 
 .div9 {
-    position: absolute;
     top: 750px;
     right: 1950px;  
-    margin-right: 30px;
     text-align: center;
 }
 
@@ -274,48 +373,198 @@ width: 200px;
     width: 250px;
 }
 
-img {
-    height: 450px;
-    max-width: 100%;
-
-}
 
 
-.Button {
-font: bold 11px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
-}
 
-#stepElement div{
-    margin: 40px;
-    padding-left: 15px ;
+
+
+
+
+
+
+
+
+/* Hjulet */
+
+#container{
+    width: 50vh;
+    height: 50vh;
     background-color: white;
-    outline: thick solid black;
-    width: 1100px;
-    height: 350px;
-    font-size: 25px;
-    font-weight: 200;
-    font-style: italic;
-}
-
-
-#extraInfo  {
-    background-color: white;
-    outline: thick solid black;
+    border-radius: 50%;
+    border: 15px solid #dde;
     position: absolute;
-    left: 1500px;
-    top: 300px;
-    width: 900px;
-    height: 900px;
-    font-size: 25px;
-    font-style: italic;
-    word-wrap: break-word;
-    padding-left: 15px;
+    background-image:url(https://camzies.com.ng/wp-content/uploads/2016/09/45.jpg);
+    background-size: contain;
+    right: 30%;
+    top: 30%;
+}
+
+#spin {
+    position: absolute;
+    top: 80%;
+    right: 37.5%;
+    width: 20vh;
+}
+
+#wheelStyle {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* KNAPPAR */
+
+ /* Knapp 1, Stor , sätt class till "button" */
+
+ .button {
+    background: #5e1401;
+    border-radius: 25px;
+    border: 2px solid #0f0f0f;
+    color: black;
+    padding: 20px;
+    width: 300px;
+    height: 100px;
+    font-size: 30px;
+    text-align:center;
+    text-decoration: none;
+    margin: 0 auto;
+    display:block;
+    transition: 500ms;
+}
+
+/*                             Jag tror inte :after gör något här, men jag kan ha fel //Idioten
+.button:after {
+    content: '';
+	position: absolute;
+	transform: translateX(-55px) translateY(-40px);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0px 0px 50px transparent;
+	transition: 500ms;
+}
+*/
+
+.button:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.spinbutton {
+    z-index: 100;
+
+    width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: 'Staatliches', cursive;
+	letter-spacing: 5px;
+	background: #ffc421;
+	border: 2px solid black;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+	transition: 500ms;
+}
+
+.spinbutton:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Knapp 2, sexig, sätt class till "sexybutton" och lägg texten i en <span> tagg. Sätt också ett attribut efter classen:   data-sm-link-text="CLICK"   där CLICK är texten som visas då man hovrar */
+
+.sexybutton {
+    --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+    display: var(--uismLinkDisplay);
+    color: #000;
+    outline: solid  2px #000;
+    position: relative;
+    transition-duration: 0.4s;
+    overflow: hidden;
+    background-color: white;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 45px;
+    max-width: 160px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+
+.sexybutton::before,
+.sexybutton span{
+    margin: 0 auto;
+	transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+	transition-duration: 0.4s;
+}
+
+.sexybutton:hover{
+    background-color: #000;
+    text-decoration: none;
+}
+
+.sexybutton:hover span{
+  -webkit-transform: translateY(-400%) scale(-0.1,20);
+          transform: translateY(-400%) scale(-0.1,20);
+}
+
+.sexybutton::before{
+  content: attr(data-sm-link-text);
+	color: #FFF;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1,20);
+          transform: translateY(500%) scale(-0.1,20);
+}
+
+.sexybutton:hover::before{
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1,1);
+          transform: translateY(0) scale(1,1);
 }
