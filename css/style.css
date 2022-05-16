@@ -18,18 +18,16 @@ body {
 
 
 
+
 /*HEADER*/
 .header {
     z-index: 1000;
     position: sticky;
     top: 0;
     padding-left: 15px;
-
     background-color: #4b0202;
     border: 2px solid #000000;
-    
-
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border-bottom:  2px solid #000000;
 
 }
@@ -49,21 +47,18 @@ body {
     color:rgb(3, 3, 3);
     padding:14px 16px;
     text-decoration: none;
-
-    border-radius:10px;
     background-color: #4b0202;
     width: 160px;
     height: 45px;
-
     background-color: #f8f8f8;
     width: auto;
-
     font-size: 25px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .header a:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color: rgb(184, 181, 181);
+    background-color: rgba(184, 181, 181, 0.596);
 }
 
 .header img {
@@ -72,8 +67,8 @@ body {
     padding-right: 50px;
 }
 
-.active {
-    background-color: green;
+.aktiv a{
+    background-color: rgba(184, 181, 181, 0.623);
 }
 
 
@@ -137,6 +132,7 @@ body {
     url(../bilder/andrasida.jpg);
     height: 100vh;
 }
+
 
 
 
@@ -272,7 +268,7 @@ h1{
     text-align: center;
 }
 
-=======
+
 
 #stepElement h2 {
     background-color: red;
@@ -325,11 +321,12 @@ h1{
         rgba(0, 0, 0, 0.5)
     ),
     url(../bilder/tips.jpg);
+    
 }
 
 #notesDiv img {
     height: 450px;
-    max-width: 100%;
+    min-width: 100% auto;
 }
 
 .div3 {
@@ -386,8 +383,8 @@ h1{
 /* Hjulet */
 
 #container{
-    width: 50vh;
-    height: 50vh;
+    width: 500px;
+    height: 500px;
     background-color: white;
     border-radius: 50%;
     border: 15px solid #dde;
@@ -399,14 +396,39 @@ h1{
 }
 
 #spin {
+    z-index: 100;
     position: absolute;
-    top: 80%;
-    right: 37.5%;
-    width: 20vh;
+    top: 50%;
+    right: 55%;
+    width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: 'Staatliches', cursive;
+	letter-spacing: 5px;
+	background: #6b1702;
+	border: 2px solid black;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+	transition: 500ms;
 }
 
-#wheelStyle {
-    
+#spin:hover {
+    transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+#wheelBody {
+    background-image:url(../bilder/wheel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/wheel.jpg);
+    height: 100vh;
 }
 
 
