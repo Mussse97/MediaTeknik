@@ -136,9 +136,14 @@ body {
 
 
 
+/* Karta*/
 
-
-
+#map{
+    width: 99%;
+    height: 55%;
+    border: 3px solid black;
+    
+}
 
 
 
@@ -269,7 +274,6 @@ h1{
 }
 
 
-
 #stepElement h2 {
     background-color: red;
 }
@@ -288,6 +292,7 @@ h1{
     font-style: italic;
     word-wrap: break-word;
     padding-left: 15px;
+    overflow-y: scroll;
 }
 
 

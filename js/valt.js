@@ -5,8 +5,8 @@ var resultat = 3; // Hur många resultat vi vill ha
 var nerd = [];
 var extraElem;
 var myMap; 
-var mapLocationElem; // Element för utskrift av koordinater
-var myApiKey = "DIN-API-KEY"; // Ersätt DIN-API-KEY med din egen Flickr API key
+
+
 
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
@@ -34,10 +34,11 @@ const chosenFood = [
 
 
 function init() {
+   
     stepElem = document.getElementById("stepElement");
     infoElem = document.getElementById ("priset");
     fixedCode = fixCode(window.location.search);
-    extraElem = document.getElementById("extraInfo");
+    extraElem = document.getElementById("lploss");
    
 
     if (fixedCode[0] == 0) getController(chosenAct);
@@ -115,7 +116,8 @@ function listAlts(owo) {
 
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
-        baby.addEventListener("click",extraInfo);
+        baby.addEventListener("click",lploss);
+
 
         stepElem.appendChild(baby);
         stepElem.insertBefore(number, baby);
@@ -128,7 +130,7 @@ function listAlts(owo) {
     
 }
 
-function extraInfo() {
+function lploss() {
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
     
@@ -150,17 +152,49 @@ function extraInfo() {
 
 function musse(lol,wow) {
     uwu = JSON.parse(lol).payload;
-
    console.log(uwu)
-    
+  console.log(wow)
+
     var a = document.createElement('a');
     a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews + "</p><p>"+ "Adress:" + wow.address + "</p>";
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress:" + wow.address + "</p>";
+
+    
     if (uwu[0].comment != undefined) {
-     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment + "</p>"
+     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>"
 
     }
     else {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
+    let markeroption = {
+        position: new google.maps.LatLng(wow.lat, wow.lng),
+        center:{lat: wow.lat, lng: wow.lng},
+        zoom: 15
+        
+    }
+    let  marker = new google.maps.Marker(markeroption);
+    marker.setMap(myMap);
+    myMap.map.setCenter(new google.maps.LatLng( wow.lat, wow.lng ) );
+    marker.addListener("click", () => {
+        myMap.setZoom(15);
+        myMap.setCenter(marker.getPosition(markeroption));
+      });
+
 };
+
+function initMap() {
+
+
+    myMap = new google.maps.Map(document.getElementById("map"), {
+      center: { lat:56.84087401937136, lng:14.831460353379997  },
+      zoom: 8,
+      styles: [
+        { featureType: "poi", stylers: [{ visibility: "off" }] }, // No points of interest.
+        { featureType: "transit.station", stylers: [{ visibility: "off" }] }, // No bus stations, etc.
+      ],
+    });
+    
+
+  } 
+  window.addEventListener("load", initMap);
