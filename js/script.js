@@ -69,7 +69,9 @@ function stuff() {
 
 	if (fraga == 0) { // Ifall man börjar om helt
 		choiceElem[0].innerHTML = "<h3> Aktivitet </h3>";
+		choiceElem[0].style.backgroundImage = "url(../bilder/nöjespark.jpg)";
 		choiceElem[1].innerHTML = "<h3> Restaurang </h3>";
+		choiceElem[1].style.backgroundImage = "url(../bilder/restaurang.jpg)";
 		choiceElem[2].innerHTML = "";
 		choiceElem[2].style.width = "0%"; // Ändrar vi något som t.ex "opacity" så kan man fortfarande klicka på den
 		return;
