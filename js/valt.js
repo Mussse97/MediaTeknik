@@ -70,7 +70,7 @@ function applyController(xd) {
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page=3" + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
-        if (request.readyState == 4)
+        if (request.readyState == 4) 
             if (request.status == 200) {
                 let uwu = request.responseText;
                 if (xd[0] == "food") {
@@ -91,7 +91,6 @@ function applyController(xd) {
                 }
                 else listAlts(uwu);
             }
-            
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
@@ -158,9 +157,9 @@ function lploss() {
     console.log(nerd)
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
-    for (let i = 0; i < fix.length; i++) fix[i].style.outline = "thick solid black";
-    this.style.outline = "thick solid red";
-    
+    for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
+    this.classList.add("vald");
+
     
     let request = new XMLHttpRequest(); 
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
@@ -174,8 +173,6 @@ function lploss() {
 
 function musse(lol,wow) {
     uwu = JSON.parse(lol).payload;
-   console.log(uwu)
-  console.log(wow)
 
     var a = document.createElement('a');
     a.href = wow.website;
@@ -183,7 +180,7 @@ function musse(lol,wow) {
 
     
     if (uwu[0].comment != undefined) {
-     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>"
+     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
 
     }
     else {
@@ -262,8 +259,3 @@ function musse(lol,wow) {
         });
        
         window.addEventListener("load",initMap);
-       
-      
-      
-    
-     
