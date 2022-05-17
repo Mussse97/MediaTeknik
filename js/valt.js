@@ -157,9 +157,9 @@ function lploss() {
     
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
-    for (let i = 0; i < fix.length; i++) fix[i].style.outline = "thick solid black";
-    this.style.outline = "thick solid red";
-    
+    for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
+    this.classList.add("vald");
+
     
     let request = new XMLHttpRequest(); 
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
@@ -173,8 +173,6 @@ function lploss() {
 
 function musse(lol,wow) {
     uwu = JSON.parse(lol).payload;
-   console.log(uwu)
-  console.log(wow)
 
     var a = document.createElement('a');
     a.href = wow.website;
@@ -182,7 +180,7 @@ function musse(lol,wow) {
 
     
     if (uwu[0].comment != undefined) {
-     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>"
+     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
 
     }
     else {
@@ -219,4 +217,4 @@ function initMap() {
     
 
   } 
-  window.addEventListener("load", initMap);
+  //window.addEventListener("load", initMap);

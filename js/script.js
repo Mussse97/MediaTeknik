@@ -10,7 +10,7 @@ const chosenAct = [
 ];
 
 const chosenRes = [
-    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", altC:"bakeri", descC:"BAKERI"},
+    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", altC:"bakeri", descC:"BAKERI", urlA:"lugn.jpeg",urlB:"lugn.jpeg"},
 
     {altA:"Local", descA:"En bistro är en mindre restaurang eller ett kafé", altB:"A la carte", descB:"Vi vill sitta inne."},
 
@@ -58,7 +58,7 @@ function stuff() {
 	for (let i = 0; i < progressElem.length; i++) { // Fixar bollarna
 		if (i < fraga) {
 			progressElem[i].style.cursor = "pointer";
-			progressElem[i].style.backgroundColor = "palevioletred";
+			progressElem[i].style.backgroundColor = "#692323";
 		}
 		else {
 			progressElem[i].style.cursor = "not-allowed";

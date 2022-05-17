@@ -1,13 +1,16 @@
-let containElem;
-let timeout = 2; // Hur länge hjulet ska snurra
+var containElem;
+var timeout = 2; // Hur länge hjulet ska snurra
 const val = [30,32,40,46,99,106,113,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
 var api_key = "FqZF2ASN";
-let spin;
+var spin;
+var mom;
 
 function init() {
     containElem = document.getElementById("container");
-    spin = document.getElementsByClassName("spinbutton");
-    spin[0].addEventListener("click",spinny);
+    spin = document.getElementById("spin");
+    mom = document.getElementById("wheelText");
+
+    spin.addEventListener("click",spinny);
 }
 
 window.addEventListener("load",init);
@@ -36,7 +39,6 @@ function work() {
 
 function uwu(owo) {
     spin.disabled = false;
-    owo = JSON.parse(owo);
-    console.log(owo);
-    alert(owo.payload[0].name);
+    owo = JSON.parse(owo).payload[0];
+    mom.innerHTML = "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
 }
