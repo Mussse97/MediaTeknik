@@ -1,22 +1,22 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
-    {altA:"Aktiv", descA:"Jag vill få aktiva alternativ", altB:"Lugn", descB:"Du vill inte behöva svettas"},
+    {altA:"Aktiv", descA:"Jag vill få aktiva alternativ", altB:"Lugn", descB:"Du vill inte behöva svettas", urlA:"zipline.jpg", urlB:"lugn1.jpg"},
 
-    {altA:"Helst en aktivitet under 250", descA:"Kostnaden överskrider inte 250kr", altB:"Kostnaden spelar ingen roll", descB:"Detta vall så kommer kostnader över 500kr"},
+    {altA:"Helst en aktivitet under 250", descA:"Kostnaden överskrider inte 250kr", altB:"Kostnaden spelar ingen roll", descB:"Detta vall så kommer kostnader över 500kr", urlA:"billig.jpg", urlB:"dyr.jpg"},
 
-    {altA:"Utomhus", descA:"Du vill att aktiviteten ska ha utomhus alternativ", altB:"Både inomhus och utomhus", descB:"Det spelar ingen roll för dig"},
+    {altA:"Utomhus", descA:"Du vill att aktiviteten ska ha utomhus alternativ", altB:"Både inomhus och utomhus", descB:"Det spelar ingen roll för dig", urlA:"utomhus.jpg", urlB:"inomhus.jpg"},
 
-    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland"}
+    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland.jpg", urlB:"öland.jpg"}
 ];
 
 const chosenRes = [
-    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", altC:"bakeri", descC:"BAKERI"},
+    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", altC:"bakeri", descC:"BAKERI", urlA:"fint.jpg", urlB:"casual.jpg", urlC:"bakeri.jpg"}, 
 
-    {altA:"Local", descA:"En bistro är en mindre restaurang eller ett kafé", altB:"A la carte", descB:"Vi vill sitta inne."},
+    {altA:"Local", descA:"En bistro är en mindre restaurang eller ett kafé", altB:"A la carte", descB:"Vi vill sitta inne.", urlA:"local.jpg", urlB:"alacarte.jpg"},
 
-    {altA:"Inomhus", descA:"Det ska vara inomhus", altB:"Utomhus", descB:" Det ska finnas utomhusservering"},
+    {altA:"Inomhus", descA:"Det ska vara inomhus", altB:"Utomhus", descB:" Det ska finnas utomhusservering",  urlA:"inomhusservering.jpg", urlB:"utomhusservering.jpg"},
 
-    {altA:"Vegitariansk meny", descA:"Det ska finnas vegitarianska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet"}
+    {altA:"Vegitariansk meny", descA:"Det ska finnas vegitarianska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"}
 ];
 		// Förslag: Buffe, vegetarisk, alkohol, 
 const choices = []; // Vilket alternativ som är valt
