@@ -153,12 +153,14 @@ body {
 }
 
 #one {
+    background-image: url(../bilder/nöjespark.jpg);
     left: 0;
     background-color: #9a7575;
     width: 50%;
 }
 
 #two {
+    background-image: url(../bilder/restaurang.jpg);
     right: 0;
     background-color: #9c5858;
     width: 50%;
@@ -195,7 +197,7 @@ body {
     position: relative;
     top: 35%;
     text-align: center;
-    color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
     font-size: xx-large;
 }
 
@@ -210,11 +212,13 @@ body {
     left: 0;
     clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
     background-color: #3a1f1f;
-    width: 200px;
-    height: 200px;
+    width: 10vw;
+    height: 10vh;
     color: white;
     text-decoration: none;
     font-size: 25px;
+    padding-top: 2vw;
+    padding-right: 5vw;
 }
 
 
