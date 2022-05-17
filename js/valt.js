@@ -1,7 +1,7 @@
 var stepElem;
 var fixedCode;
 var api_key = "FqZF2ASN";
-var resultat = 3; // Hur många resultat vi vill ha
+var resultat = 4; // Hur många resultat vi vill ha
 var nerd = [];
 var extraElem;
 var myMap; 
@@ -154,7 +154,7 @@ function listAlts(owo) {
 function lploss() {
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
-    
+    console.log(nerd)
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
     for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
@@ -187,34 +187,75 @@ function musse(lol,wow) {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
   
-    let markeroption = {
-        position: new google.maps.LatLng(wow.lat, wow.lng),
-        center:{lat: wow.lat, lng: wow.lng},
-        zoom: 15
-        
-    }
-    let  marker = new google.maps.Marker(markeroption);
-    marker.setMap(myMap);
-    myMap.map.setCenter(new google.maps.LatLng( wow.lat, wow.lng ) );
-    marker.addListener("click", () => {
-        myMap.setZoom(15);
-        myMap.setCenter(marker.getPosition(markeroption));
-      });
+  
+
+    initMap(wow);
+
 
 };
 
-function initMap() {
+   function initMap(wow) {
+    console.log(wow.lng)
+        //const myLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
+        let myLatLng = new google.maps.LatLng(  wow.lat, wow.lng);
+        let map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 17,
+          center: myLatLng,
+        });
+      
+        new google.maps.Marker({
+          position: myLatLng,
+          map,
+         
+        });
+        const locationButton = document.createElement("button");
 
-
-    myMap = new google.maps.Map(document.getElementById("map"), {
-      center: { lat:56.84087401937136, lng:14.831460353379997  },
-      zoom: 8,
-      styles: [
-        { featureType: "poi", stylers: [{ visibility: "off" }] }, // No points of interest.
-        { featureType: "transit.station", stylers: [{ visibility: "off" }] }, // No bus stations, etc.
-      ],
-    });
-    
-
-  } 
-  //window.addEventListener("load", initMap);
+        locationButton.textContent = "Pan to Current Location";
+        locationButton.classList.add("custom-map-control-button");
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+        locationButton.addEventListener("click", () => {
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                const pos = {
+                  lat:56.85126009506759,// position.coords.latitude,
+                  lng: 14.835630041149972//position.coords.longitude,
+                };
+                
+                infoWindow.setPosition(pos);
+                infoWindow.setContent("Location found.");
+                infoWindow.open(map);
+                map.setCenter(pos);
+              },
+              () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+              }
+            );
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        });
+      }
+  
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+      }
+  
+        
+        marker.addListener("click", () => {
+          infowindow.open({
+            anchor: marker,
+            map,
+         
+          });
+        });
+       
+        window.addEventListener("load",initMap);
