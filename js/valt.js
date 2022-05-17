@@ -70,7 +70,7 @@ function applyController(xd) {
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page=3" + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
-        if (request.readyState == 4)
+        if (request.readyState == 4) 
             if (request.status == 200) {
                 let uwu = request.responseText;
                 if (xd[0] == "food") {
@@ -89,8 +89,8 @@ function applyController(xd) {
                             else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
                     };
                 }
+                else listAlts(uwu);
             }
-            else listAlts(uwu);
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
