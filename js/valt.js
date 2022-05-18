@@ -208,54 +208,29 @@ function musse(lol,wow) {
           map,
          
         });
-        const locationButton = document.createElement("button");
-
-        locationButton.textContent = "Pan to Current Location";
-        locationButton.classList.add("custom-map-control-button");
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-        locationButton.addEventListener("click", () => {
-          // Try HTML5 geolocation.
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                const pos = {
-                  lat:56.85126009506759,// position.coords.latitude,
-                  lng: 14.835630041149972//position.coords.longitude,
-                };
-                
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
-                map.setCenter(pos);
-              },
-              () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-              }
-            );
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-          }
-        });
-      }
-  
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(
-          browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-        );
-        infoWindow.open(map);
-      }
-  
-        
-        marker.addListener("click", () => {
-          infowindow.open({
-            anchor: marker,
-            map,
-         
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (p) {
+              var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+              var mapOptions = {
+                  center: LatLng,
+                  zoom: 13,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+              var maps = new google.maps.Map(document.getElementById("map"), mapOptions);
+              var marker = new google.maps.Marker({
+                  position: LatLng,
+                  map: maps,
+                  title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+              });
+              google.maps.event.addListener(marker, "click", function (e) {
+                  var infoWindow = new google.maps.InfoWindow();
+                  infoWindow.setContent(marker.title);
+                  infoWindow.open(maps, marker);
+              });
           });
-        });
+      } else {
+          alert('Geo Location feature is not supported in this browser.');
+      }
+      }
        
         window.addEventListener("load",initMap);
