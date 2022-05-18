@@ -176,9 +176,9 @@ function musse(lol,wow) {
 
     var a = document.createElement('a');
     a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress:" + wow.address + "</p>";
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress:" + wow.address + "</p><p>" + wow.distance_in_km + "</p>" ;
 
-    
+    console.log(wow.distance_in_km)
     if (uwu[0].comment != undefined) {
      extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
 
@@ -208,54 +208,50 @@ function musse(lol,wow) {
           map,
          
         });
-        const locationButton = document.createElement("button");
-
-        locationButton.textContent = "Pan to Current Location";
-        locationButton.classList.add("custom-map-control-button");
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-        locationButton.addEventListener("click", () => {
-          // Try HTML5 geolocation.
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                const pos = {
-                  lat:56.85126009506759,// position.coords.latitude,
-                  lng: 14.835630041149972//position.coords.longitude,
-                };
-                
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
-                map.setCenter(pos);
-              },
-              () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-              }
-            );
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-          }
-        });
-      }
-  
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(
-          browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-        );
-        infoWindow.open(map);
-      }
-  
         
-        marker.addListener("click", () => {
-          infowindow.open({
-            anchor: marker,
-            map,
-         
+       /* if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (p) {
+              var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+              var mapOptions = {
+                  center: LatLng,
+                  zoom: 13,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+              var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+              var marker = new google.maps.Marker({
+                  position: LatLng,
+                  map: map,
+                  title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+              });
+              google.maps.event.addListener(marker, "click", function (e) {
+                  var infoWindow = new google.maps.InfoWindow();
+                  infoWindow.setContent(marker.title);
+                  infoWindow.open(map, marker);
+              });
+              console.log(p.coords.latitude)
           });
-        });
-       
+      } else {
+          alert('Geo Location feature is not supported in this browser.');
+      }
+      const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
+      const valdPos = {lat: wow.lat, lng: wow.lng};
+
+      var mk1 = new google.maps.Marker({position: dinPos, map: map});
+      var mk2 = new google.maps.Marker({position: valdPos, map: map});
+      }
+     
+      function haversineDistance(mk1, mk2) {
+        var rad = 6371.0710; // Radius of the Earth in kms
+        var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
+        var rlat2 = mk2.position.lat() * (Math.PI/180); // Convert degrees to radians
+        var difflat = rlat2-rlat1; // Radian difference (latitudes)
+        var difflon = (mk2.position.lng()-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+    
+        var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        return d;
+        */
+    }
+
         window.addEventListener("load",initMap);
+
+        
