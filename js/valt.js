@@ -208,8 +208,10 @@ function musse(lol,wow) {
           map,
          
         });
+
         
        /* if (navigator.geolocation) {
+
           navigator.geolocation.getCurrentPosition(function (p) {
               var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
               var mapOptions = {
@@ -217,22 +219,27 @@ function musse(lol,wow) {
                   zoom: 13,
                   mapTypeId: google.maps.MapTypeId.ROADMAP
               };
+
               var map = new google.maps.Map(document.getElementById("map"), mapOptions);
               var marker = new google.maps.Marker({
                   position: LatLng,
                   map: map,
+
                   title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
               });
               google.maps.event.addListener(marker, "click", function (e) {
                   var infoWindow = new google.maps.InfoWindow();
                   infoWindow.setContent(marker.title);
+
                   infoWindow.open(map, marker);
               });
               console.log(p.coords.latitude)
+
           });
       } else {
           alert('Geo Location feature is not supported in this browser.');
       }
+
       const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
       const valdPos = {lat: wow.lat, lng: wow.lng};
 
@@ -255,3 +262,4 @@ function musse(lol,wow) {
         window.addEventListener("load",initMap);
 
         
+

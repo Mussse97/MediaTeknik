@@ -69,9 +69,9 @@ function stuff() {
 
 	if (fraga == 0) { // Ifall man börjar om helt
 		choiceElem[0].innerHTML = "<h3> Aktivitet </h3>";
-		choiceElem[0].style.backgroundImage = "url(../bilder/nöjespark.jpg)";
+		choiceElem[0].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),  url(../bilder/nöjespark.jpg)";
 		choiceElem[1].innerHTML = "<h3> Restaurang </h3>";
-		choiceElem[1].style.backgroundImage = "url(../bilder/restaurang.jpg)";
+		choiceElem[1].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),  url(../bilder/restaurang.jpg)";
 		choiceElem[2].innerHTML = "";
 		choiceElem[2].style.width = "0%"; // Ändrar vi något som t.ex "opacity" så kan man fortfarande klicka på den
 		return;
@@ -88,13 +88,13 @@ function stuff() {
 	
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
-	choiceElem[0].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlA +")";
+	choiceElem[0].style.backgroundImage =  "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlA +")";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
-	choiceElem[1].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlB +")";
+	choiceElem[1].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlB +")";
 
 	if (chosenThing[fr].altC != undefined) { // Ifall alternativ C finns
 		choiceElem[2].innerHTML = "<h3>" + chosenThing[fr].altC +"</h3>" + "<p>" + chosenThing[fr].descC +"</p>";
-		choiceElem[2].style.backgroundImage = "url(../bilder/"+ chosenThing[fr].urlC +")";
+		choiceElem[2].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),  url(../bilder/"+ chosenThing[fr].urlC +")";
 		choiceElem[2].style.width = "100%";
 	}
 }

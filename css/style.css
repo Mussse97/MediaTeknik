@@ -105,9 +105,11 @@ body {
 /* Index */
 
 #indexDiv p {
-    font-size: 40px;
+    font-size: 60px;
     margin: 300px;
     color: white;
+    margin-left: 450px;
+    margin-right: 450px;
 }
 
 #indexBody {
@@ -157,6 +159,14 @@ body {
     left: 0;
     background-color: #9a7575;
     width: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/Nöjespark.jpg);
 }
 
 #two {
@@ -164,6 +174,14 @@ body {
     right: 0;
     background-color: #9c5858;
     width: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url(../bilder/restaurang.jpg);
 }
 
 #three {
@@ -198,7 +216,7 @@ body {
     top: 35%;
     text-align: center;
     color:rgb(255, 255, 255);
-    font-size: xx-large;
+    font-size: 60px;
 }
 
 #three p, #three h3 {
@@ -499,6 +517,12 @@ body {
     color: white;
     font-size: xx-large;
     margin: 3vw;
+}
+
+#wheeldescription {
+    font-size: 40px;
+    color: white;
+    margin:0 auto;
 }
 
 
