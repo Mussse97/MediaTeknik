@@ -105,8 +105,8 @@ body {
 /* Index */
 
 #indexDiv p {
-    font-size: 60px;
-    margin: 300px;
+    font-size: 2vw;
+    margin: 8vw;
     color: white;
     margin-left: 450px;
     margin-right: 450px;
@@ -404,39 +404,40 @@ body {
 }
 
 #notesDiv img {
-    height: 450px;
-    min-width: 100% auto;
+    height: 35vh;
+    width: 50vh;
+    padding:5px;
 }
 
 .div3 {
-    top: 700px;
-    right: 0;
+    top: 4vw;
+    right: 0vw;
 }
 
 .div4 {
-    top: 450px;
-    right: 450px;
+    top: 20vw;
+    right: 17vw;
 }
    
 .div5 {
-    top: 700px;
-    right: 900px;
+    top: 60vh;
+    right: 35vw;
 }
 
 .div6 {
-    top: 250px;
-    right: 1400px;
+    top: 15vh;
+    right: 70vw;
 }
 
 .div7 {
-    top: 150px;
-    right: 1850px;
+    top: 20vh;
+    right: 50vw;
 }
 
 .div9 {
-    top: 750px;
-    right: 1950px;  
-    text-align: center;
+    top: 60vh;
+    right: 70vw;  
+   
 }
 
 .p9 {
@@ -513,10 +514,11 @@ body {
 
 #wheelText {
     width: 40vw;
-    height: 100vh;
+    height: 65vh;
     color: white;
     font-size: xx-large;
     margin: 3vw;
+    overflow: auto;
 }
 
 #wheeldescription {
@@ -525,9 +527,11 @@ body {
     margin:0 auto;
 }
 
-
-
-
+:root {
+    scrollbar-color: rgba(117, 6, 6, 0.719) rgba(0, 0, 0, 0.425) !important;
+    scrollbar-width: thin !important;  
+    scroll-behavior: smooth;
+  }
 
 
 
