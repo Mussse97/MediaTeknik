@@ -128,14 +128,8 @@ body {
 
 
 
-/* Karta*/
 
-#map{
-    width: 50%;
-    height: 55%;
-    border: 3px solid black;
-    
-}
+
 
 
 
@@ -331,6 +325,10 @@ body {
     right: 5.5vw;
     width: 42vw;
     height: 26vw;
+}
+
+.sexmaskinenSigvardFjante {
+    
 }
 
 /*

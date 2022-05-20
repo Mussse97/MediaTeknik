@@ -67,41 +67,41 @@ function getController(uwu) {
 function applyController(xd) {
     let request = new XMLHttpRequest(); 
     
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page=3" + xd[1] + xd[2] + xd[3] + xd[4],true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4) 
             if (request.status == 200) {
-                let uwu = request.responseText;
-                if (xd[0] == "food") {
-                    let owo = JSON.parse(uwu).payload;
-                    let quickFix = [];
-                    for (let i = 0; i < owo.length; i++) {
-                        quickFix.push(owo[i].id);
-                    }
-                    quickFix.toString();
-                    request = new XMLHttpRequest();
-                    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&id=" + quickFix,true);
-                    request.send(null); 
-                    request.onreadystatechange = function () {
-                        if (request.readyState == 4)
-                            if (request.status == 200) listAlts(request.responseText)
-                            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
-                    };
-                }
-                else listAlts(uwu);
+                if (xd[0] == "food") foodFix(request.responseText);
+                else listAlts(request.responseText);
             }
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
+function foodFix(uwu) {
+    let owo = JSON.parse(uwu).payload;
+    let quickFix = [];
+    for (let i = 0; i < resultat; i++) {
+        quickFix.push(owo[i].id);
+    }
+    quickfix = quickFix.toString();
+    request = new XMLHttpRequest();
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&ids=" + quickFix,true);
+    request.send(null); 
+    request.onreadystatechange = function () {
+        if (request.readyState == 4)
+            if (request.status == 200) listAlts(request.responseText)
+            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+    };
+}
+
 function listAlts(owo) {
     owo = JSON.parse(owo).payload;
-    
 
     let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
 
-    console.log(owo);
+    ;
 
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
@@ -187,84 +187,75 @@ function musse(lol,wow) {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
   
-  
-
     initMap(wow);
-
-
 };
 
-   function initMap(wow) {
+function initMap(wow) {
     console.log(wow.lat)
         //const myLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
         let myLatLng = new google.maps.LatLng(  wow.lat , wow.lng);
         let map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 17,
-          center: myLatLng,
+            zoom: 17,
+            center: myLatLng,
         });
-      
-        let a = new google.maps.Marker({
-          position: myLatLng,
-          
-         
-        });
-a.setMap(map)
         
-       if (navigator.geolocation) {
-let n ;
-         navigator.geolocation.getCurrentPosition(function (p) {
+        let a = new google.maps.Marker({
+            position: myLatLng,
+            
+            
+        });
+    a.setMap(map)
+            
+    if (navigator.geolocation) {
+        let n ;
+        navigator.geolocation.getCurrentPosition(function (p) {
             n=p;
             console.log(p)
-              var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
             
 
-              //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-              var marker = new google.maps.Marker({
-                  position: LatLng,
-                  map: map,
+            //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map,
 
-                  title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
-              });
-              google.maps.event.addListener(marker, "click", function (e) {
-                  var infoWindow = new google.maps.InfoWindow();
-                  infoWindow.setContent(marker.title);
+                title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+            });
+            google.maps.event.addListener(marker, "click", function (e) {
+                var infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(marker.title);
 
-                  infoWindow.open(map, marker);
-              });
-              
-              const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
-              const valdPos = {lat: wow.lat, lng: wow.lng};
+                infoWindow.open(map, marker);
+            });
+            
+            const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
+            const valdPos = {lat: wow.lat, lng: wow.lng};
         
-              var mk1 = new google.maps.Marker({position: dinPos, map: map});
-              var mk2 = new google.maps.Marker({position: valdPos, map: map});
-             let distance = haversineDistance(mk1, wow);
-             extraElem.innerHTML+= "<p>" + distance + "</p>";
-              consol.log(mk2)
-          });
-          
-      } 
-      else {
-          alert('Geo Location feature is not supported in this browser.');
-      }
+            var mk1 = new google.maps.Marker({position: dinPos, map: map});
+            var mk2 = new google.maps.Marker({position: valdPos, map: map});
+            let distance = haversineDistance(mk1, wow);
+            extraElem.innerHTML+= "<p>" + distance + "</p>";
+            consol.log(mk2)
+        });          
+} 
+else alert("Geo Location feature is not supported in this browser.");
 
-      
-      }
+}
      
-      function haversineDistance(mk1, mk2) {
-          console.log(mk2)
-        var rad = 6371.0710; // Radius of the Earth in kms
-        var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
-        var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
-        var difflat = rlat2-rlat1; // Radian difference (latitudes)
-        var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
-    
-        var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-        console.log(d)
-        return d;
-        
-    }
+function haversineDistance(mk1, mk2) {
+    console.log(mk2);
+    var rad = 6371.0710; // Radius of the Earth in kms
+    var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
+    var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+    var difflat = rlat2-rlat1; // Radian difference (latitudes)
+    var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
-        window.addEventListener("load",initMap);
+    var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+    console.log(d)
+    return d;
+}
+
+//window.addEventListener("load",initMap);
 
         
 
