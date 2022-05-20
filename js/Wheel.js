@@ -32,13 +32,16 @@ function work() {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) uwu(request.responseText);
+            if (request.status == 200) uwu(request.responseText,owo);
             else alert("Nåt gick fel");
     };
 }
 
-function uwu(owo) {
+function uwu(owo,hej) {
+    val.splice(hej,1);
     spin.disabled = false;
     owo = JSON.parse(owo).payload[0];
-    mom.innerHTML = "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
+    let hjul = document.createElement("div")
+    hjul.innerHTML += "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
+    mom.insertBefore(hjul,mom.firstChild);
 }
