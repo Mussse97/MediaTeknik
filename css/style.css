@@ -106,7 +106,7 @@ body {
 
 #indexDiv p {
     font-size: 60px;
-    margin: 300px;
+    margin: 8vw;
     color: white;
     margin-left: 450px;
     margin-right: 450px;
@@ -213,10 +213,10 @@ body {
 
 #choice p, #choice h3 {
     position: relative;
-    top: 35%;
+    top: 30%;
     text-align: center;
     color:rgb(255, 255, 255);
-    font-size: 60px;
+    font-size: 2vw;
 }
 
 #three p, #three h3 {
