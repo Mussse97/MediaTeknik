@@ -154,7 +154,6 @@ function listAlts(owo) {
 function lploss() {
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
-    console.log(nerd)
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
     for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
@@ -176,10 +175,11 @@ function musse(lol,wow) {
 
     var a = document.createElement('a');
     a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress:" + wow.address + "</p><p>" + wow.distance_in_km + "</p>" ;
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress: " + wow.address + "</p><p>" + wow.distance_in_km + "</p>" ;
 
-    console.log(wow.distance_in_km)
-    if (uwu[0].comment != undefined) {
+    
+    console.log(wow)
+    if (uwu.comment != undefined) {
      extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
 
     }
@@ -195,32 +195,30 @@ function musse(lol,wow) {
 };
 
    function initMap(wow) {
-    console.log(wow.lng)
+    console.log(wow.lat)
         //const myLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
-        let myLatLng = new google.maps.LatLng(  wow.lat, wow.lng);
+        let myLatLng = new google.maps.LatLng(  wow.lat , wow.lng);
         let map = new google.maps.Map(document.getElementById("map"), {
           zoom: 17,
           center: myLatLng,
         });
       
-        new google.maps.Marker({
+        let a = new google.maps.Marker({
           position: myLatLng,
-          map,
+          
          
         });
-
+a.setMap(map)
         
-       /* if (navigator.geolocation) {
-
-          navigator.geolocation.getCurrentPosition(function (p) {
+       if (navigator.geolocation) {
+let n ;
+         navigator.geolocation.getCurrentPosition(function (p) {
+            n=p;
+            console.log(p)
               var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
-              var mapOptions = {
-                  center: LatLng,
-                  zoom: 13,
-                  mapTypeId: google.maps.MapTypeId.ROADMAP
-              };
+            
 
-              var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+              //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
               var marker = new google.maps.Marker({
                   position: LatLng,
                   map: map,
@@ -233,30 +231,37 @@ function musse(lol,wow) {
 
                   infoWindow.open(map, marker);
               });
-              console.log(p.coords.latitude)
-
+              
+              const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
+              const valdPos = {lat: wow.lat, lng: wow.lng};
+        
+              var mk1 = new google.maps.Marker({position: dinPos, map: map});
+              var mk2 = new google.maps.Marker({position: valdPos, map: map});
+             let distance = haversineDistance(mk1, wow);
+             extraElem.innerHTML+= "<p>" + distance + "</p>";
+              consol.log(mk2)
           });
-      } else {
+          
+      } 
+      else {
           alert('Geo Location feature is not supported in this browser.');
       }
 
-      const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
-      const valdPos = {lat: wow.lat, lng: wow.lng};
-
-      var mk1 = new google.maps.Marker({position: dinPos, map: map});
-      var mk2 = new google.maps.Marker({position: valdPos, map: map});
+      
       }
      
       function haversineDistance(mk1, mk2) {
+          console.log(mk2)
         var rad = 6371.0710; // Radius of the Earth in kms
         var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
-        var rlat2 = mk2.position.lat() * (Math.PI/180); // Convert degrees to radians
+        var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
         var difflat = rlat2-rlat1; // Radian difference (latitudes)
-        var difflon = (mk2.position.lng()-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+        var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
     
         var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        console.log(d)
         return d;
-        */
+        
     }
 
         window.addEventListener("load",initMap);
