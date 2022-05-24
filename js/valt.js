@@ -259,12 +259,13 @@ function initMap(wow) {
     let minion = document.createElement("button");
     minion.classList.add("button");     // BYT TILL NÅGOT MERA PASSANDE
     minion.innerHTML = "Visa från min position";
-    minion.addEventListener("click", getLocation(wow,map));
+    minion.addEventListener("click", function() { getLocation(wow,map) });  // Fattar inte varför denna inte funkar
     mapElem.previousElementSibling.appendChild(minion);
 }
 
 function getLocation(wow,map) {
-    if (navigator.geolocation) {
+    alert("gay");
+    if (navigator.geolocation != undefined) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
