@@ -264,8 +264,7 @@ function initMap(wow) {
 }
 
 function getLocation(wow,map) {
-    alert("gay");
-    if (navigator.geolocation != undefined) {
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
