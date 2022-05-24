@@ -35,7 +35,7 @@ function init() {
     stepElem = document.getElementById("stepElement");
     infoElem = document.getElementById ("priset");
     fixedCode = fixCode(window.location.search);
-    extraElem = document.getElementById("lploss");
+    extraElem = document.getElementById("genInfo");
    
 
     if (fixedCode[0] == 0) getController(chosenAct);
@@ -85,7 +85,7 @@ function foodFix(uwu) {
     for (let i = 0; i < resultat; i++) {
         quickFix.push(owo[i].id);
     }
-    quickfix = quickFix.toString();
+    quickFix.toString();
     request = new XMLHttpRequest();
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&ids=" + quickFix,true);
     request.send(null); 
