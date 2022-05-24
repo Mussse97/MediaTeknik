@@ -216,9 +216,11 @@ function initMap(wow) {
             
 
               //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+             
+              
               var marker = new google.maps.Marker({
                   position: LatLng,
-                  icon:"/bilder/hemknapp.png",
+                  label: "Home",
                   title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
               });
               marker.setMap(map)
