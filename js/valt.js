@@ -175,10 +175,10 @@ function musse(lol,wow) {
 
     var a = document.createElement('a');
     a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress: " + wow.address + "</p><p>" + wow.distance_in_km + "</p>" ;
+    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress: " + wow.address + "</p>";
 
     
-    console.log(wow)
+    console.log(uwu.comment)
     if (uwu.comment != undefined) {
      extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
 
@@ -189,6 +189,7 @@ function musse(lol,wow) {
   
     initMap(wow);
 };
+
 
 function initMap(wow) {
     console.log(wow.lat)
@@ -210,50 +211,78 @@ function initMap(wow) {
         let n ;
         navigator.geolocation.getCurrentPosition(function (p) {
             n=p;
-            console.log(p)
-            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            
+              var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
             
 
-            //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            var marker = new google.maps.Marker({
-                position: LatLng,
-                map: map,
-
-                title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
-            });
-            google.maps.event.addListener(marker, "click", function (e) {
-                var infoWindow = new google.maps.InfoWindow();
-                infoWindow.setContent(marker.title);
-
-                infoWindow.open(map, marker);
-            });
+              //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+              var marker = new google.maps.Marker({
+                  position: LatLng,
+                  icon:"/bilder/hemknapp.png",
+                  title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+              });
+              marker.setMap(map)
             
-            const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
-            const valdPos = {lat: wow.lat, lng: wow.lng};
+              google.maps.event.addListener(marker, "click", function (e) {
+                  var infoWindow = new google.maps.InfoWindow();
+                  infoWindow.setContent(marker.title);
+
+                  infoWindow.open(map, marker);
+              });
+              
+              const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
+             
         
-            var mk1 = new google.maps.Marker({position: dinPos, map: map});
-            var mk2 = new google.maps.Marker({position: valdPos, map: map});
-            let distance = haversineDistance(mk1, wow);
-            extraElem.innerHTML+= "<p>" + distance + "</p>";
-            consol.log(mk2)
-        });          
-} 
-else alert("Geo Location feature is not supported in this browser.");
+              var mk1 = new google.maps.Marker({position: dinPos, map: map});
+              
+             let distance = haversineDistance(mk1, wow);
+             extraElem.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
+             
+            const flightPlanCoordinates = [
+                {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
+                {lat: p.coords.latitude ,lng:p.coords.longitude},
+             ]
+             
+            /* const flightPlanCoordinates = [
+                { lat: 37.772, lng: -122.214 },
+                { lat: 21.291, lng: -157.821 },
+              
+              ];*/
+              console.log(flightPlanCoordinates)
+              const flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+              });
+            
+              flightPath.setMap(map);
+            
+              
+          });
+          
+          
+      } 
+      else {
+          alert('Geo Location feature is not supported in this browser.');
+      }
 
-}
+      
+      }
      
-function haversineDistance(mk1, mk2) {
-    console.log(mk2);
-    var rad = 6371.0710; // Radius of the Earth in kms
-    var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
-    var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
-    var difflat = rlat2-rlat1; // Radian difference (latitudes)
-    var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+      function haversineDistance(mk1, mk2) {
 
-    var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-    console.log(d)
-    return d;
-}
+        var rad = 6371.0710; // Radius of the Earth in kms
+        var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
+        var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+        var difflat = rlat2-rlat1; // Radian difference (latitudes)
+        var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+    
+        var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        return d;
+        
+    }
 
 //window.addEventListener("load",initMap);
 
