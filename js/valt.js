@@ -67,41 +67,41 @@ function getController(uwu) {
 function applyController(xd) {
     let request = new XMLHttpRequest(); 
     
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page=3" + xd[1] + xd[2] + xd[3] + xd[4],true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3] + xd[4],true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4) 
             if (request.status == 200) {
-                let uwu = request.responseText;
-                if (xd[0] == "food") {
-                    let owo = JSON.parse(uwu).payload;
-                    let quickFix = [];
-                    for (let i = 0; i < owo.length; i++) {
-                        quickFix.push(owo[i].id);
-                    }
-                    quickFix.toString();
-                    request = new XMLHttpRequest();
-                    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&id=" + quickFix,true);
-                    request.send(null); 
-                    request.onreadystatechange = function () {
-                        if (request.readyState == 4)
-                            if (request.status == 200) listAlts(request.responseText)
-                            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
-                    };
-                }
-                else listAlts(uwu);
+                if (xd[0] == "food") foodFix(request.responseText);
+                else listAlts(request.responseText);
             }
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
+function foodFix(uwu) {
+    let owo = JSON.parse(uwu).payload;
+    let quickFix = [];
+    for (let i = 0; i < resultat; i++) {
+        quickFix.push(owo[i].id);
+    }
+    quickfix = quickFix.toString();
+    request = new XMLHttpRequest();
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&ids=" + quickFix,true);
+    request.send(null); 
+    request.onreadystatechange = function () {
+        if (request.readyState == 4)
+            if (request.status == 200) listAlts(request.responseText)
+            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+    };
+}
+
 function listAlts(owo) {
     owo = JSON.parse(owo).payload;
-    
 
     let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
 
-    console.log(owo);
+    ;
 
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
@@ -187,31 +187,29 @@ function musse(lol,wow) {
         extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
     }
   
-  
-
     initMap(wow);
-
-
 };
 
-   function initMap(wow) {
-    
+
+function initMap(wow) {
+    console.log(wow.lat)
         //const myLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
         let myLatLng = new google.maps.LatLng(  wow.lat , wow.lng);
         let map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 11,
-          center: myLatLng,
+            zoom: 17,
+            center: myLatLng,
         });
-     
-        let a = new google.maps.Marker({
-          position: myLatLng,
-         
-        });
-a.setMap(map)
         
-       if (navigator.geolocation) {
-let n ;
-         navigator.geolocation.getCurrentPosition(function (p) {
+        let a = new google.maps.Marker({
+            position: myLatLng,
+            
+            
+        });
+    a.setMap(map)
+            
+    if (navigator.geolocation) {
+        let n ;
+        navigator.geolocation.getCurrentPosition(function (p) {
             n=p;
             
               var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
@@ -286,7 +284,7 @@ let n ;
         
     }
 
-        window.addEventListener("load",initMap);
+//window.addEventListener("load",initMap);
 
         
 

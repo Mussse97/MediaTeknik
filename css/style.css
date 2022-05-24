@@ -128,14 +128,8 @@ body {
 
 
 
-/* Karta*/
 
-#map{
-    width: 50%;
-    height: 55%;
-    border: 3px solid black;
-    
-}
+
 
 
 
@@ -213,10 +207,10 @@ body {
 
 #choice p, #choice h3 {
     position: relative;
-    top: 35%;
+    top: 30%;
     text-align: center;
     color:rgb(255, 255, 255);
-    font-size: 60px;
+    font-size: 2vw;
 }
 
 #three p, #three h3 {
@@ -331,6 +325,10 @@ body {
     right: 5.5vw;
     width: 42vw;
     height: 26vw;
+}
+
+.sexmaskinenSigvardFjante {
+    
 }
 
 /*
