@@ -3,8 +3,12 @@ var fixedCode;
 var api_key = "FqZF2ASN";
 var resultat = 4; // Hur många resultat vi vill ha
 var nerd = [];
+var genElem;
+var commentElem;
+var choiceDivs;
 var extraElem;
-var myMap; 
+var l = 0;
+var mapElem;
 
 
 
@@ -30,13 +34,23 @@ const chosenFood = [
     {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"} //Provinces finns bara i establshment taggen...
 ];
 
+const hatarAllt = [
+    "Generell info",
+    "Hitta hit",
+    "Recensioner"
+];
+
+
 
 function init() {
     stepElem = document.getElementById("stepElement");
     infoElem = document.getElementById ("priset");
+    genElem = document.getElementById("genInfo");
+    commentElem = document.getElementById("comment");
+    extraElem = document.getElementById("extraInfo");
+    choiceDivs = document.querySelectorAll(".lazy");
+    mapElem = document.getElementById("map")
     fixedCode = fixCode(window.location.search);
-    extraElem = document.getElementById("lploss");
-   
 
     if (fixedCode[0] == 0) getController(chosenAct);
     else getController(chosenFood);
@@ -79,13 +93,21 @@ function applyController(xd) {
     };
 }
 
-function foodFix(uwu) {
-    let owo = JSON.parse(uwu).payload;
+function foodFix(owo) {
+    owo = JSON.parse(owo).payload;
+
+    if (owo.length == 0) {
+        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
+        return;
+    }
+
     let quickFix = [];
+
     for (let i = 0; i < resultat; i++) {
         quickFix.push(owo[i].id);
     }
-    quickfix = quickFix.toString();
+
+    quickFix.toString();
     request = new XMLHttpRequest();
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&ids=" + quickFix,true);
     request.send(null); 
@@ -99,16 +121,16 @@ function foodFix(uwu) {
 function listAlts(owo) {
     owo = JSON.parse(owo).payload;
 
-    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
-
-    ;
-
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
         return;
     }
 
     // Gör inget just nu
+    /*
+    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
+
+    ;
     for (let i = 0; i < owo.length; i++) {
         for (let k = 0; k < bad.length; k++) {
             if (owo[i].description == bad[k]) {
@@ -125,21 +147,21 @@ function listAlts(owo) {
             return;
         }
     }
-    
-    nerd = [];
+    */
 
+    nerd = [];
+    
     for (let i = 0; i < resultat; i++) {
 
         let baby = document.createElement("div");
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
-        baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>" + owo[i].abstract +"</p><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
-        "<p>Pris:" + owo[i].price_range + "kr" +"</p>";
+        baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
+        "<p>Pris: " + owo[i].price_range + "kr" +"</p>";
 
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
         baby.addEventListener("click",lploss);
-
 
         stepElem.appendChild(baby);
         stepElem.insertBefore(number, baby);
@@ -151,40 +173,64 @@ function listAlts(owo) {
     }
 }
 
+function svante() {
+    this.classList.toggle("sexmaskinenSigvardFjante");
+}
+
 function lploss() {
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
+
+    
+    if (l == 0) {
+        for (let i = 0; i < hatarAllt.length; i++) {
+            let sixten = document.createElement("div");
+            sixten.classList.add("sexmaskinenSigvardFjante");
+            sixten.addEventListener("click",svante);
+            sixten.style.cursor = "pointer";
+            sixten.innerHTML = "<h1>" + hatarAllt[i] + "</h1>";
+            extraElem.insertBefore(sixten,choiceDivs[i]);
+        }
+        l++;
+    }
+    
+
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
     for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
     this.classList.add("vald");
-
     
-    let request = new XMLHttpRequest(); 
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
-    request.send(null); 
-    request.onreadystatechange = function () {
-        if (request.readyState == 4)
-            if (request.status == 200) musse(request.responseText,wow);
-            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
-    };
+    commentElem.innerHTML = "";
+    
+    if (wow.num_reviews > 0) {
+        let request = new XMLHttpRequest(); 
+        request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
+        request.send(null); 
+        request.onreadystatechange = function () {
+            if (request.readyState == 4)
+                if (request.status == 200) musse(request.responseText,wow);
+                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+        };
+    }
+    else musse(null,wow);
 }
 
 function musse(lol,wow) {
-    uwu = JSON.parse(lol).payload;
+    genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
-    var a = document.createElement('a');
-    a.href = wow.website;
-    extraElem.innerHTML = "<h3>"+ wow.name +"</h3>" + "<a><p>"+ "Webbplats: " + wow.website  + "</a>" + "<p>"+ "Antal recentioner: " + wow.num_reviews  + "</p><p>"+ "Adress: " + wow.address + "</p>";
-
-    
-    console.log(uwu.comment)
-    if (uwu.comment != undefined) {
-     extraElem.innerHTML+= "<p>"+ "Recensioner: " + uwu[0].comment +  "</p>";
-
+    if (lol == null) {
+        commentElem.innerHTML= "<h4>Finns inga tyvärr recentioner för denna plats.</h4>";
     }
     else {
-        extraElem.innerHTML+= "Finns inga recentioner för denna plats.";
+        uwu = JSON.parse(lol).payload;
+        for (let i = 0; i < uwu.length; i++) {
+            let comment = document.createElement("div");
+            comment.classList.add("comment");
+            comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + uwu[i].comment + "</p>";
+            commentElem.appendChild(comment);
+        }
+        
+        //genElem.innerHTML += "<p> Recensioner: " + uwu[0].comment +  "</p>";
     }
   
     initMap(wow);
@@ -192,99 +238,75 @@ function musse(lol,wow) {
 
 
 function initMap(wow) {
-    console.log(wow.lat)
-        //const myLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
-        let myLatLng = new google.maps.LatLng(  wow.lat , wow.lng);
-        let map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 17,
-            center: myLatLng,
-        });
-        
-        let a = new google.maps.Marker({
-            position: myLatLng,
-            
-            
-        });
-    a.setMap(map)
-            
+    //const eventLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
+    let eventLatLng = new google.maps.LatLng( wow.lat , wow.lng );
+    let map = new google.maps.Map(mapElem, {
+        zoom: 10,
+        center: eventLatLng,
+        styles: [
+            {featureType:"poi", stylers:[{visibility:"off"}]},  // No points of interest.
+            {featureType:"transit.station",stylers:[{visibility:"off"}]}  // No bus stations, etc.
+        ]
+    });
+
+    let a = new google.maps.Marker({
+        position: eventLatLng,
+        icon: "https://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png"
+    });
+    a.setMap(map);
+
+    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>";
+    let minion = document.createElement("button");
+    minion.classList.add("button");     // BYT TILL NÅGOT MERA PASSANDE
+    minion.innerHTML = "Visa från min position";
+    minion.addEventListener("click", getLocation(wow,map));
+    mapElem.previousElementSibling.appendChild(minion);
+}
+
+function getLocation(wow,map) {
     if (navigator.geolocation) {
-        let n ;
         navigator.geolocation.getCurrentPosition(function (p) {
-            n=p;
-            
-              var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
-            
+            let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
-              //var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-             
-              
-              var marker = new google.maps.Marker({
-                  position: LatLng,
-                  label: "Home",
-                  title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
-              });
-              marker.setMap(map)
+            let marker = new google.maps.Marker({
+                position: LatLng,
+                //label: "Home",
+                icon: "https://maps.google.com/mapfiles/kml/shapes/man.png"
+            });
+            marker.setMap(map);
             
-              google.maps.event.addListener(marker, "click", function (e) {
-                  var infoWindow = new google.maps.InfoWindow();
-                  infoWindow.setContent(marker.title);
-
-                  infoWindow.open(map, marker);
-              });
-              
-              const dinPos = {lat: p.coords.latitude, lng:p.coords.longitude };
-             
-        
-              var mk1 = new google.maps.Marker({position: dinPos, map: map});
-              
-             let distance = haversineDistance(mk1, wow);
-             extraElem.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
-             
+            let distance = haversineDistance(marker, wow);
+            genElem.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
+                
             const flightPlanCoordinates = [
                 {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
                 {lat: p.coords.latitude ,lng:p.coords.longitude},
-             ]
-             
-            /* const flightPlanCoordinates = [
-                { lat: 37.772, lng: -122.214 },
-                { lat: 21.291, lng: -157.821 },
-              
-              ];*/
-              console.log(flightPlanCoordinates)
-              const flightPath = new google.maps.Polyline({
-                path: flightPlanCoordinates,
-                geodesic: true,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 2,
-              });
-            
-              flightPath.setMap(map);
-            
-              
-          });
-          
-          
-      } 
-      else {
-          alert('Geo Location feature is not supported in this browser.');
-      }
+            ]
 
-      
-      }
+            const flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: "#000000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+            });
+            
+            flightPath.setMap(map);
+        });
+    } 
+    else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
+}
      
-      function haversineDistance(mk1, mk2) {
+function haversineDistance(mk1, mk2) {
+    var rad = 6371.0710; // Radius of the Earth in kms
+    var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
+    var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+    var difflat = rlat2-rlat1; // Radian difference (latitudes)
+    var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
-        var rad = 6371.0710; // Radius of the Earth in kms
-        var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
-        var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
-        var difflat = rlat2-rlat1; // Radian difference (latitudes)
-        var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
-    
-        var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-        return d;
-        
-    }
+    var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+    return d;
+}
 
 //window.addEventListener("load",initMap);
 
