@@ -57,6 +57,35 @@
         },
 
         {
+            "description": "minigolf",
+            "name": "Köpingebadens Äventyrsgolf",
+            "abstract": "Äventyrsgolfbana med 12 hål. Hela banan går i vikingatema där ni bland annat måste hjälpas åt att dra er över vatten med en flotte för att kunna fortsätta spelet",
+            "adress": "Köpingevägen 23",
+            "Pricerange": "100-500 kr",
+            "lat": "56.87847522734982",
+            "lng": "16.712642886810105",
+            "outdoors": "Y",
+            "rating": "",
+            "webbsite": "https://borgholmscampingar.se/kopingbaden/",
+            "provinces": "Öland"
+        },
+
+        {
+            "description": "Surfa",
+            "name": "Surfers Center",
+            "abstract": "Vindsurfing, kitesurfing och SUP på Haga Park",
+            "adress": "Hagaparksvägen",
+            "Pricerange": "800-2000 kr",
+            "lat": "56.57965174378596",
+            "lng": "16.408697098832043",
+            "outdoors": "Y",
+            "rating": "",
+            "webbsite": "http://www.surferscenteroland.se/",
+            "provinces": "Öland"
+            },
+
+
+        {
             "description": "Kanot",
             "name": "Kröngårdens Kanotcentral",
             "abstract": "Söker du kanotuthyrare i Kalmar? Här finns all utrustning som behövs för att paddla kanot i Vimmerby.",
