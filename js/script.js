@@ -2,7 +2,7 @@ var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
     {altA:"Aktiv", descA:"Jag vill få aktiva alternativ", altB:"Lugn", descB:"Du vill inte behöva svettas", urlA:"zipline.jpg", urlB:"lugn1.jpg"},
 
-    {altA:"Helst en aktivitet under 250", descA:"Kostnaden överskrider inte 250kr", altB:"Kostnaden spelar ingen roll", descB:"Detta vall så kommer kostnader över 500kr", urlA:"billig.jpg", urlB:"dyr.jpg"},
+    {altA:"Helst en aktivitet under 250", descA:"Kostnaden överskrider inte 250kr", altB:"Kostnaden spelar ingen roll", descB:"Detta val så kommer kostnader över 500kr", urlA:"billig.jpg", urlB:"dyr.jpg"},
 
     {altA:"Utomhus", descA:"Du vill att aktiviteten ska ha utomhus alternativ", altB:"Både inomhus och utomhus", descB:"Det spelar ingen roll för dig", urlA:"utomhus.jpg", urlB:"inomhus.jpg"},
 
@@ -17,7 +17,7 @@ const chosenRes = [
 
     {altA:"Inomhus", descA:"Det ska vara inomhus", altB:"Utomhus", descB:" Det ska finnas utomhusservering",  urlA:"inomhusservering.jpg", urlB:"utomhusservering.jpg"},
 
-    {altA:"Vegitariansk meny", descA:"Det ska finnas vegitarianska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"}
+    {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"}
 ];
 		// Förslag: Buffe, vegetarisk, alkohol, 
 const choices = []; // Vilket alternativ som är valt
