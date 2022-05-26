@@ -11,7 +11,7 @@ const chosenAct = [
 
 const chosenRes = [
 
-    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", altC:"bakeri", descC:"BAKERI", urlA:"fint.jpg", urlB:"casual.jpg", urlC:"bakeri.jpg"}, 
+    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint.jpg", urlB:"casual.jpg"}, 
 
     {altA:"Local", descA:"En bistro är en mindre restaurang eller ett kafé", altB:"A la carte", descB:"Vi vill sitta inne.", urlA:"local.jpg", urlB:"alacarte.jpg"},
 

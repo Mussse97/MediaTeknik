@@ -15,9 +15,9 @@ var mapElem;
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
+    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
 
-    {urlA:"&price_ranges=100-250", urlB:""},
+    {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
     {urlA:"&outdoors=Y", urlB:""},
     {urlA:"&provinces=småland", urlB:"&provinces=öland"},
 
@@ -25,13 +25,13 @@ const chosenAct = [
 const chosenFood = [
     {urlB:"food"}, // Controller
 
-    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL", urlC:"&sub_types=PASTRIES"},
-
-    {urlA:"&sub_types=LOCAL", urlB:"&sub_types=A_LA_CARTE"},
+    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL"},
 
     {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
 
-    {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"} //Provinces finns bara i establshment taggen...
+    {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"},
+    
+    {urlA:"", urlB:""}, //Provinces finns bara i establshment taggen...
 ];
 
 const hatarAllt = [
@@ -255,16 +255,17 @@ function initMap(wow) {
     });
     a.setMap(map);
 
-    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>";
+    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>"
     let minion = document.createElement("button");
-    minion.classList.add("button");     // BYT TILL NÅGOT MERA PASSANDE
+    minion.classList.add("buttonR");     // BYT TILL NÅGOT MERA PASSANDE
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion);
     minion.innerHTML = "Visa från min position";
     minion.addEventListener("click", function() { getLocation(wow,map) });  // Fattar inte varför denna inte funkar
     mapElem.previousElementSibling.appendChild(minion);
 }
 
 function getLocation(wow,map) {
-    alert("gay");
+   
     if (navigator.geolocation != undefined) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
@@ -277,7 +278,7 @@ function getLocation(wow,map) {
             marker.setMap(map);
             
             let distance = haversineDistance(marker, wow);
-            genElem.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
+            mapElem.previousElementSibling.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
                 
             const flightPlanCoordinates = [
                 {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
