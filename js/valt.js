@@ -25,13 +25,13 @@ const chosenAct = [
 const chosenFood = [
     {urlB:"food"}, // Controller
 
-    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL"},
+    {urlA:"&types=FINE_DINING&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN", urlB:"&types=CASUAL&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN"},
 
-    {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
+    {urlA:"&outdoor_seating=Y", urlB:"&outdoor_seating=N"},
 
     {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"},
     
-    {urlA:"", urlB:""}, //Provinces finns bara i establshment taggen...
+    {urlA:"&provinces=småland", urlB:"&provinces=öland"}, //Provinces finns bara i establshment taggen...
 ];
 
 const hatarAllt = [
@@ -215,7 +215,9 @@ function lploss() {
     else musse(null,wow);
 }
 
+
 function musse(lol,wow) {
+    console.log(wow)
     genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
     if (lol == null) {
