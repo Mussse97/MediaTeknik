@@ -18,20 +18,22 @@ const chosenAct = [
     {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
 
     {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
+    
     {urlA:"&outdoors=Y", urlB:""},
+    
     {urlA:"&provinces=småland", urlB:"&provinces=öland"},
 
 ];
 const chosenFood = [
     {urlB:"food"}, // Controller
 
-    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL"},
+    {urlA:"&types=FINE_DINING&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN", urlB:"&types=CASUAL&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN"},
 
-    {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
+    {urlA:"&outdoor_seating=Y", urlB:"&outdoor_seating=N"},
 
     {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"},
     
-    {urlA:"", urlB:""}, //Provinces finns bara i establshment taggen...
+    {urlA:"&provinces=småland", urlB:"&provinces=öland"}, //Provinces finns bara i establshment taggen...
 ];
 
 const hatarAllt = [
@@ -87,7 +89,7 @@ function applyController(xd) {
         if (request.readyState == 4) 
             if (request.status == 200) {
                 if (xd[0] == "food") foodFix(request.responseText);
-                else listAlts(request.responseText);
+                else addJSON(request.responseText);
             }
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
@@ -103,7 +105,7 @@ function foodFix(owo) {
 
     let quickFix = [];
 
-    for (let i = 0; i < resultat; i++) {
+    for (let i = 0; i < owo.length; i++) {
         quickFix.push(owo[i].id);
     }
 
@@ -113,13 +115,28 @@ function foodFix(owo) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) listAlts(request.responseText)
+            if (request.status == 200) addJSON(request.responseText)
             else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
-function listAlts(owo) {
+function addJSON(owo) {
+    let request = new XMLHttpRequest(); // AJAX andropningsvariabel
+    request.open("GET","json/aktivitet.json",true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4)
+            if (request.status == 200) listAlts(owo,request.responseText);
+    };
+}
+
+function listAlts(owo,uwu) {
+    uwu = JSON.parse(uwu);
     owo = JSON.parse(owo).payload;
+    for (let i = 0; i < uwu.length; i++) {
+        owo.push(uwu[i]);
+    }
+    console.log(owo)
 
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
@@ -153,11 +170,16 @@ function listAlts(owo) {
     
     for (let i = 0; i < resultat; i++) {
 
+        if (owo[i] == undefined) {
+            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            break;
+        }
+
         let baby = document.createElement("div");
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
         baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
-        "<p>Pris: " + owo[i].price_range + "kr" +"</p>";
+        "<p>Pris: " + owo[i].price_range + " kr (per person)</p>";
 
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
@@ -165,11 +187,6 @@ function listAlts(owo) {
 
         stepElem.appendChild(baby);
         stepElem.insertBefore(number, baby);
-
-        if (owo.length == 0) {
-            stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
-            return;
-        }
     }
 }
 
@@ -192,8 +209,8 @@ function lploss() {
             extraElem.insertBefore(sixten,choiceDivs[i]);
         }
         l++;
+        genElem.previousElementSibling.classList.toggle("sexmaskinenSigvardFjante");
     }
-    
 
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
@@ -215,7 +232,9 @@ function lploss() {
     else musse(null,wow);
 }
 
+
 function musse(lol,wow) {
+    console.log(wow)
     genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
     if (lol == null) {
@@ -257,15 +276,14 @@ function initMap(wow) {
 
     mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>"
     let minion = document.createElement("button");
-    minion.classList.add("buttonR");     // BYT TILL NÅGOT MERA PASSANDE
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion);
+    minion.classList.add("buttonR");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion); // KOLLA PÅ SEN
     minion.innerHTML = "Visa från min position";
-    minion.addEventListener("click", function() { getLocation(wow,map) });  // Fattar inte varför denna inte funkar
+    minion.addEventListener("click", function() { getLocation(wow,map) });
     mapElem.previousElementSibling.appendChild(minion);
 }
 
 function getLocation(wow,map) {
-   
     if (navigator.geolocation != undefined) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
