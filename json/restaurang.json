@@ -1,11 +1,11 @@
-{
-    "Restauranger": [
-   {
+[
+    {
         "description": "FINE_DINING",
         "name": "4 Krogar vid sjön",
         "abstract": "",
         "adress": "Vattentorget 5",
-        "Pricerange": "150-399 ",
+        "text":"",
+        "price_range": "150-400",
         "lat": " 56.87586596646526",
         "lng": "14.81223609171099",
         "outdoors": "N",
@@ -13,6 +13,7 @@
         "webbsite": "",
         "provinces": "Småland"
     },
+
 
 
     {
@@ -29,18 +30,21 @@
         "provinces": "Småland"
     },
 
+
+
     {
         "description": "FINE_DINING",
         "name": "Gröna Stugan",
-        "abstract": "",
         "address": "Larmgatan 1",
-        "Pricerange": "100-500 ",
+        "text":"",
+        "price_range": "100-500",
         "lat": "56.66136137732162",
         "lng": "16.36311182162423",
         "outdoors": "Y",
-         "rating": "4.4",
-         "webbsite": "https://www.gronastuganikalmar.se/",
+        "rating": "4.4",
+        "webbsite": "https://www.gronastuganikalmar.se/",
         "provinces": "Småland"
+
     } , 
     
     {
@@ -61,7 +65,7 @@
         "name": "Nya verandan",
         "abstract": "Här njuter du av god mat och dryck i en avslappnad och trivsam miljö med personlig service.",
         "address": "Södra Långgatan 2",
-        "Pricerange": "",
+        "Price_range": "",
         "lat": "  56.87899586577576",
         "lng": "16.650931271355645",
         "outdoors": "Y",
@@ -74,7 +78,7 @@
         "name": "Gamla Televerket B&B, Mat & Vin",
         "abstract": "Ledstjärnan på Gamla Televerket är att servera god och vällagad mat i en mysig, avslappnad miljö.",
         "address": "Västra Kyrkogatan 20B",
-        "Pricerange": "",
+        "Price_range": "",
         "lat": "56.87979175324749",
         "lng": "16.655451766405925",
         "outdoors": "Y",
@@ -85,3 +89,22 @@
    
     ]   
 }
+
+    },
+
+    {
+        "description":"FINE_DINING",
+        "name":"Slipkajen",
+        "abstract":"Slipkajen strävar efter att alltid servera god mat, lagad från grunden. Råvarorna köper vi helst från lokala producenter och följer givetvis stundande säsong. <br> Till lunchen ingår vår salladsbuffé med olika dressingar samt nybakat bröd, efter maten ingår organiskt kaffe eller te.",
+        "text":"Varmt Välkomna!",
+        "address":"Utrsutningskajen 15",
+        "price_range":"200-500",
+        "lat":"56.6695166", 
+        "lng":"16.363417",
+        "outdoors": "Y",
+        "rating":"4.6",
+        "website": "https://slipkajen.se/",
+        "provinces": "Småland"
+    }
+]
+
