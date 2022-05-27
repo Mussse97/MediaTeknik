@@ -13,11 +13,11 @@ const chosenRes = [
 
     {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint.jpg", urlB:"casual.jpg"}, 
 
-    {altA:"Local", descA:"En bistro är en mindre restaurang eller ett kafé", altB:"A la carte", descB:"Vi vill sitta inne.", urlA:"local.jpg", urlB:"alacarte.jpg"},
-
     {altA:"Inomhus", descA:"Det ska vara inomhus", altB:"Utomhus", descB:" Det ska finnas utomhusservering",  urlA:"inomhusservering.jpg", urlB:"utomhusservering.jpg"},
 
-    {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"}
+    {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"},
+	
+	{altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland.jpg", urlB:"öland.jpg"}
 ];
 		// Förslag: Buffe, vegetarisk, alkohol, 
 const choices = []; // Vilket alternativ som är valt

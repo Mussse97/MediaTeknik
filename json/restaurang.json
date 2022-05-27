@@ -3,8 +3,8 @@
         "description": "FINE_DINING",
         "name": "4 Krogar vid sjön",
         "abstract": "",
+        "adress": "Vattentorget 5",
         "text":"",
-        "address": "Vattentorget 5",
         "price_range": "150-400",
         "lat": " 56.87586596646526",
         "lng": "14.81223609171099",
@@ -14,12 +14,29 @@
         "provinces": "Småland"
     },
 
+
+
+    {
+        "description": "FINE_DINING",
+        "name": "Sjön",
+        "abstract": "Prisbelönt restaurang vid Vätterns kant ",
+        "adress": "Östra Storgatan 173",
+        "Pricerange": "80-499 ",
+        "lat": "  57.78241543105714",
+        "lng": "14.206368710142105",
+        "outdoors": "Y",
+        "rating": "4.1",
+        "webbsite": "https://www.sjon.se/",
+        "provinces": "Småland"
+    },
+
+
+
     {
         "description": "FINE_DINING",
         "name": "Gröna Stugan",
-        "abstract": "",
-        "text":"",
         "address": "Larmgatan 1",
+        "text":"",
         "price_range": "100-500",
         "lat": "56.66136137732162",
         "lng": "16.36311182162423",
@@ -27,6 +44,52 @@
         "rating": "4.4",
         "webbsite": "https://www.gronastuganikalmar.se/",
         "provinces": "Småland"
+
+    } , 
+    
+    {
+        "description": "FINE_DINING",
+        "name": "Lammet & Grisen",
+        "abstract": "I över 40 år har ölänningar och sommargäster upplevt och älskat den unika maten och stämningen – i den unika byggnaden – på Lammet & Grisen, beläget på norra Öland.",
+        "address": "Hornvägen 35",
+        "Pricerange": "100-500 ",
+        "lat": " 57.176039524779355",
+        "lng": "16.940360587626813",
+        "outdoors": "Y",
+         "rating": "4.4",
+         "webbsite": "https://www.lammet.nu/oland/oppettider",
+        "provinces": "Öland"
+    },
+    {
+        "description": "FINE_DINING",
+        "name": "Nya verandan",
+        "abstract": "Här njuter du av god mat och dryck i en avslappnad och trivsam miljö med personlig service.",
+        "address": "Södra Långgatan 2",
+        "Price_range": "",
+        "lat": "  56.87899586577576",
+        "lng": "16.650931271355645",
+        "outdoors": "Y",
+         "rating": "4.2",
+         "webbsite": "https://www.verandaborgholm.se/",
+        "provinces": "Öland"
+    } ,
+    {
+        "description": "FINE_DINING",
+        "name": "Gamla Televerket B&B, Mat & Vin",
+        "abstract": "Ledstjärnan på Gamla Televerket är att servera god och vällagad mat i en mysig, avslappnad miljö.",
+        "address": "Västra Kyrkogatan 20B",
+        "Price_range": "",
+        "lat": "56.87979175324749",
+        "lng": "16.655451766405925",
+        "outdoors": "Y",
+         "rating": "4,6",
+         "webbsite": "http://gamlateleverket.wix.com/gamlateleverket",
+        "provinces": "Öland"
+    }     
+   
+    ]   
+}
+
     },
 
     {
@@ -44,3 +107,4 @@
         "provinces": "Småland"
     }
 ]
+
