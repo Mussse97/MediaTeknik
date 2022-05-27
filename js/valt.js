@@ -15,7 +15,7 @@ var mapElem;
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
+    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
 
     {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
     {urlA:"&outdoors=Y", urlB:""},
