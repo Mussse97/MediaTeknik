@@ -1,11 +1,11 @@
-{
-   {
+[
+    {
         "description": "FINE_DINING",
         "name": "4 Krogar vid sjön",
         "abstract": "",
         "text":"",
-        "adress": "Vattentorget 5",
-        "Pricerange": "150-399 kr",
+        "address": "Vattentorget 5",
+        "price_range": "150-400",
         "lat": " 56.87586596646526",
         "lng": "14.81223609171099",
         "outdoors": "N",
@@ -14,29 +14,13 @@
         "provinces": "Småland"
     },
 
-
-    {
-        "description": "FINE_DINING",
-        "name": "Sjön",
-        "abstract": "Prisbelönt restaurang vid Vätterns kant",
-        "text":"",
-        "adress": "Östra Storgatan 173",
-        "Pricerange": "80-499 kr",
-        "lat": "  57.78241543105714",
-        "lng": "14.206368710142105",
-        "outdoors": "Y",
-        "rating": "4.1",
-        "webbsite": "https://www.sjon.se/",
-        "provinces": "Småland"
-    },
-
     {
         "description": "FINE_DINING",
         "name": "Gröna Stugan",
         "abstract": "",
         "text":"",
-        "adress": "Larmgatan 1",
-        "Pricerange": "100-500 kr",
+        "address": "Larmgatan 1",
+        "price_range": "100-500",
         "lat": "56.66136137732162",
         "lng": "16.36311182162423",
         "outdoors": "Y",
@@ -51,6 +35,7 @@
         "abstract":"Slipkajen strävar efter att alltid servera god mat, lagad från grunden. Råvarorna köper vi helst från lokala producenter och följer givetvis stundande säsong. <br> Till lunchen ingår vår salladsbuffé med olika dressingar samt nybakat bröd, efter maten ingår organiskt kaffe eller te.",
         "text":"Varmt Välkomna!",
         "address":"Utrsutningskajen 15",
+        "price_range":"200-500",
         "lat":"56.6695166", 
         "lng":"16.363417",
         "outdoors": "Y",
@@ -58,4 +43,4 @@
         "website": "https://slipkajen.se/",
         "provinces": "Småland"
     }
-}
+]

@@ -763,9 +763,15 @@ a {
 
 .buttonR{
     background-color: black;
+    font-weight: bold;
     color: white;
-    border-radius: 10px ;
+    border: #000;
+    border-radius: 0.5vw;
     height: 40px;
+}
+
+.buttonR:hover {
+    background-color:#333333;
 }
 
 
