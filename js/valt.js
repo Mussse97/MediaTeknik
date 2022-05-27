@@ -157,6 +157,11 @@ function listAlts(owo) {
     
     for (let i = 0; i < resultat; i++) {
 
+        if (owo[i] == undefined) {
+            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            break;
+        }
+
         let baby = document.createElement("div");
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
@@ -169,11 +174,6 @@ function listAlts(owo) {
 
         stepElem.appendChild(baby);
         stepElem.insertBefore(number, baby);
-
-        if (owo.length == 0) {
-            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
-            return;
-        }
     }
 }
 

@@ -364,7 +364,7 @@ a {
     bottom: 5vh;
     right: 3vw;
     */
-    width: 89vh;
+    width: 42vw;
     height: 16vw;
 }
 
@@ -584,12 +584,19 @@ a {
 
 
 
-.buttonR{
-    background-color: black;
-    color: white;
-    border-radius: 10px ;
-    height: 40px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -742,6 +749,31 @@ a {
   -webkit-transform: translateY(0) scale(1,1);
           transform: translateY(0) scale(1,1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.buttonR{
+    background-color: black;
+    color: white;
+    border-radius: 10px ;
+    height: 40px;
+}
+
+
+
+
+
+
+
 
 
 
