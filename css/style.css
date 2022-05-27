@@ -371,9 +371,15 @@ a {
 }
 
 .sexmaskinenSigvardFjante + div,.sexmaskinenSigvardFjante + div div {
+    position: absolute;
+    left: 200% !important;
     height: 0 !important;
     width: 0 !important;
     opacity: 0 !important;
+}
+
+.sexmaskinenSigvardFjante + div #map {
+    position: relative;
 }
 
 /*

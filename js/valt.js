@@ -15,10 +15,12 @@ var mapElem;
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&description=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&description=Nöjespark,Nöjescenter"},
+    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
 
     {urlA:"&price_ranges=100-250", urlB:""},
+
     {urlA:"&outdoors=Y", urlB:""},
+    
     {urlA:"&provinces=småland", urlB:"&provinces=öland"},
 
 ];
@@ -103,7 +105,9 @@ function foodFix(owo) {
 
     let quickFix = [];
 
-    for (let i = 0; i < resultat; i++) {
+    console.log(owo)
+
+    for (let i = 0; i < owo.length; i++) {
         quickFix.push(owo[i].id);
     }
 
@@ -157,7 +161,7 @@ function listAlts(owo) {
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
         baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
-        "<p>Pris: " + owo[i].price_range + "kr" +"</p>";
+        "<p>Pris: " + owo[i].price_range + "kr</p>";
 
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
@@ -167,7 +171,7 @@ function listAlts(owo) {
         stepElem.insertBefore(number, baby);
 
         if (owo.length == 0) {
-            stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
+            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
             return;
         }
     }
@@ -192,8 +196,8 @@ function lploss() {
             extraElem.insertBefore(sixten,choiceDivs[i]);
         }
         l++;
+        genElem.previousElementSibling.classList.toggle("sexmaskinenSigvardFjante");
     }
-    
 
     // Valda alternativet
     let fix = document.querySelectorAll("#stepElement div")
