@@ -364,7 +364,7 @@ a {
     bottom: 5vh;
     right: 3vw;
     */
-    width: 89vh;
+    width: 42vw;
     height: 16vw;
 }
 
@@ -375,9 +375,15 @@ a {
 }
 
 .sexmaskinenSigvardFjante + div,.sexmaskinenSigvardFjante + div div {
+    position: absolute;
+    left: 200% !important;
     height: 0 !important;
     width: 0 !important;
     opacity: 0 !important;
+}
+
+.sexmaskinenSigvardFjante + div #map {
+    position: relative;
 }
 
 /*
@@ -578,12 +584,19 @@ a {
 
 
 
-.buttonR{
-    background-color: black;
-    color: white;
-    border-radius: 10px ;
-    height: 40px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -736,6 +749,37 @@ a {
   -webkit-transform: translateY(0) scale(1,1);
           transform: translateY(0) scale(1,1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.buttonR{
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    border: #000;
+    border-radius: 0.5vw;
+    height: 40px;
+}
+
+.buttonR:hover {
+    background-color:#333333;
+}
+
+
+
+
+
+
+
 
 
 
