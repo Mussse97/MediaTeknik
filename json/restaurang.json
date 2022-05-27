@@ -1,0 +1,47 @@
+{
+    "Restauranger": [
+   {
+        "description": "FINE_DINING",
+        "name": "4 Krogar vid sjön",
+        "abstract": "",
+        "adress": "Vattentorget 5",
+        "Pricerange": "150-399 kr",
+        "lat": " 56.87586596646526",
+        "lng": "14.81223609171099",
+        "outdoors": "N",
+        "rating": "3.8",
+        "webbsite": "",
+        "provinces": "Småland"
+    },
+
+
+    {
+        "description": "FINE_DINING",
+        "name": "Sjön",
+        "abstract": "Prisbelönt restaurang vid Vätterns kant ",
+        "adress": "Östra Storgatan 173",
+        "Pricerange": "80-499 kr",
+        "lat": "  57.78241543105714",
+        "lng": "14.206368710142105",
+        "outdoors": "Y",
+        "rating": "4.1",
+        "webbsite": "https://www.sjon.se/",
+        "provinces": "Småland"
+    },
+
+    {
+        "description": "FINE_DINING",
+        "name": "Gröna Stugan",
+        "abstract": "",
+        "adress": "Larmgatan 1",
+        "Pricerange": "100-500 kr",
+        "lat": "56.66136137732162",
+        "lng": "16.36311182162423",
+        "outdoors": "Y",
+         "rating": "4.4",
+         "webbsite": "https://www.gronastuganikalmar.se/",
+        "provinces": "Småland"
+    }   
+
+    ]   
+}
