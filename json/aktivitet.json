@@ -71,7 +71,13 @@
         "outdoors": "Y",
         "rating": "4",
         "webbsite": "http://www.stadsparksgolfen.se/",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "Y",
+            "N",
+            "N",
+            "Y"
+        ]
     },
 
     {

@@ -21,7 +21,7 @@ const chosenAct = [
     
     {urlA:"&outdoors=Y", urlB:""},
     
-    {urlA:"&provinces=småland", urlB:"&provinces=öland"},
+    {urlA:"&provinces=småland", urlB:"&provinces=öland"}
 
 ];
 const chosenFood = [
@@ -31,9 +31,9 @@ const chosenFood = [
 
     {urlA:"&outdoor_seating=Y", urlB:"&outdoor_seating=N"},
 
-    {urlA:"&vegetarian_option=N", urlB:"&vegetarian_option=Y"},
+    {urlA:"&vegetarian_option=Y", urlB:"&vegetarian_option=N"},
     
-    {urlA:"&provinces=småland", urlB:"&provinces=öland"}, //Provinces finns bara i establshment taggen...
+    {urlA:"&provinces=småland", urlB:"&provinces=öland"} //Provinces finns bara i establshment taggen...
 ];
 
 const hatarAllt = [
@@ -81,21 +81,24 @@ function getController(uwu) {
 }
 
 function applyController(xd) {
+    let fixIt;
+    if (xd[0] == "food") fixIt = "https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3];
+    else fixIt = "https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3] + xd[4];
     let request = new XMLHttpRequest(); 
     
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3] + xd[4],true);
+    request.open("GET",fixIt,true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4) 
             if (request.status == 200) {
-                if (xd[0] == "food") foodFix(request.responseText);
-                else addJSON(request.responseText);
+                if (xd[0] == "food") foodFix(request.responseText,xd);
+                else addJSON(request.responseText,xd);
             }
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
-function foodFix(owo) {
+function foodFix(owo,xd) {
     owo = JSON.parse(owo).payload;
 
     if (owo.length == 0) {
@@ -115,56 +118,67 @@ function foodFix(owo) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) addJSON(request.responseText)
+            if (request.status == 200) addJSON(request.responseText,xd)
             else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
 
-function addJSON(owo) {
+function addJSON(owo,xd) {
+    let najs;
+    if (xd[0] == "food") najs = "restaurang";
+    else najs = "aktivitet";
     let request = new XMLHttpRequest(); // AJAX andropningsvariabel
-    request.open("GET","json/aktivitet.json",true);
+    request.open("GET","json/"+najs+".json",true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) listAlts(owo,request.responseText);
+            if (request.status == 200) whatJSON(owo,request.responseText,xd);
     };
 }
 
-function listAlts(owo,uwu) {
+
+
+
+function whatJSON(owo,uwu,xd) {
     uwu = JSON.parse(uwu);
     owo = JSON.parse(owo).payload;
-    for (let i = 0; i < uwu.length; i++) {
-        owo.push(uwu[i]);
-    }
-    console.log(owo)
 
+    console.log(owo)
+    let najs;
+    if (xd[0] == "food") {
+        najs = chosenFood;
+        
+        if (xd[4] == najs[4].urlB) {
+            for (let k = owo.length-1; k >= 0; k--) {
+                if (owo[k].province == "Småland") owo.splice(k,1)
+            }
+        }
+    }
+    else najs = chosenAct;
+
+    let critCheck = [];
+    for (let i = 1; i < xd.length; i++) {
+        let criteria;
+        if (xd[i] == najs[i].urlA) criteria = "Y";
+        else criteria = "N";
+
+        critCheck.push(criteria);
+        for (let k = uwu.length-1; k >= 0; k--) {
+            if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+        }
+
+    }
+
+    for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
+
+    listAlts(owo);
+}
+
+function listAlts(owo) {
     if (owo.length == 0) {
         stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
         return;
     }
-
-    // Gör inget just nu
-    /*
-    let bad = ["Simhall","Golfbana","Nattklubb","Lekland"]; // Descriptions att ta bort
-
-    ;
-    for (let i = 0; i < owo.length; i++) {
-        for (let k = 0; k < bad.length; k++) {
-            if (owo[i].description == bad[k]) {
-                owo.splice(i,1);
-                i--;
-                break;
-            }
-        }
-        
-
-
-        if (owo.length == 0) {
-            stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
-            return;
-        }
-    }
-    */
 
     nerd = [];
     
