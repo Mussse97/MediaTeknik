@@ -43,9 +43,15 @@
         "lat": " 57.176039524779355",
         "lng": "16.940360587626813",
         "outdoors": "Y",
-         "rating": "4.4",
-         "webbsite": "https://www.lammet.nu/oland/oppettider",
-        "provinces": "Öland"
+        "rating": "4.4",
+        "webbsite": "https://www.lammet.nu/oland/oppettider",
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "N"
+        ]
     },
   
     {
@@ -57,9 +63,15 @@
         "lat": "  56.87899586577576",
         "lng": "16.650931271355645",
         "outdoors": "Y",
-         "rating": "4.2",
-         "webbsite": "https://www.verandaborgholm.se/",
-        "provinces": "Öland"
+        "rating": "4.2",
+        "webbsite": "https://www.verandaborgholm.se/",
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "N"
+        ]
     } ,
   
     {
@@ -71,9 +83,15 @@
         "lat": "56.87979175324749",
         "lng": "16.655451766405925",
         "outdoors": "Y",
-         "rating": "4,6",
-         "webbsite": "http://gamlateleverket.wix.com/gamlateleverket",
-        "provinces": "Öland"
+        "rating": "4,6",
+        "webbsite": "https://gamlateleverket.se/vin-bistro/",
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "N"
+        ]
     },
 
     {
