@@ -15,7 +15,7 @@ var mapElem;
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
+    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
 
     {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
     
@@ -27,9 +27,9 @@ const chosenAct = [
 const chosenFood = [
     {urlB:"food"}, // Controller
 
-    {urlA:"&types=FINE_DINING", urlB:"&types=CASUAL"},
+    {urlA:"&types=FINE_DINING&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN", urlB:"&types=CASUAL&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN"},
 
-    {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
+    {urlA:"&outdoor_seating=Y", urlB:"&outdoor_seating=N"},
 
     {urlA:"&vegetarian_option=Y", urlB:"&vegetarian_option=N"},
     
@@ -246,7 +246,9 @@ function lploss() {
     else musse(null,wow);
 }
 
+
 function musse(lol,wow) {
+    console.log(wow)
     genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
     if (lol == null) {
