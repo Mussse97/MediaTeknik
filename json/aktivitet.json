@@ -30,7 +30,13 @@
         "outdoors": "Y",
         "rating": "4",
         "webbsite": "http://www.stadsparksgolfen.se/",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+        ]
     },
 
     {
@@ -44,24 +50,14 @@
         "outdoors": "Y",
         "rating": "4",
         "webbsite": "https://nossen.nu/",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+        ]
     },
-
-    {
-        "description": "minigolf",
-        "name": "Banan Kalmar",
-        "abstract": "Minigolfbana i Kalmar. Det är riktigt roligt att spela minigolf. Utmana vännerna här i Kalmar.",
-        "address": "Södra vägen 58",
-        "price_range": "50",
-        "lat": "56.66449532063823",
-        "lng": "16.33444724078334",
-        "outdoors": "N",
-        "rating": "4.2",
-        "webbsite": "https://banankalmar.se/aktiviteter/blacklight-minigolf/",
-        "provinces": "småland"
-        
-    },
-
 
     {
         "description": "minigolf",
@@ -77,15 +73,15 @@
         "provinces": "småland",
         "crit": [
             "Y",
-            "N",
-            "N",
+            "Y",
+            "Y",
             "Y"
         ]
     },
 
     {
         "description": "minigolf",
-        "name": "Vimmerby Camping",
+        "name": "Vimmerby Campings Minigolfbana",
         "abstract": "Minigolfbana i Vimmerby. Spela minigolf, och du kommer att uppleva både glädje och frustration. En minigolfbana i Vimmerby, för dig och dina kompisar.",
         "address": "Nossenbadet",
         "price_range": "150",
@@ -94,7 +90,13 @@
         "outdoors": "Y",
         "rating": "4",
         "webbsite": "https://nossen.nu/",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+        ]
     },
 
     {
@@ -108,7 +110,13 @@
         "outdoors": "Y",
         "rating": "4.3",
         "webbsite": "https://www.bodasand.se/gora/minigolf/",
-        "provinces": "öland"
+        "provinces": "öland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "N"
+        ]
     },
 
     {
@@ -122,7 +130,13 @@
         "outdoors": "Y",
         "rating": "",
         "webbsite": "https://borgholmscampingar.se/kopingbaden/",
-        "provinces": "Öland"
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "N",
+            "Y",
+            "N"
+        ]
     },
 
     {
@@ -136,9 +150,14 @@
         "outdoors": "Y",
         "rating": "",
         "webbsite": "http://www.surferscenteroland.se/",
-        "provinces": "Öland"
-        },
-
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "N",
+            "Y",
+            "N"
+        ]
+    },
 
     {
         "description": "Kanot",
@@ -151,7 +170,13 @@
         "outdoors": "Y",
         "rating": "4.2",
         "webbsite": "https://www.krongarden.se/kanotuthyrning.html",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "N",
+            "Y",
+            "Y",
+            "Y"
+        ]
     },
 
     {
@@ -165,7 +190,13 @@
         "outdoors": "Y",
         "rating": "4.3",
         "webbsite": "https://sjostugan.com/",
-        "provinces": "småland"
+        "provinces": "småland",
+        "crit": [
+            "N",
+            "N",
+            "Y",
+            "Y"
+        ]
     },
 
     {
@@ -179,6 +210,12 @@
         "outdoors": "Y",
         "rating": "4.3",
         "webbsite": "https://idrottonline.se/KalmarKK-Kanot",
-        "provinces": "öland"
+        "provinces": "småland",
+        "crit": [
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+        ]
     }
 ]
