@@ -327,6 +327,11 @@ a {
     text-align: left;
     width: 43.01vw;
 }
+
+#stepElement h2 {
+    background-color: red;
+}
+
 #stepElement .error {
     background-color: red;
     margin-bottom: 1vh;
@@ -334,6 +339,7 @@ a {
     padding: 0vw;
     text-align: center;
 }
+
 #stepElement .error:hover {
     background-color: red;
 }
@@ -775,6 +781,7 @@ a {
     border: #000;
     border-radius: 0.5vw;
     height: 40px;
+    cursor: pointer;
 }
 
 .buttonR:hover {

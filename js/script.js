@@ -1,10 +1,10 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
-    {altA:"Aktiv", descA:"Jag vill få aktiva alternativ", altB:"Lugn", descB:"Du vill inte behöva svettas", urlA:"zipline.jpg", urlB:"lugn1.jpg"},
+    {altA:"Aktiv", descA:"Vi vill röra oss mycket på dejten", altB:"Lugn", descB:"Ni behöver inte svettas", urlA:"zipline.jpg", urlB:"lugn1.jpg"},
 
-    {altA:"Helst en aktivitet under 250", descA:"Kostnaden överskrider inte 250kr", altB:"Kostnaden spelar ingen roll", descB:"Detta val så kommer kostnader över 500kr", urlA:"billig.jpg", urlB:"dyr.jpg"},
+    {altA:"Under 250", descA:"Helst en aktivitet under 250kr", altB:"Över 250", descB:"Vi är ute efter en dyr aktivitet", urlA:"billig.jpg", urlB:"dyr.jpg"},
 
-    {altA:"Utomhus", descA:"Du vill att aktiviteten ska ha utomhus alternativ", altB:"Både inomhus och utomhus", descB:"Det spelar ingen roll för dig", urlA:"utomhus.jpg", urlB:"inomhus.jpg"},
+    {altA:"Utomhus", descA:"En utomhus aktivitet låter bra", altB:"Inomhus", descB:"Vi skulle vilja ha en inomhus aktivitet", urlA:"utomhus.jpg", urlB:"inomhus.jpg"},
 
     {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland.jpg", urlB:"öland.jpg"}
 ];
