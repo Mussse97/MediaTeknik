@@ -97,6 +97,79 @@
     },
 
     {
+        "description":"CASUAL",
+        "name": "Restaurang Blå Fågel",
+        "address": "Ottenby",
+        "text":"",
+        "price_range": "150-500",
+        "lat": "56.19603856026951",
+        "lng": "16.39850357175668",
+        "rating": "4",
+        "webbsite": "https://restfagelbla.se/meny/",
+        "crit": [
+            "N",
+            "N",
+            "N",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
+        "name": "Norrings Crêperie",
+        "address": "Slottsgatan 22",
+        "text":"",
+        "price_range": "50-300",
+        "lat": "56.87865758716149",
+        "lng": "16.652283423296236",
+        "rating": "4.6",
+        "webbsite": "http://www.norringscreperie.se/",
+        "crit": [
+            "Y",
+            "N",
+            "N",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
+        "name": "Lundgrensgarage",
+        "address": "Köpmangatan 18",
+        "text":"",
+        "price_range": "50-300",
+        "lat": "56.87858914243679",
+        "lng": "16.65848344048331",
+        "rating": "4.4",
+        "webbsite": "https://lundgrensgarage.se/",
+        "crit": [
+            "N",
+            "Y",
+            "Y",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
+        "name": "Restaurang Blå Fågel",
+        "address": "Ottenby",
+        "text":"",
+        "price_range": "150-500",
+        "lat": "56.19603856026951",
+        "lng": "16.39850357175668",
+        "rating": "4",
+        "webbsite": "https://restfagelbla.se/meny/",
+        "crit": [
+            "N",
+            "Y",
+            "N",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
         "name":"Slipkajen",
         "abstract":"Slipkajen strävar efter att alltid servera god mat, lagad från grunden. Råvarorna köper vi helst från lokala producenter och följer givetvis stundande säsong. <br> Till lunchen ingår vår salladsbuffé med olika dressingar samt nybakat bröd, efter maten ingår organiskt kaffe eller te.",
         "text":"Varmt Välkomna!",
