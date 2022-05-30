@@ -9,6 +9,7 @@ var choiceDivs;
 var extraElem;
 var l = 0;
 var mapElem;
+var sort = "rating";
 
 
 
@@ -40,6 +41,12 @@ const hatarAllt = [
     "Generell info",
     "Hitta hit",
     "Recensioner"
+];
+
+const sorts = [
+    "Betyg",
+    "Plats",
+    "Slumpmässigt"
 ];
 
 
@@ -136,9 +143,6 @@ function addJSON(owo,xd) {
     };
 }
 
-
-
-
 function whatJSON(owo,uwu,xd) {
     uwu = JSON.parse(uwu);
     
@@ -153,8 +157,9 @@ function whatJSON(owo,uwu,xd) {
         }
     }
     else najs = chosenAct;
-
+    
     let critCheck = [];
+
     if (uwu.length != 0) {
         for (let i = 1; i < xd.length; i++) {
             let criteria;
@@ -163,15 +168,15 @@ function whatJSON(owo,uwu,xd) {
 
             critCheck.push(criteria);
             for (let k = uwu.length-1; k >= 0; k--) {
-                if (xd[0] == "food" && i == 2) { // Om de måste ha uteservering tar vi bort 
-                    if (criteria == "Y" && uwu[k].crit[2] != criteria) uwu.splice(k,1);
+                let x = i-1;
+                if (xd[0] == "food" && x == 1) { // Om de måste ha uteservering tar vi bort 
+                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
                 }
-                else if (xd[0] == "food" && i == 3) {
-                    if (criteria == "Y" && uwu[k].crit[3] != criteria) uwu.splice(k,1);
+                else if (xd[0] == "food" && x == 2) {
+                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
                 }
-                else if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+                else if (uwu[k].crit[x] != criteria) uwu.splice(k,1);
             }
-
         }
     for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
     }
@@ -188,7 +193,36 @@ function whatJSON(owo,uwu,xd) {
 }
 
 function listAlts(owo) {
-    owo.sort((a,b) => b.rating - a.rating);
+    stepElem.innerHTML = "";
+    
+    if (sort == "Betyg") owo.sort((a,b) => b.rating - a.rating);
+    /*else if (sort == "Plats") {
+        for (let i = 0; i < owo.length; i++) {
+            owo[i].position = [
+                "lat" = owo[i].lat, 
+                "lng" = owo[i].lng
+            ]
+            owo[i].distance = haversineDistance(owo[i]);
+            alert(owo[i].distance)
+        }
+        owo.sort((a,b) => b.rating - a.rating);
+    }*/
+    else if (sort == "Slumpmässigt") owo.sort((a, b) => 0.5 - Math.random());
+    
+    let gamerGirlWaterContainer = document.createElement("div");
+    stepElem.appendChild(gamerGirlWaterContainer);
+
+    for (let i = 0; i < sorts.length; i++) {
+        let gamerGirlWater = document.createElement("button");
+        gamerGirlWater.innerHTML += sorts[i];
+        gamerGirlWater.classList.add("buttonR");
+        gamerGirlWaterContainer.classList.add("GamerGirlsDefyGravity");
+        gamerGirlWater.addEventListener("click", function() {
+            sort = sorts[i];
+            listAlts(owo);
+        })
+        gamerGirlWaterContainer.appendChild(gamerGirlWater);
+    }
 
     nerd = [];
     
@@ -223,6 +257,7 @@ function svante() {
 }
 
 function lploss() { 
+    if (this.classList.contains("vald")) return;
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
 
