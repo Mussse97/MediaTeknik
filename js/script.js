@@ -13,7 +13,7 @@ const chosenRes = [
 
     {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint.jpg", urlB:"casual.jpg"}, 
 
-    {altA:"Inomhus", descA:"Det ska vara inomhus", altB:"Utomhus", descB:" Det ska finnas utomhusservering",  urlA:"inomhusservering.jpg", urlB:"utomhusservering.jpg"},
+    {altB:"Inomhus", descB:"Det ska vara inomhus", altA:"Utomhus", descA:" Det ska finnas utomhusservering", urlB:"inomhusservering.jpg", urlA:"utomhusservering.jpg"},
 
     {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"},
 	

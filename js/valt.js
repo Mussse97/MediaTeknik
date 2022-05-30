@@ -19,7 +19,7 @@ const chosenAct = [
 
     {urlA:"&price_ranges=100-250", urlB:"&price_ranges=250-500"},
     
-    {urlA:"&outdoors=Y", urlB:""},
+    {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
     
     {urlA:"&provinces=småland", urlB:"&provinces=öland"}
 
@@ -29,7 +29,7 @@ const chosenFood = [
 
     {urlA:"&types=FINE_DINING&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN", urlB:"&types=CASUAL&sub_types=A_LA_CARTE,PASTRIES,LOCAL,ASIAN"},
 
-    {urlA:"&outdoor_seating=Y", urlB:"&outdoor_seating=N"},
+    {urlA:"&outdoor_seating=Y", urlB:"&indoor_seating=Y"},
 
     {urlA:"&vegetarian_option=Y", urlB:"&vegetarian_option=N"},
     
@@ -143,7 +143,11 @@ function whatJSON(owo,uwu,xd) {
     uwu = JSON.parse(uwu);
     owo = JSON.parse(owo).payload;
 
-    console.log(owo)
+    if (owo.length == 0) {
+        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
+        return;
+    }
+
     let najs;
     if (xd[0] == "food") {
         najs = chosenFood;
@@ -157,35 +161,34 @@ function whatJSON(owo,uwu,xd) {
     else najs = chosenAct;
 
     let critCheck = [];
-    for (let i = 1; i < xd.length; i++) {
-        let criteria;
-        if (xd[i] == najs[i].urlA) criteria = "Y";
-        else criteria = "N";
+    if (uwu.length != 0) {
+        for (let i = 1; i < xd.length; i++) {
+            let criteria;
+            if (xd[i] == najs[i].urlA) criteria = "Y";
+            else criteria = "N";
 
-        critCheck.push(criteria);
-        for (let k = uwu.length-1; k >= 0; k--) {
-            if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+            critCheck.push(criteria);
+            for (let k = uwu.length-1; k >= 0; k--) {
+                if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+            }
+
         }
-
-    }
-
     for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
-
+    }
+    
     listAlts(owo);
 }
 
 function listAlts(owo) {
-    if (owo.length == 0) {
-        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
-        return;
-    }
-
     nerd = [];
     
     for (let i = 0; i < resultat; i++) {
 
         if (owo[i] == undefined) {
-            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            let girlPower = document.createElement("div");
+            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            girlPower.classList.add("error");
+            stepElem.appendChild(girlPower);
             break;
         }
 
@@ -198,6 +201,7 @@ function listAlts(owo) {
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
         baby.addEventListener("click",lploss);
+        baby.style.cursor = "pointer";
 
         stepElem.appendChild(baby);
         stepElem.insertBefore(number, baby);
@@ -208,7 +212,7 @@ function svante() {
     this.classList.toggle("sexmaskinenSigvardFjante");
 }
 
-function lploss() {
+function lploss() { 
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
 
