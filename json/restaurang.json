@@ -2,14 +2,15 @@
     {
         "description": "FINE_DINING",
         "name": "4 Krogar vid sjön",
-        "abstract": "",
+        "abstract": "Vi erbjuder en lugn och trevlig miljö med en magnifik utsikt över Växjösjön. Vår erfarna personal ser till att skapa en trevlig atmosfär. Hos oss får ni utsökt mat i olika stilar. I vårt Steakhouse har vi grillrätter för alla smaker; eldigt och aromatiskt! Vill ni hellre ha buffé är ni välkomna till vår Bistro.",
         "address": "Vattentorget 5",
         "text":"",
         "price_range": "150-400",
         "lat": " 56.87586596646526",
         "lng": "14.81223609171099",
         "rating": "3.8",
-        "webbsite": "",
+        "webbsite": "https://4krogar.se/",
+        "provinces": "Småland",
         "crit": [
             "Y",
             "N",
@@ -21,6 +22,7 @@
     {
         "description": "CASUAL",
         "name": "Gröna Stugan",
+        "abstract": "Den ”Gröna Lådan” vid den centrala gästhamnen i Kalmar.",
         "address": "Larmgatan 1",
         "text":"",
         "price_range": "100-500",
@@ -28,6 +30,7 @@
         "lng": "16.36311182162423",
         "rating": "4.4",
         "webbsite": "https://www.gronastuganikalmar.se/",
+        "provinces": "Småland",
         "crit": [
             "Y",
             "Y",
@@ -102,6 +105,7 @@
 
         "description":"CASUAL",
         "name": "Restaurang Blå Fågel",
+        "abstract": "Vill ni se Östersjöns vågor rulla in mot stranden så föreslår vi att ni gör ett besök på Restaurang Fågel som ligger på Ölands södra udde. Våra närmaste grannar är Fyren Långe Jan, naturum Ottenby, Ottenby fågelstation och Naturbutiken.",
         "address": "Ottenby",
         "text":"",
         "price_range": "150-500",
@@ -120,6 +124,7 @@
     {
         "description":"CASUAL",
         "name": "Norrings Crêperie",
+        "abstract": "Nu har vi slagit upp portarna till vårat crêperie och det tycker vi känns fantastiskt roligt och spännande. Ni hittar oss på Möbleri Mittbrodt’s mysiga innergård där Café Snickargården huserade innan. ",
         "address": "Slottsgatan 22",
         "text":"",
         "price_range": "50-300",
@@ -138,6 +143,7 @@
     {
         "description":"CASUAL",
         "name": "Lundgrensgarage",
+        "abstract": "Vi lagar vår mat ”low & slow”, alltså i låg temperatur och långsamt. Till det läggs rök från olika lövträd, det är detta som kallas barbecue. Längst tid tar vår oxbringa som är färdig efter 14-18 timmar. Metoden är känd för att ge ett oerhört mört, smakrikt och saftig kött. Det smakar dock inte så mycket rök som man kan tro. Så skynda dig till Lundgrens innan det tar slut.",
         "address": "Köpmangatan 18",
         "text":"",
         "price_range": "50-300",

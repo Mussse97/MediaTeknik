@@ -139,8 +139,8 @@
         "webbsite": "https://borgholmscampingar.se/kopingbaden/",
         "provinces": "Öland",
         "crit": [
-            "Y",
             "N",
+            "Y",
             "Y",
             "N"
         ]
@@ -228,5 +228,26 @@
             "Y",
             "Y"
         ]
+    },
+    {
+        "description": "Escape room",
+        "name": "Escapefarm",
+        "abstract": "ESCAPEFARM är en escaperoom-utmaning på norra Öland. Det är en gruppaktivitet som passar alla. Du och dina medspelare blir insläppta i ett okänt rum och måste söka efter ledtrådar, använda föremål och lösa gåtor för att ta er ut innan tiden tar slut, max 60 minuter.",
+        "text": "",
+        "address": "Landsvägen Högby 16, 387 71 Löttorp",
+        "price_range": "250-750",
+        "lat": " 57.162629518786986",
+        "lng": "17.013039576914203",
+        "outdoors": "N",
+        "rating": "4.8",
+        "webbsite": "http://www.escapefarm.se/",
+        "provinces": "Öland",
+        "crit": [
+            "Y",
+            "N",
+            "N",
+            "N"
+        ]
     }
+    
 ]
