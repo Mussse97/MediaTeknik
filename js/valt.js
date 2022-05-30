@@ -17,7 +17,8 @@ const chosenAct = [
 
     {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
 
-    {urlA:"&price_ranges=100-250", urlB:""},
+
+    {urlA:"&price_ranges=100-250,0-25", urlB:"&price_ranges=250-500,1250-5000"},
     
     {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
     
@@ -92,7 +93,7 @@ function applyController(xd) {
         if (request.readyState == 4) 
             if (request.status == 200) {
                 if (xd[0] == "food") foodFix(request.responseText,xd);
-                else addJSON(request.responseText,xd);
+                else addJSON(JSON.parse(request.responseText).payload,xd);
             }
         else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
@@ -102,7 +103,7 @@ function foodFix(owo,xd) {
     owo = JSON.parse(owo).payload;
 
     if (owo.length == 0) {
-        addJSON(owo)    
+        addJSON(owo,xd);
         return;
     }
 
@@ -118,7 +119,7 @@ function foodFix(owo,xd) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) addJSON(request.responseText,xd)
+            if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
             else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
@@ -141,7 +142,6 @@ function addJSON(owo,xd) {
 
 function whatJSON(owo,uwu,xd) {
     uwu = JSON.parse(uwu);
-    owo = JSON.parse(owo).payload;
     
     let najs;
     if (xd[0] == "food") {
@@ -166,7 +166,13 @@ function whatJSON(owo,uwu,xd) {
 
             critCheck.push(criteria);
             for (let k = uwu.length-1; k >= 0; k--) {
-                if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+                if (xd[0] == "food" && i == 2) { // Om de måste ha uteservering tar vi bort 
+                    if (criteria == "Y" && uwu[k].crit[2] != criteria) uwu.splice(k,1);
+                }
+                else if (xd[0] == "food" && i == 3) {
+                    if (criteria == "Y" && uwu[k].crit[3] != criteria) uwu.splice(k,1);
+                }
+                else if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
             }
 
         }
@@ -185,6 +191,8 @@ function whatJSON(owo,uwu,xd) {
 }
 
 function listAlts(owo) {
+    owo.sort((a,b) => b.rating - a.rating);
+
     nerd = [];
     
     for (let i = 0; i < resultat; i++) {
