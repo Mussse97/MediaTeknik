@@ -1,14 +1,16 @@
 [
     {
+        "description": "FINE_DINING",
         "name": "4 Krogar vid sjön",
-        "abstract": "",
-        "adress": "Vattentorget 5",
+        "abstract": "Vi erbjuder en lugn och trevlig miljö med en magnifik utsikt över Växjösjön. Vår erfarna personal ser till att skapa en trevlig atmosfär. Hos oss får ni utsökt mat i olika stilar. I vårt Steakhouse har vi grillrätter för alla smaker; eldigt och aromatiskt! Vill ni hellre ha buffé är ni välkomna till vår Bistro.",
+        "address": "Vattentorget 5",
         "text":"",
         "price_range": "150-400",
         "lat": " 56.87586596646526",
         "lng": "14.81223609171099",
         "rating": "3.8",
-        "webbsite": "",
+        "webbsite": "https://4krogar.se/",
+        "provinces": "Småland",
         "crit": [
             "Y",
             "N",
@@ -18,7 +20,9 @@
     },
   
     {
+        "description": "CASUAL",
         "name": "Gröna Stugan",
+        "abstract": "Den ”Gröna Lådan” vid den centrala gästhamnen i Kalmar.",
         "address": "Larmgatan 1",
         "text":"",
         "price_range": "100-500",
@@ -26,6 +30,7 @@
         "lng": "16.36311182162423",
         "rating": "4.4",
         "webbsite": "https://www.gronastuganikalmar.se/",
+        "provinces": "Småland",
         "crit": [
             "Y",
             "Y",
@@ -39,7 +44,7 @@
         "name": "Lammet & Grisen",
         "abstract": "I över 40 år har ölänningar och sommargäster upplevt och älskat den unika maten och stämningen <br>– i den unika byggnaden –<br> på Lammet & Grisen, beläget på norra Öland.",
         "address": "Hornvägen 35",
-        "Pricerange": "100-500 ",
+        "pricerange": "100-500 ",
         "lat": " 57.176039524779355",
         "lng": "16.940360587626813",
         "outdoors": "Y",
@@ -60,7 +65,7 @@
         "abstract": "Här njuter du av god mat och dryck i en avslappnad och trivsam miljö med personlig service.",
         "text": "",
         "address": "Södra Långgatan 2",
-        "Price_range": "",
+        "price_range": "",
         "lat": "  56.87899586577576",
         "lng": "16.650931271355645",
         "outdoors": "Y",
@@ -81,11 +86,11 @@
         "abstract": "Ledstjärnan på Gamla Televerket är att servera god och vällagad mat i en mysig, avslappnad miljö.",
         "text": "",
         "address": "Västra Kyrkogatan 20B",
-        "Price_range": "",
+        "price_range": "",
         "lat": "56.87979175324749",
         "lng": "16.655451766405925",
         "outdoors": "Y",
-        "rating": "4,6",
+        "rating": "4.6",
         "webbsite": "https://gamlateleverket.se/vin-bistro/",
         "provinces": "Öland",
         "crit": [
@@ -97,6 +102,66 @@
     },
 
     {
+
+        "description":"CASUAL",
+        "name": "Restaurang Blå Fågel",
+        "abstract": "Vill ni se Östersjöns vågor rulla in mot stranden så föreslår vi att ni gör ett besök på Restaurang Fågel som ligger på Ölands södra udde. Våra närmaste grannar är Fyren Långe Jan, naturum Ottenby, Ottenby fågelstation och Naturbutiken.",
+        "address": "Ottenby",
+        "text":"",
+        "price_range": "150-500",
+        "lat": "56.19603856026951",
+        "lng": "16.39850357175668",
+        "rating": "4",
+        "webbsite": "https://restfagelbla.se/meny/",
+        "crit": [
+            "N",
+            "N",
+            "N",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
+        "name": "Norrings Crêperie",
+        "abstract": "Nu har vi slagit upp portarna till vårat crêperie och det tycker vi känns fantastiskt roligt och spännande. Ni hittar oss på Möbleri Mittbrodt’s mysiga innergård där Café Snickargården huserade innan. ",
+        "address": "Slottsgatan 22",
+        "text":"",
+        "price_range": "50-300",
+        "lat": "56.87865758716149",
+        "lng": "16.652283423296236",
+        "rating": "4.6",
+        "webbsite": "http://www.norringscreperie.se/",
+        "crit": [
+            "Y",
+            "N",
+            "N",
+            "N"
+        ]
+    } , 
+
+    {
+        "description":"CASUAL",
+        "name": "Lundgrensgarage",
+        "abstract": "Vi lagar vår mat ”low & slow”, alltså i låg temperatur och långsamt. Till det läggs rök från olika lövträd, det är detta som kallas barbecue. Längst tid tar vår oxbringa som är färdig efter 14-18 timmar. Metoden är känd för att ge ett oerhört mört, smakrikt och saftig kött. Det smakar dock inte så mycket rök som man kan tro. Så skynda dig till Lundgrens innan det tar slut.",
+        "address": "Köpmangatan 18",
+        "text":"",
+        "price_range": "50-300",
+        "lat": "56.87858914243679",
+        "lng": "16.65848344048331",
+        "rating": "4.4",
+        "webbsite": "https://lundgrensgarage.se/",
+        "crit": [
+            "N",
+            "Y",
+            "Y",
+            "N"
+        ]
+    } , 
+
+  
+    {
+        "description":"CASUAL",
         "name":"Slipkajen",
         "abstract":"Slipkajen strävar efter att alltid servera god mat, lagad från grunden. Råvarorna köper vi helst från lokala producenter och följer givetvis stundande säsong. <br> Till lunchen ingår vår salladsbuffé med olika dressingar samt nybakat bröd, efter maten ingår organiskt kaffe eller te.",
         "text":"Varmt Välkomna!",
@@ -112,6 +177,50 @@
             "Y",
             "Y"
         ]
+    },
+    
+    {
+        "description": "CASUAL",
+        "name": "Rällapaviljongen",
+        "abstract": "",
+        "text": "",
+        "address": "Rällavägen 28",
+        "price_range": "",
+        "lat": " 56.77318413914049",
+        "lng": "16.56522631435372",
+        "outdoors": "Y",
+        "rating": "4.5",
+        "webbsite": "https://www.rallapaviljongen.se/",
+        "provinces": "Öland",
+        "crit": [
+            "N",
+            "Y",
+            "Y",
+            "N"
+        ]
+       
+    },
+    {
+        "description": "CASUAL",
+        "name": "Restaurang Pappa Blå",
+        "abstract": "Restaurang Pappa Blå startades redan på 1990-talet av Jan Hermansson. 1992 köpte bröderna Marelius föräldrar restaurangen och drev den från och med sommaren 1993. Under somrarna så jobbade bröderna som sommarpersonal på Pappa Blå. År 2000 tog bröderna Marcus, Alexander och Simon över driften och driver den än idag.",
+        "text": "",
+        "address": "Storgatan 3K",
+        "price_range": "99-200",
+        "lat": "  56.87992708606753",
+        "lng": "16.652723984602755",
+        "outdoors": "Y",
+        "rating": "4.3",
+        "webbsite": "https://www.pappabla.se/meny",
+        "provinces": "Öland",
+        "crit": [
+            "N",
+            "N",
+            "Y",
+            "N"
+        ]
+        
     }
+    
 ]
 
