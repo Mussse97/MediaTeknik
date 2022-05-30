@@ -23,18 +23,12 @@ const choices = []; // Vilket alternativ som är valt
 var fraga = 0; // Vilken fråga är vi på?
 var progressElem; // Bollarna
 var chosenThing; // Vad är valt, aktivitet eller restaurang?
-var preloaded = 0;
-var images = [];
 var choiceElem; // Parent till de vi bryr oss om
 
 // Initiera skit
 function init() {
     choiceElem = document.querySelectorAll("#choice div");
 	progressElem = document.querySelectorAll("#progress div");
-
-	
-
-	preloader();
 
 	for (let i = 0; i < progressElem.length; i++) {
 		progressElem[i].addEventListener("click",rewind);
@@ -48,34 +42,7 @@ function init() {
 	}
 }
 
-window.addEventListener("load", preloader);
-
-
- 
-function preloader() {
-    let url;
-	for (let i = 0; i < chosenRes.length*4; i++) {
-		if (i < 4) url = chosenRes[i].urlA
-		if (i >= 4 && i < 8) url = chosenRes[i-4].urlB
-		if (i >= 8 && i < 12) url = chosenAct[i-8].urlA
-		if (i >= 12) url = chosenAct[i-12].urlB
-		images.push(url);
-	}
-	
-	for (var i = 0; i < images.length; i++) {
-        var tempImage = new Image();
-        tempImage.addEventListener("load", progress, true);
-        tempImage.src = "bilder/" + images[i];
-    }
-}
- 
-function progress() {
-    preloaded++;
-     
-    if (preloaded == images.length) {
-        init() //ALL Images have been loaded, perform the desired action
-    }
-}
+window.addEventListener("load", init);
 
 // Typ allt
 function stuff() { 
