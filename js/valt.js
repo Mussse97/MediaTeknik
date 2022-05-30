@@ -102,7 +102,7 @@ function foodFix(owo,xd) {
     owo = JSON.parse(owo).payload;
 
     if (owo.length == 0) {
-        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
+        addJSON(owo)    
         return;
     }
 
@@ -142,12 +142,7 @@ function addJSON(owo,xd) {
 function whatJSON(owo,uwu,xd) {
     uwu = JSON.parse(uwu);
     owo = JSON.parse(owo).payload;
-
-    if (owo.length == 0) {
-        stepElem.innerHTML = "<h2>Finns inga resultat :<</h2>"
-        return;
-    }
-
+    
     let najs;
     if (xd[0] == "food") {
         najs = chosenFood;
@@ -174,6 +169,14 @@ function whatJSON(owo,uwu,xd) {
 
         }
     for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
+    }
+
+    if (owo.length == 0) {
+        let girlPower = document.createElement("div");
+        girlPower.innerHTML += "<h2>Finns inga resultat :<</h2>"
+        girlPower.classList.add("error");
+        stepElem.appendChild(girlPower);
+        return;
     }
     
     listAlts(owo);
@@ -252,7 +255,6 @@ function lploss() {
 
 
 function musse(lol,wow) {
-    console.log(wow)
     genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
     if (lol == null) {
