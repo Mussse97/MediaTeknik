@@ -161,20 +161,21 @@ function whatJSON(owo,uwu,xd) {
     else najs = chosenAct;
 
     let critCheck = [];
-    for (let i = 1; i < xd.length; i++) {
-        let criteria;
-        if (xd[i] == najs[i].urlA) criteria = "Y";
-        else criteria = "N";
+    if (uwu.length != 0) {
+        for (let i = 1; i < xd.length; i++) {
+            let criteria;
+            if (xd[i] == najs[i].urlA) criteria = "Y";
+            else criteria = "N";
 
-        critCheck.push(criteria);
-        for (let k = uwu.length-1; k >= 0; k--) {
-            if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+            critCheck.push(criteria);
+            for (let k = uwu.length-1; k >= 0; k--) {
+                if (uwu[k].crit[i-1] != criteria) uwu.splice(k,1);
+            }
+
         }
-
-    }
-
     for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
-
+    }
+    
     listAlts(owo);
 }
 
@@ -184,7 +185,10 @@ function listAlts(owo) {
     for (let i = 0; i < resultat; i++) {
 
         if (owo[i] == undefined) {
-            stepElem.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            let girlPower = document.createElement("div");
+            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            girlPower.classList.add("error");
+            stepElem.appendChild(girlPower);
             break;
         }
 

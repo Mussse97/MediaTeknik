@@ -287,9 +287,6 @@ a {
     color: #fbedf0;
 }
 
-#stepElement h2 {
-    background-color: red;
-}
 
 /* SYNS INTE JUST NU -------------------------------------------------------------------------------------------------------------------------------------------- */
 #goBack {
@@ -329,6 +326,16 @@ a {
     background-color: #fbedf0;
     text-align: left;
     width: 43.01vw;
+}
+#stepElement .error {
+    background-color: red;
+    margin-bottom: 1vh;
+    width: 100%;
+    padding: 0vw;
+    text-align: center;
+}
+#stepElement .error:hover {
+    background-color: red;
 }
 
 #stepElement div:hover {
