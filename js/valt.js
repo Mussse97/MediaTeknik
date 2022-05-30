@@ -17,6 +17,7 @@ const chosenAct = [
 
     {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
 
+
     {urlA:"&price_ranges=100-250,0-25", urlB:"&price_ranges=250-500,1250-5000"},
     
     {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
@@ -155,9 +156,11 @@ function whatJSON(owo,uwu,xd) {
     else najs = chosenAct;
 
     let critCheck = [];
+   
     if (uwu.length != 0) {
         for (let i = 1; i < xd.length; i++) {
             let criteria;
+            
             if (xd[i] == najs[i].urlA) criteria = "Y";
             else criteria = "N";
 
