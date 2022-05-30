@@ -340,6 +340,23 @@ a {
     text-align: center;
 }
 
+.GamerGirlsDefyGravity {
+    position:absolute;
+    top: 12vh;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.GamerGirlsDefyGravity .buttonR {
+    background-color: #692323;
+    font-size: 20px;
+    margin-right: 1vw;
+}
+
+.GamerGirlsDefyGravity .buttonR:hover {
+    background-color: #9a7575;
+}
+
 #stepElement .error:hover {
     background-color: red;
 }
@@ -364,7 +381,7 @@ a {
     right: 0;
     width: 45vw;
     background-color: #ae7381;
-    height: 82vh;
+    height: 83vh;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     overflow-y: scroll;
     font-size: 20px;
