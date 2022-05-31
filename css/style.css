@@ -320,21 +320,21 @@ a {
     color: white;
 }
 
-.GamerGirlsDefyGravity {
+#sortBtn {
     position: absolute;
     top: 100px;
     padding: 0;
     margin-left: 3vw;
 }
 
-.GamerGirlsDefyGravity .buttonR {
+#sortBtn .buttonR {
     background-color: #692323;
     color: white;
     font-size: 20px;
     margin-right: 1vw;
 }
 
-.GamerGirlsDefyGravity .buttonR:hover {
+#sortBtn .buttonR:hover {
     background-color: #9a7575;
 }
 
@@ -845,7 +845,7 @@ a {
         grid-area: C;
     }
 
-    .GamerGirlsDefyGravity {
+    #sortBtn {
         position: relative;
         height: 45px;
         top: 25px;
@@ -877,7 +877,7 @@ a {
         grid-template-columns: 100vw;
     }
 
-    .GamerGirlsDefyGravity {
+    #sortBtn {
         top: -5px;
         margin-left: 0;
     }

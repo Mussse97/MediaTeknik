@@ -10,6 +10,7 @@ var commentElem; // Används för kommentarer från smapi.
 var choiceDivs; // Extra valen som finns i resultat sidan.
 var extraElem; // ett div element som skapas för att visa extra information som google maps.
 var l = 0;
+var o = 0;
 var mapElem; // Detta är elementet för google maps.
 var sort = "Betyg"; // Variabel som används för att sortera med betyg från smapi.
 var toggle = 0;
@@ -187,10 +188,10 @@ function whatJSON(owo,resArray,xd) {
     }
 
     if (owo.length == 0) {
-        let girlPower = document.createElement("div");
-        girlPower.innerHTML += "<h2>Finns inga resultat</h2>"
-        girlPower.classList.add("error");
-        stepElem.appendChild(girlPower);
+        let errorElem = document.createElement("div");
+        errorElem.innerHTML += "<h2>Finns inga resultat</h2>"
+        errorElem.classList.add("error");
+        stepElem.appendChild(errorElem);
         return;
     }
     
@@ -206,21 +207,24 @@ function listAlts(owo) {
     }
     else if (sort == "Slumpmässigt") owo.sort((a, b) => 0.5 - Math.random());
     
-    let gamerGirlWaterContainer = document.createElement("div");
-    gamerGirlWaterContainer.setAttribute("id","sortBtn");
-    gamerGirlWaterContainer.classList.add("GamerGirlsDefyGravity");
-    stepElem.parentElement.appendChild(gamerGirlWaterContainer);
+    if (o == 0) {
+        let btnContainer = document.createElement("div");
+        btnContainer.setAttribute("id","sortBtn");
+        stepElem.parentElement.appendChild(btnContainer);
 
-    for (let i = 0; i < sorts.length; i++) {
-        let gamerGirlWater = document.createElement("button");
-        gamerGirlWater.innerHTML += sorts[i];
-        gamerGirlWater.classList.add("buttonR");
-        gamerGirlWater.addEventListener("click", function() {
-            sort = sorts[i];
-            listAlts(owo);
-        })
-        gamerGirlWaterContainer.appendChild(gamerGirlWater);
+        o++;
+        for (let i = 0; i < sorts.length; i++) {
+            let btn = document.createElement("button");
+            btn.innerHTML += sorts[i];
+            btn.classList.add("buttonR");
+            btn.addEventListener("click", function() {
+                sort = sorts[i];
+                listAlts(owo);
+            })
+            btnContainer.appendChild(btn);
+        }
     }
+    
 
     nerd = []; // tom array.
    
@@ -228,10 +232,10 @@ function listAlts(owo) {
     for (let i = 0; i < resultat; i++) {
 
         if (owo[i] == undefined) {
-            let girlPower = document.createElement("div");
-            girlPower.innerHTML += "<h2>Finns inga flera resultat </h2>"
-            girlPower.classList.add("error");
-            stepElem.appendChild(girlPower);
+            let errorElem = document.createElement("div");
+            errorElem.innerHTML += "<h2>Finns inga flera resultat </h2>"
+            errorElem.classList.add("error");
+            stepElem.appendChild(errorElem);
             break;
         }
 
