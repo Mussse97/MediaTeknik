@@ -42,7 +42,7 @@ const chosenFood = [
     {urlA:"&provinces=småland", urlB:"&provinces=öland"} //Provinces finns bara i establshment taggen...
 ];
 // Detta är arrayer som blir extra val i resultat sidan.
-const hatarAllt = [
+const extraInfo2 = [
     "Generell info",
     "Hitta hit",
     "Recensioner"
@@ -79,13 +79,13 @@ function fixCode(code) {
     return code;
 }
 
-function getController(uwu) {
+function getController(resArray) {
     let controller = [];
    
-    for (let i = 0; i < uwu.length; i++) {
-        if (fixedCode[i] == 0) controller.push(uwu[i].urlA);
-        else if (fixedCode[i] == 1) controller.push(uwu[i].urlB);
-        else controller.push(uwu[i].urlC);
+    for (let i = 0; i < resArray.length; i++) {
+        if (fixedCode[i] == 0) controller.push(resArray[i].urlA);
+        else if (fixedCode[i] == 1) controller.push(resArray[i].urlB);
+        else controller.push(resArray[i].urlC);
     }
 
     applyController(controller);
@@ -135,11 +135,11 @@ function foodFix(owo,xd) {
 }
 // En request till Json filerna.
 function addJSON(owo,xd) {
-    let najs;
-    if (xd[0] == "food") najs = "restaurang";
-    else najs = "aktivitet";
+    let reasList;
+    if (xd[0] == "food") reasList = "restaurang";
+    else reasList = "aktivitet";
     let request = new XMLHttpRequest(); // AJAX andropningsvariabel
-    request.open("GET","json/"+najs+".json",true);
+    request.open("GET","json/"+reasList+".json",true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4)
@@ -147,43 +147,43 @@ function addJSON(owo,xd) {
     };
 }
 
-function whatJSON(owo,uwu,xd) {
-    uwu = JSON.parse(uwu);
+function whatJSON(owo,resArray,xd) {
+    resArray = JSON.parse(resArray);
     
-    let najs;
+    let reasList;
     if (xd[0] == "food") {
-        najs = chosenFood;
+        reasList = chosenFood;
         
-        if (xd[4] == najs[4].urlB) {
+        if (xd[4] == reasList[4].urlB) {
             for (let k = owo.length-1; k >= 0; k--) {
                 if (owo[k].province == "Småland") owo.splice(k,1)
             }
         }
     }
-    else najs = chosenAct;
+    else reasList = chosenAct;
     
     let critCheck = []; // detta är en array som används för filtrering av information som finns i Json filer.
 
-    if (uwu.length != 0) {
+    if (resArray.length != 0) {
         for (let i = 1; i < xd.length; i++) {
             let criteria;
             // I Json filerna finns criterier Y eller N, denna funktion kontrollerar dessa kriterier.
-            if (xd[i] == najs[i].urlA) criteria = "Y";
+            if (xd[i] == reasList[i].urlA) criteria = "Y";
             else criteria = "N";
 
             critCheck.push(criteria);
-            for (let k = uwu.length-1; k >= 0; k--) {
+            for (let k = resArray.length-1; k >= 0; k--) {
                 let x = i-1;
                 if (xd[0] == "food" && x == 1) { // Om de måste ha uteservering tar vi bort 
-                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                    if (criteria == "Y" && resArray[k].crit[x] != criteria) resArray.splice(k,1);
                 }
                 else if (xd[0] == "food" && x == 2) {
-                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                    if (criteria == "Y" && resArray[k].crit[x] != criteria) resArray.splice(k,1);
                 }
-                else if (uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                else if (resArray[k].crit[x] != criteria) resArray.splice(k,1);
             }
         }
-    for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
+    for (let i = 0; i < resArray.length; i++) owo.push(resArray[i]);
     }
 
     if (owo.length == 0) {
@@ -259,18 +259,18 @@ function resultToggle() {
 function listResults() { 
     if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView();
     if (this.classList.contains("vald")) return;
-    let wow = this.getAttribute("data-ix");
-    wow = nerd[wow];
+    let smapObj = this.getAttribute("data-ix");
+    smapObj = nerd[smapObj];
 
     
     if (l == 0) {
-        for (let i = 0; i < hatarAllt.length; i++) {
-            let sixten = document.createElement("div");
-            sixten.classList.add("closeDivs");
-            sixten.addEventListener("click",resultToggle);
-            sixten.style.cursor = "pointer";
-            sixten.innerHTML = "<h1>" + hatarAllt[i] + "</h1>";
-            extraElem.insertBefore(sixten,choiceDivs[i]);
+        for (let i = 0; i < extraInfo2.length; i++) {
+            let newDiv = document.createElement("div");
+            newDiv.classList.add("closeDivs");
+            newDiv.addEventListener("click",resultToggle);
+            newDiv.style.cursor = "pointer";
+            newDiv.innerHTML = "<h1>" + extraInfo2[i] + "</h1>";
+            extraElem.insertBefore(newDiv,choiceDivs[i]);
         }
         l++;
         genElem.previousElementSibling.classList.toggle("closeDivs");
@@ -284,44 +284,46 @@ function listResults() {
     commentElem.innerHTML = "";
     
     // ett api request från smapi
-    if (wow.num_reviews > 0) {
+    if (smapObj.num_reviews > 0) {
         let request = new XMLHttpRequest(); 
-        request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
+        request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + smapObj.id ,true);
         request.send(null); 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
-                if (request.status == 200) musse(request.responseText,wow);
-                else stepElem.innerHTML = "<h2>något gick fel</h2>";
+
+                if (request.status == 200) musse(request.responseText,smapObj);
+                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+
         };
     }
-    else musse(null,wow);
+    else musse(null,smapObj);
 }
 // Här så hämtar vi informationen från smapi och skriver ut dom i sidan.
-function musse(lol,wow) {
-    if (wow.website != undefined && wow.website != "") genElem.innerHTML = "<a href='" + wow.website + "' target='ref'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
-    else genElem.innerHTML = "<h3>" + wow.name + "</h3><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
+function musse(commentCheck,smapObj) {
+    if (smapObj.website != undefined && smapObj.website != "") genElem.innerHTML = "<a href='" + smapObj.website + "' target='ref'><h3>" + smapObj.name + "</h3></a><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
+    else genElem.innerHTML = "<h3>" + smapObj.name + "</h3><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     
 
-    if (lol == null) { // om det inte finns några kommentarer så får man ett fel meddelande.
+    if (commentCheck == null) { // om det inte finns några kommentarer så får man ett fel meddelande.
         commentElem.innerHTML= "<h4>Finns tyvärr inga recentioner för denna plats.</h4>";
     }
     else {
-        uwu = JSON.parse(lol).payload;
-        for (let i = 0; i < uwu.length; i++) {
+        resArray = JSON.parse(commentCheck).payload;
+        for (let i = 0; i < resArray.length; i++) {
             let comment = document.createElement("div");
             comment.classList.add("comment");
-            comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + uwu[i].comment + "</p>";
+            comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + resArray[i].comment + "</p>";
             commentElem.appendChild(comment);
         }
     }
   
-    initMap(wow);
+    initMap(smapObj);
 };
 
 // Denna funktion så skapar vi google mappen och lägger focus på positonen som vald adress ligger i.
-function initMap(wow) {
+function initMap(smapObj) {
     //const eventLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
-    let eventLatLng = new google.maps.LatLng( wow.lat , wow.lng );
+    let eventLatLng = new google.maps.LatLng( smapObj.lat , smapObj.lng );
     let map = new google.maps.Map(mapElem, {
         zoom: 10,
         center: eventLatLng,
@@ -337,17 +339,17 @@ function initMap(wow) {
     });
     a.setMap(map);
 
-    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>"; // Skriver ut adress.
-    let minion = document.createElement("button");// Skapar en knappp som används för att kunna gemföra avståndet från vald adress till nuvarande position.
-    minion.classList.add("buttonR");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion); // KOLLA PÅ SEN
-    minion.innerHTML = "Visa från min position";
-    minion.addEventListener("click", function() { getLocation(wow,map) });
-    mapElem.previousElementSibling.appendChild(minion);
+    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ smapObj.address +"</p>"; // Skriver ut adress.
+    let mapBtn = document.createElement("button");// Skapar en knappp som används för att kunna gemföra avståndet från vald adress till nuvarande position.
+    mapBtn.classList.add("buttonR");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(mapBtn); // KOLLA PÅ SEN
+    mapBtn.innerHTML = "Visa från min position";
+    mapBtn.addEventListener("click", function() { getLocation(smapObj,map) });
+    mapElem.previousElementSibling.appendChild(mapBtn);
 }
 
 // I denna funktioin så tar den positionen från vald adress och din nuvarande position och lägger den i variabler.
-function getLocation(wow,map) {
+function getLocation(smapObj,map) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
@@ -360,7 +362,7 @@ function getLocation(wow,map) {
             
                 
             const flightPlanCoordinates = [
-                {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
+                {lat:parseFloat(smapObj.lat), lng: parseFloat(smapObj.lng) },
                 {lat: p.coords.latitude ,lng:p.coords.longitude},
             ]
 
@@ -379,17 +381,17 @@ function getLocation(wow,map) {
 }
 // Hämtar ut din nuvarande position.
 function getDistance(owo) {
-    let hugeAnimeTiddies = new Promise((resolve) => {
+    let mapPromise = new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function (p) {
-            let uwu = [
+            let resArray = [
             lat = p.coords.latitude, 
             lng = p.coords.longitude
             ];
-            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],uwu);
+            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],resArray);
             resolve()
         })
     })
-    hugeAnimeTiddies.then(() => {
+    mapPromise.then(() => {
         listAlts(owo);
     })
 }
