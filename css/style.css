@@ -258,7 +258,6 @@ a {
 
 .comment {
     width: 100%;
-    padding: 1 vw;
     min-height: 8vw;
     display: block;
     border-top: 1px solid black;
@@ -460,9 +459,7 @@ a {
     linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-    ),
-    
-    
+    );
 }
 
 #notesDiv img {
