@@ -14,10 +14,6 @@ body {
     overflow: hidden;
 }
 
-body div {
-    overflow: hidden;
-}
-
 a {
     color: inherit;
 }
@@ -294,11 +290,9 @@ a {
     /*background-color: #9c5858;*/
     width: 47vw;
     padding-left: 3vw;
-    overflow: auto;
 }
 
 #stepElement div {
-    overflow: visible;
     margin-bottom: 1vh;
     padding: 1vw;
     padding-left: 3vw;
@@ -388,7 +382,7 @@ a {
     
 }
 
-.toggleResults + div,.toggleResults + div div {
+.sexmaskinenSigvardFjante + div,.sexmaskinenSigvardFjante + div div {
     position: absolute;
     left: 200% !important;
     height: 0 !important;
@@ -396,7 +390,7 @@ a {
     opacity: 0 !important;
 }
 
-.toggleResults + div #map {
+.sexmaskinenSigvardFjante + div #map {
     position: relative;
 }
 
@@ -477,16 +471,14 @@ a {
     padding:5px;
 }
 
-#notesDiv div:hover{
-    transform: scale(1.5);
-    transition: transform 1s;
-}
-
 .div3 {
     top: 4vw;
     right: 0vw;
+    transition: transform 2s;
 }
-
+.div3:hover{
+    transform: scale(1.5);
+}
 .div4 {
     top: 20vw;
     right: 17vw;
