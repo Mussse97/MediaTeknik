@@ -332,6 +332,10 @@ a {
     background-color: red;
 }
 
+#stepElement h4 {
+    float: right;
+}
+
 #stepElement .error {
     background-color: red;
     margin-bottom: 1vh;
@@ -342,7 +346,7 @@ a {
 
 .GamerGirlsDefyGravity {
     position:absolute;
-    top: 12vh;
+    top: 100px;
     padding: 0 !important;
     background-color: transparent !important;
 }

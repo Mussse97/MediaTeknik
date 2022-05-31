@@ -9,14 +9,15 @@ var choiceDivs;
 var extraElem;
 var l = 0;
 var mapElem;
-var sort = "rating";
+var sort = "Betyg";
+var toggle = 0;
 
 
 
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&descriptions=Gokart,Zipline,Skateboardpark", urlB:"&descriptions=Nöjespark,Gokart,Bowlinghall,Nöjescenter"},
+    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
 
     {urlA:"&price_ranges=100-250,0-25", urlB:"&price_ranges=250-500,1250-5000"},
     
@@ -195,19 +196,11 @@ function whatJSON(owo,uwu,xd) {
 
 function listAlts(owo) {
     stepElem.innerHTML = "";
-    
     if (sort == "Betyg") owo.sort((a,b) => b.rating - a.rating);
-    /*else if (sort == "Plats") {
-        for (let i = 0; i < owo.length; i++) {
-            owo[i].position = [
-                "lat" = owo[i].lat, 
-                "lng" = owo[i].lng
-            ]
-            owo[i].distance = haversineDistance(owo[i]);
-            alert(owo[i].distance)
-        }
-        owo.sort((a,b) => b.rating - a.rating);
-    }*/
+    else if (sort == "Plats") {
+        if (owo[0].distance == undefined) getDistance(owo); 
+        else if (owo[0].distance != undefined) owo.sort((a,b) => a.distance - b.distance);
+    }
     else if (sort == "Slumpmässigt") owo.sort((a, b) => 0.5 - Math.random());
     
     let gamerGirlWaterContainer = document.createElement("div");
@@ -240,7 +233,8 @@ function listAlts(owo) {
         let baby = document.createElement("div");
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
-        baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
+        if (owo[i].distance != undefined) baby.innerHTML = "<h3>"+ owo[i].name + "</h3><h4>"+ parseInt(owo[i].distance) + " km bort</h4><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + "<p>Pris: " + owo[i].price_range + " kr (per person)</p>";
+        else baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
         "<p>Pris: " + owo[i].price_range + " kr (per person)</p>";
 
         nerd.push(owo[i]);
@@ -296,7 +290,6 @@ function lploss() {
     else musse(null,wow);
 }
 
-
 function musse(lol,wow) {
     genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
 
@@ -317,7 +310,6 @@ function musse(lol,wow) {
   
     initMap(wow);
 };
-
 
 function initMap(wow) {
     //const eventLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
@@ -347,7 +339,7 @@ function initMap(wow) {
 }
 
 function getLocation(wow,map) {
-    if (navigator.geolocation != undefined) {
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
@@ -379,19 +371,52 @@ function getLocation(wow,map) {
     } 
     else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
 }
+
+function getDistance(owo) {
+    let hugeAnimeTiddies = new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(function (p) {
+            let uwu = [
+            lat = p.coords.latitude, 
+            lng = p.coords.longitude
+            ];
+            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],uwu);
+            resolve()
+        })
+    })
+    hugeAnimeTiddies.then(() => {
+        listAlts(owo);
+    })
+}
+
+function callbackDistance() {
+    
+}
      
 function haversineDistance(mk1, mk2) {
+    var rlat1;
+    var rlng1;
+    var rlat2;
+    var difflon;
+
+    if (typeof mk1.description != undefined) {
+        rlat1 = mk1.lat * (Math.PI/180);
+        rlng1 = mk1.lng;
+        rlat2 = mk2[0] * (Math.PI/180);
+    }
+    else {
+        rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians 
+        rlng1 = mk1.position.lng();
+        rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+    }
     var rad = 6371.0710; // Radius of the Earth in kms
-    var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
-    var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+    
     var difflat = rlat2-rlat1; // Radian difference (latitudes)
-    var difflon = (mk2.lng-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+    if (mk1.description) difflon = (mk2[1]-rlng1) * (Math.PI/180); // Radian difference (longitudes)
+    else difflon = (mk2.lng-rlng1) * (Math.PI/180); // Radian difference (longitudes)
+   
 
     var d = 2 * rad * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
     return d;
 }
 
 //window.addEventListener("load",initMap);
-
-        
-

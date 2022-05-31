@@ -131,7 +131,7 @@
         "abstract": "Äventyrsgolfbana med 12 hål. Hela banan går i vikingatema där ni bland annat måste hjälpas åt att dra er över vatten med en flotte för att kunna fortsätta spelet",
         "text": "",
         "address": "Köpingevägen 23",
-        "price_range": "100-500 kr",
+        "price_range": "100-500",
         "lat": "56.87847522734982",
         "lng": "16.712642886810105",
         "outdoors": "Y",
@@ -147,12 +147,33 @@
     },
 
     {
+        "description": "Escape Room",
+        "name": "Escapefarm",
+        "abstract": "ESCAPEFARM är en escaperoom-utmaning på norra Öland. Det är en gruppaktivitet som passar alla. Du och dina medspelare blir insläppta i ett okänt rum och måste söka efter ledtrådar, använda föremål och lösa gåtor för att ta er ut innan tiden tar slut, max 60 minuter.",
+        "text": "",
+        "address": "Landsvägen Högby 16",
+        "price_range": "750",
+        "lat": "57.16212047863973",
+        "lng": "17.012706984659246",
+        "outdoors": "N",
+        "rating": "4.8",
+        "webbsite": "https://escapefarm.se/",
+        "provinces": "Öland",
+        "crit": [
+            "N",
+            "N",
+            "N",
+            "N"
+        ]
+    },
+
+    {
         "description": "Surfa",
         "name": "Surfers Center",
         "abstract": "Vindsurfing, kitesurfing och SUP på Haga Park",
         "text": "",
         "address": "Hagaparksvägen",
-        "price_range": "800-2000 kr",
+        "price_range": "800-2000",
         "lat": "56.57965174378596",
         "lng": "16.408697098832043",
         "outdoors": "Y",

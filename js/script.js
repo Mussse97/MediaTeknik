@@ -1,4 +1,3 @@
-var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
     {altA:"Aktiv", descA:"Vi vill röra oss mycket på dejten", altB:"Lugn", descB:"Ni behöver inte svettas", urlA:"zipline1.jpg", urlB:"lugn1.jpg"},
 
@@ -15,6 +14,7 @@ const chosenRes = [
 
     {altB:"Inomhus", descB:"Det ska vara inomhus", altA:"Utomhus", descA:" Det ska finnas utomhusservering", urlB:"inomhusservering1.jpg", urlA:"utomhusservering1.jpg"},
 
+
     {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk1.jpg", urlB:"kött1.jpg"},
 	
 	{altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
@@ -24,7 +24,7 @@ const choices = []; // Vilket alternativ som är valt
 var fraga = 0; // Vilken fråga är vi på?
 var progressElem; // Bollarna
 var chosenThing; // Vad är valt, aktivitet eller restaurang?
-
+var choiceElem; // Parent till de vi bryr oss om
 
 // Initiera skit
 function init() {
@@ -41,10 +41,9 @@ function init() {
 		choiceElem[i].addEventListener("click",tuffing);
 		choiceElem[i].setAttribute("data-ix",i);
 	}
-
 }
 
-window.addEventListener("load",init);
+window.addEventListener("load", init);
 
 // Typ allt
 function stuff() { 
