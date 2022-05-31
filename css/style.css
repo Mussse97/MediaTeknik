@@ -496,8 +496,11 @@ a {
 .div3 {
     top: 4vw;
     right: 0vw;
+    transition: transform 2s;
 }
-
+.div3:hover{
+    transform: scale(1.5);
+}
 .div4 {
     top: 20vw;
     right: 17vw;
@@ -823,8 +826,11 @@ a {
 /* Media queries*/
 
 @media screen and (max-width: 550px) {
+    body{
+        background-image: none;
+    }
    .header li{
-       flex-direction:column;
+       flex-direction:row;
    } 
    .header img {
        height: 0px;
@@ -832,18 +838,26 @@ a {
    }
    .header a {
        padding: 0 auto;
-       flex-direction: column;
+       flex-direction: row;
        align-items: center;
        width: 100%;
+       
    }
    .header {
        padding-left: 0px;
-       height: 200px;
+       height: 10%;
    }
 
    .header ul {
        width: auto;
        flex-direction:column;
    }
-
+.button{
+    height: 30px;
+    width: 70px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
 }
+}
+

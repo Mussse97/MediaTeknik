@@ -34,7 +34,7 @@
         "webbsite": "http://www.stadsparksgolfen.se/",
         "provinces": "småland",
         "crit": [
-            "Y",
+            "N",
             "Y",
             "Y",
             "Y"
@@ -55,7 +55,7 @@
         "webbsite": "https://nossen.nu/",
         "provinces": "småland",
         "crit": [
-            "Y",
+            "N",
             "Y",
             "Y",
             "Y"
@@ -245,6 +245,26 @@
         "crit": [
             "Y",
             "N",
+            "N",
+            "N"
+        ]
+    },
+    {
+        "description": "Bowlinghall",
+        "name": "Nöjesspåret 600 Ab",
+        "abstract": "Bowlinghall",
+        "text": "",
+        "address": "Enbeta gata 9, 387 91 Borgholm",
+        "price_range": "100-250",
+        "lat": "57.01936061372495",
+        "lng": "16.832651644195433",
+        "outdoors": "N",
+        "rating": "4.3",
+        "webbsite": "",
+        "provinces": "Öland",
+        "crit": [
+            "N",
+            "Y",
             "N",
             "N"
         ]

@@ -16,8 +16,7 @@ var sort = "rating";
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
-    {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter&child_discount=N"},
-
+    {urlA:"&descriptions=Gokart,Zipline,Skateboardpark", urlB:"&descriptions=Nöjespark,Gokart,Bowlinghall,Nöjescenter"},
 
     {urlA:"&price_ranges=100-250,0-25", urlB:"&price_ranges=250-500,1250-5000"},
     

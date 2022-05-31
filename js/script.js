@@ -1,23 +1,23 @@
 var choiceElem; // Parent till de vi bryr oss om
 const chosenAct = [
-    {altA:"Aktiv", descA:"Vi vill röra oss mycket på dejten", altB:"Lugn", descB:"Ni behöver inte svettas", urlA:"zipline.jpg", urlB:"lugn1.jpg"},
+    {altA:"Aktiv", descA:"Vi vill röra oss mycket på dejten", altB:"Lugn", descB:"Ni behöver inte svettas", urlA:"zipline1.jpg", urlB:"lugn1.jpg"},
 
-    {altA:"Under 250", descA:"Helst en aktivitet under 250kr", altB:"Över 250", descB:"Vi är ute efter en dyr aktivitet", urlA:"billig.jpg", urlB:"dyr.jpg"},
+    {altA:"Under 250", descA:"Helst en aktivitet under 250kr", altB:"Över 250", descB:"Vi är ute efter en dyr aktivitet", urlA:"billig1.jpg", urlB:"dyr1.jpg"},
 
-    {altA:"Utomhus", descA:"En utomhus aktivitet låter bra", altB:"Inomhus", descB:"Vi skulle vilja ha en inomhus aktivitet", urlA:"utomhus.jpg", urlB:"inomhus.jpg"},
+    {altA:"Utomhus", descA:"En utomhus aktivitet låter bra", altB:"Inomhus", descB:"Vi skulle vilja ha en inomhus aktivitet", urlA:"utomhus1.jpg", urlB:"inomhus1.jpg"},
 
-    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland.jpg", urlB:"öland.jpg"}
+    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
 ];
 
 const chosenRes = [
 
-    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint.jpg", urlB:"casual.jpg"}, 
+    {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint1.jpg", urlB:"casual3.jpg"}, 
 
-    {altB:"Inomhus", descB:"Det ska vara inomhus", altA:"Utomhus", descA:" Det ska finnas utomhusservering", urlB:"inomhusservering.jpg", urlA:"utomhusservering.jpg"},
+    {altB:"Inomhus", descB:"Det ska vara inomhus", altA:"Utomhus", descA:" Det ska finnas utomhusservering", urlB:"inomhusservering1.jpg", urlA:"utomhusservering1.jpg"},
 
-    {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk.jpg", urlB:"kött.jpg"},
+    {altA:"Vegetarisk meny", descA:"Det ska finnas vegetariska alternativ", altB:"Spelar ingen roll", descB:"Du behöver ej det alternativet", urlA:"vegetarisk1.jpg", urlB:"kött1.jpg"},
 	
-	{altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland.jpg", urlB:"öland.jpg"}
+	{altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
 ];
 		// Förslag: Buffe, vegetarisk, alkohol, 
 const choices = []; // Vilket alternativ som är valt
