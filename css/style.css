@@ -258,7 +258,6 @@ a {
 
 .comment {
     width: 100%;
-    padding: 1 vw;
     min-height: 8vw;
     display: block;
     border-top: 1px solid black;
@@ -382,7 +381,7 @@ a {
     
 }
 
-.sexmaskinenSigvardFjante + div,.sexmaskinenSigvardFjante + div div {
+.closeDivs + div,.closeDivs + div div {
     position: absolute;
     left: 200% !important;
     height: 0 !important;
@@ -390,7 +389,7 @@ a {
     opacity: 0 !important;
 }
 
-.sexmaskinenSigvardFjante + div #map {
+.closeDivs + div #map {
     position: relative;
 }
 
@@ -461,9 +460,7 @@ a {
     linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-    ),
-    
-    
+    );
 }
 
 #notesDiv img {
