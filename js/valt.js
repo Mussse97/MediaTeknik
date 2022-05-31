@@ -348,7 +348,10 @@ function initMap(smapObj) {
     mapBtn.classList.add("buttonR");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(mapBtn); // KOLLA PÅ SEN
     mapBtn.innerHTML = "Visa från min position";
-    mapBtn.addEventListener("click", function() { getLocation(smapObj,map) });
+    mapBtn.addEventListener("click", function() {  
+        getLocation(smapObj,map)
+        this.disabled=true; 
+    });
     mapElem.previousElementSibling.appendChild(mapBtn);
 }
 
@@ -363,7 +366,8 @@ function getLocation(smapObj,map) {
                 icon: "https://maps.google.com/mapfiles/kml/shapes/man.png"
             });
             marker.setMap(map);
-            
+            let distance = haversineDistance(marker, smapObj);
+            mapElem.previousElementSibling.innerHTML+= "<p>"+ smapObj.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
                 
             const flightPlanCoordinates = [
                 {lat:parseFloat(smapObj.lat), lng: parseFloat(smapObj.lng) },
@@ -381,6 +385,7 @@ function getLocation(smapObj,map) {
             flightPath.setMap(map);
         });
     } 
+    
     else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
 }
 // Hämtar ut din nuvarande position.
