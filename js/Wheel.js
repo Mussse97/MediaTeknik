@@ -30,25 +30,25 @@ function spinny() {
 }
 
 function work() {
-    let owo = Math.floor(Math.random()*val.length)
+    let smapiRes = Math.floor(Math.random()*val.length)
     let request = new XMLHttpRequest(); 
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&ids=" + val[owo] + "&method=getall",true);
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&ids=" + val[smapiRes] + "&method=getall",true);
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
 
-            if (request.status == 200) resArray(request.responseText,owo);
+            if (request.status == 200) resArray(request.responseText,smapiRes);
             else alert("Nåt gick fel");
 
     };
 }
 
-function resArray(owo,hej) {
+function resArray(smapiRes,hej) {
     val.splice(hej,1);
     spin.disabled = false;
-    owo = JSON.parse(owo).payload[0];
+    smapiRes = JSON.parse(smapiRes).payload[0];
     let hjul = document.createElement("div")
-    hjul.innerHTML += "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
+    hjul.innerHTML += "<h2>" + smapiRes.name + "</h2>" + "<p>" + smapiRes.abstract + "</p>";
     Wtext.insertBefore(hjul,Wtext.firstChild);
     if (val.length == 0) {
         spin.disabled = true;
