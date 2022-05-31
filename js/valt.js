@@ -19,7 +19,6 @@ const chosenAct = [
 
     {urlA:"&descriptions=Gokart,Zipline,Bowlinghall,Skateboardpark", urlB:"&descriptions=Nöjespark,Nöjescenter"},
 
-
     {urlA:"&price_ranges=100-250,0-25", urlB:"&price_ranges=250-500,1250-5000"},
     
     {urlA:"&outdoors=Y", urlB:"&outdoors=N"},
