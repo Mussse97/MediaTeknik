@@ -1,22 +1,26 @@
 var containElem;
-var timeout = 2; // Hur länge hjulet ska snurra
 const val = [30,32,40,46,99,106,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
+var timeout = 2.1; // Hur länge hjulet ska snurra
 var api_key = "FqZF2ASN";
 var spin;
 var mom;
+var sound = new Audio('ljud/wheel_01.mp3');
 
 function init() {
     containElem = document.querySelector("#container div");
     spin = document.getElementById("spin");
     mom = document.getElementById("wheelText");
 
-    spin.addEventListener("click",spinny);
+    spin.addEventListener("click",spinny) 
 }
+
+
 
 window.addEventListener("load",init);
 
 function spinny() {
-    spin.disabled = true; 
+    spin.disabled = true;
+    sound.play();
     containElem.style.transition = timeout + "s";
     let l = Math.random()*9000
     containElem.style.webkitTransform = "rotate(" + l + "deg)";

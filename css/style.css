@@ -64,7 +64,7 @@ a {
 }
 
 .header a:hover {
-    background-color: #ae7381;
+    background-color: #f5b0c0;
 }
 
 .header img {
@@ -326,6 +326,7 @@ a {
 
 .GamerGirlsDefyGravity .buttonR {
     background-color: #692323;
+    color: white;
     font-size: 20px;
     margin-right: 1vw;
 }
@@ -348,7 +349,7 @@ a {
 }
 
 .vald {
-    background-color: #ae7381 !important;
+    background-color: #DB93A2 !important;
 }
 
 #extraInfo {
@@ -357,7 +358,7 @@ a {
     float: right;
     right: 0;
     width: 45vw;
-    background-color: #ae7381;
+    background-color: #DB93A2;
     height: 83vh;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     overflow-y: auto;
@@ -473,8 +474,11 @@ a {
 .div3 {
     top: 4vw;
     right: 0vw;
+    transition: transform 2s;
 }
-
+.div3:hover{
+    transform: scale(1.5);
+}
 .div4 {
     top: 20vw;
     right: 17vw;
@@ -623,7 +627,7 @@ a {
  /* Knapp 1, Stor , sätt class till "button" */
 
  .button {
-    background: black;
+    background:#692323;
     border-radius: 25px;
     border: 2px solid #0f0f0f;
     color: white;
@@ -777,7 +781,7 @@ a {
 
 
 .buttonR{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     font-weight: bold;
     color: white;
     border: #000;
