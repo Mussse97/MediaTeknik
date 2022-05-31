@@ -37,7 +37,7 @@ function work() {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) uwu(request.responseText,owo);
-            else alert("Nåt gick fel");
+            else alert("något gick fel");
     };
 }
 
