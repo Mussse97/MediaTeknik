@@ -188,7 +188,7 @@ function whatJSON(owo,uwu,xd) {
 
     if (owo.length == 0) {
         let girlPower = document.createElement("div");
-        girlPower.innerHTML += "<h2>Finns inga resultat :<</h2>"
+        girlPower.innerHTML += "<h2>Finns inga resultat</h2>"
         girlPower.classList.add("error");
         stepElem.appendChild(girlPower);
         return;
