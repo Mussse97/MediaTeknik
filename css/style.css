@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    overflow: hidden;              /*  GÖR SÅ ATT MAN INTE KAN SKROLLA */
+    overflow: hidden;
 }
 
 a {
@@ -116,12 +116,10 @@ a {
 
 /* Index */
 
-#indexDiv p {
+#indexBody p {
     font-size: 2vw;
     margin: 8vw;
-    color: white;
-    margin-left: 450px;
-    margin-right: 450px;
+    color: white;  
 }
 
 #indexBody {
@@ -135,7 +133,6 @@ a {
     ),
     url(../bilder/andrasida.jpg);
     height: 100vh;
-
 }
 
 
@@ -195,12 +192,11 @@ a {
 
 #progress {
     position: fixed;
-    bottom: 0%;
-    left: 30%;
-    width: 40%;
+    bottom: 20px;
+    left: 50vw;
+    margin-left: -300px;
+    width: 600px;
     height: 10%;
-
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
 #progress div {
@@ -232,13 +228,13 @@ a {
     left: 0;
     clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
     background-color: #3a1f1f;
-    width: 10vw;
-    height: 10vh;
+    width: 100px;
+    height: 50px;
     color: white;
     text-decoration: none;
     font-size: 25px;
-    padding-top: 2vw;
-    padding-right: 5vw;
+    padding-top: 20px;
+    padding-right: 40px;
 }
 
 
@@ -287,29 +283,6 @@ a {
     color: #fbedf0;
 }
 
-
-/* SYNS INTE JUST NU -------------------------------------------------------------------------------------------------------------------------------------------- */
-#goBack {
-    position: absolute;
-    left: 111116%;
-    top: 10%;
-    /*
-    width: 10%;
-    height: 8%;
-    */
-
-
-    font: xx-large;
-    text-decoration: none;
-    background-color: #EEEEEE;
-    color: #333333;
-    padding: 2px 6px 2px 6px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-}
-
 #stepElement {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     float: left;
@@ -345,7 +318,7 @@ a {
 }
 
 .GamerGirlsDefyGravity {
-    position:absolute;
+    position: absolute;
     top: 100px;
     padding: 0 !important;
     background-color: transparent !important;
@@ -387,7 +360,7 @@ a {
     background-color: #ae7381;
     height: 83vh;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-size: 20px;
     font-weight: 200;
 }
@@ -551,6 +524,10 @@ a {
 /* Hjulet */
 
 #container {
+    overflow: hidden;
+}
+
+#container div {
     width: 30vw;
     height: 30vw;
     background-color: #3A1F1F;
@@ -559,7 +536,6 @@ a {
     position: absolute;
     background-image:url(../bilder/texture.png);
     background-size: contain;
-    position: absolute;
     right: 10vw;
     top: 20vh;
 }
@@ -576,9 +552,14 @@ a {
 	font-family: 'Staatliches', cursive;
 	letter-spacing: 5px;
 	background: #6b1702;
-	border: 2px solid black;
+    color:white;
+    border: 1px solid black;
 	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
 	transition: 500ms;
+}
+
+#spin:disabled {
+    color: #6b1702;
 }
 
 #spin:hover {
@@ -824,30 +805,191 @@ a {
 
 
 
-/* Media queries*/
+/* Media queries  Sidan är anpassad till minst 320 pixlar, telefoner med mindre skärmar är sälsynta*/
+@media screen and (max-width: 1200px) {
+    #container div{
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50%;
+        right: 7vw;
+        top: 20vh;
+    }
+
+    #spin {
+        top: 55vh;
+        right: 17vw;
+        width: 12vw;
+        height: 5vh;
+        font-size: 2vw;
+    }
+
+    #wheelText {
+        width: 55vw;
+        height: 80vh;
+        font-size: xx-large;
+    }
+
+    #wheeldescription {
+        font-size: 30px;
+        margin: 0 auto;
+    }
+
+    #choice p, #choice h3 {
+        font-size: 4vw;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    #indexBody p {
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #wheelBody {
+        position: relative;
+        display: grid;
+        grid-template-areas: 
+            "H H"
+            "A A"
+            "B C"
+            "B D";
+        grid-template-rows: 75px 40px 40vh auto;
+        grid-template-columns: 60vw 40vw;
+        overflow: hidden;
+    }
+    
+    #container div {
+        position: relative;
+        top: inherit;
+        right: inherit;
+        grid-area: C;
+        overflow: hidden !important;
+        margin:auto;
+    }
+
+    #spin {
+        margin:auto;
+        position: relative;
+        grid-area: D;
+        top: inherit;
+        right: inherit;
+        width: 30vw;
+        height: 10vh;
+        font-size: xx-large;
+    }
+
+    #wheelText {
+        top: inherit;
+        right: inherit;
+        position: relative;
+        grid-area: B;
+        height: auto;
+    }
+
+    #wheeldescription {
+        position: relative;
+        grid-area: A;
+    }
+
+    .header {
+        grid-area: H; 
+    }
+
+    #tillbaka {
+        padding-top: 20px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    #wheelBody {
+        grid-template-rows: 75px 80px 30vh auto;
+    }
+}
 
 @media screen and (max-width: 550px) {
-   .header li{
-       flex-direction:column;
-   } 
-   .header img {
-       height: 0px;
-       width: 0px;
-   }
-   .header a {
-       padding: 0 auto;
-       flex-direction: column;
-       align-items: center;
-       width: 100%;
-   }
-   .header {
-       padding-left: 0px;
-       height: 200px;
-   }
+    .header a {
+       padding: 0;
+       height: auto;
+    }
 
-   .header ul {
-       width: auto;
-       flex-direction:column;
-   }
+    .header img {
+        height: 100%;
+        max-width: 33vw;
+    }
 
+    .header {padding: 0;}
+
+    #indexBody p {
+        font-size: 8vw;
+    }
+
+    .button {
+        width: 80vw;
+    }
+
+    #wheelText {
+        font-size: x-large;
+    }
+}
+
+@media screen and (max-width: 493px) {
+    #wheelBody {
+        height: auto;
+        overflow-y: auto;
+        grid-template-areas: 
+            "H"
+            "A"
+            "C"
+            "D"
+            "B";
+        grid-template-rows: auto auto 40vh auto 50vh;
+        grid-template-columns: 100vw;
+    }
+
+    #container div {
+        align-self: center;
+        width: 60vw;
+        height: 60vw;
+    }
+
+    #spin {
+        width: 60vw;
+    }
+
+    #wheelText {
+        width: 95vw;
+    }
+
+    #one, #two {
+        width: 100vw;
+        height: 45vh !important;
+    }
+
+    #two {
+        top: 45vh !important;
+    }
+
+    #progress {
+        background-color: #3a1f1f;
+        height: 10vh;
+        width: 100vw;
+        margin: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    #progress div {
+        width: 18vw;
+        height: 18vw;
+        bottom: 2px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    #wheelBody {
+        grid-template-rows: auto auto 65vw auto 50vh;
+    }
 }
