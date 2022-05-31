@@ -1,5 +1,5 @@
 var stepElem;
-var fixedCode;
+var fixedCode; // Används för att fixa svaren vi fick från förra sidan
 var api_key = "FqZF2ASN";
 var resultat = 4; // Hur många resultat vi vill ha
 var nerd = [];
@@ -26,6 +26,7 @@ const chosenAct = [
     {urlA:"&provinces=småland", urlB:"&provinces=öland"}
 
 ];
+
 const chosenFood = [
     {urlB:"food"}, // Controller
 
@@ -238,7 +239,7 @@ function listAlts(owo) {
 
         nerd.push(owo[i]);
         baby.setAttribute("data-ix",i);
-        baby.addEventListener("click",lploss);
+        baby.addEventListener("click",listResults);
         baby.style.cursor = "pointer";
 
         stepElem.appendChild(baby);
@@ -246,27 +247,26 @@ function listAlts(owo) {
     }
 }
 
-function svante() {
-    this.classList.toggle("sexmaskinenSigvardFjante");
+function closeResults() {
+    this.classList.toggle("toggleResults");
 }
 
-function lploss() { 
+function listResults() { 
     if (this.classList.contains("vald")) return;
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
-
     
     if (l == 0) {
         for (let i = 0; i < hatarAllt.length; i++) {
             let sixten = document.createElement("div");
-            sixten.classList.add("sexmaskinenSigvardFjante");
-            sixten.addEventListener("click",svante);
+            sixten.classList.add("toggleResults");
+            sixten.addEventListener("click",closeResults);
             sixten.style.cursor = "pointer";
             sixten.innerHTML = "<h1>" + hatarAllt[i] + "</h1>";
             extraElem.insertBefore(sixten,choiceDivs[i]);
         }
         l++;
-        genElem.previousElementSibling.classList.toggle("sexmaskinenSigvardFjante");
+        genElem.previousElementSibling.classList.toggle("toggleResults");
     }
 
     // Valda alternativet
@@ -306,8 +306,6 @@ function musse(lol,wow) {
             comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + uwu[i].comment + "</p>";
             commentElem.appendChild(comment);
         }
-        
-        //genElem.innerHTML += "<p> Recensioner: " + uwu[0].comment +  "</p>";
     }
   
     initMap(wow);
@@ -347,7 +345,6 @@ function getLocation(wow,map) {
 
             let marker = new google.maps.Marker({
                 position: LatLng,
-                //label: "Home",
                 icon: "https://maps.google.com/mapfiles/kml/shapes/man.png"
             });
             marker.setMap(map);
@@ -388,10 +385,6 @@ function getDistance(owo) {
     hugeAnimeTiddies.then(() => {
         listAlts(owo);
     });
-}
-
-function callbackDistance() {
-    
 }
      
 function haversineDistance(mk1, mk2) {

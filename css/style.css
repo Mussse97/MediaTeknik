@@ -388,7 +388,7 @@ a {
     
 }
 
-.sexmaskinenSigvardFjante + div,.sexmaskinenSigvardFjante + div div {
+.toggleResults + div,.toggleResults + div div {
     position: absolute;
     left: 200% !important;
     height: 0 !important;
@@ -396,7 +396,7 @@ a {
     opacity: 0 !important;
 }
 
-.sexmaskinenSigvardFjante + div #map {
+.toggleResults + div #map {
     position: relative;
 }
 
