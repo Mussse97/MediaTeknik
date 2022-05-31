@@ -10,7 +10,7 @@
         "lng": "16.33444724078334",
         "outdoors": "N",
         "rating": "4.2",
-        "website": "https://banankalmar.se/aktiviteter/blacklight-minigolf/",
+        "webbsite": "https://banankalmar.se/aktiviteter/blacklight-minigolf/",
         "provinces": "småland",
         "crit": [
             "Y",
@@ -31,7 +31,7 @@
         "lng": "14.142486269663262",
         "outdoors": "Y",
         "rating": "4",
-        "website": "http://www.stadsparksgolfen.se/",
+        "webbsite": "http://www.stadsparksgolfen.se/",
         "provinces": "småland",
         "crit": [
             "N",
@@ -52,7 +52,7 @@
         "lng": "33.02130213",
         "outdoors": "Y",
         "rating": "4",
-        "website": "https://nossen.nu/",
+        "webbsite": "https://nossen.nu/",
         "provinces": "småland",
         "crit": [
             "N",
@@ -73,7 +73,7 @@
         "lng": "14.142486269663262",
         "outdoors": "Y",
         "rating": "4",
-        "website": "http://www.stadsparksgolfen.se/",
+        "webbsite": "http://www.stadsparksgolfen.se/",
         "provinces": "småland",
         "crit": [
             "Y",
@@ -94,7 +94,7 @@
         "lng": "33.02130213",
         "outdoors": "Y",
         "rating": "4",
-        "website": "https://nossen.nu/",
+        "webbsite": "https://nossen.nu/",
         "provinces": "småland",
         "crit": [
             "Y",
@@ -115,7 +115,7 @@
         "lng": "17.04838124069818",
         "outdoors": "Y",
         "rating": "4.3",
-        "website": "https://www.bodasand.se/gora/minigolf/",
+        "webbsite": "https://www.bodasand.se/gora/minigolf/",
         "provinces": "öland",
         "crit": [
             "Y",
@@ -136,7 +136,7 @@
         "lng": "16.712642886810105",
         "outdoors": "Y",
         "rating": "3.9",
-        "website": "https://borgholmscampingar.se/kopingbaden/",
+        "webbsite": "https://borgholmscampingar.se/kopingbaden/",
         "provinces": "Öland",
         "crit": [
             "N",
@@ -157,7 +157,7 @@
         "lng": "17.012706984659246",
         "outdoors": "N",
         "rating": "4.8",
-        "website": "https://escapefarm.se/",
+        "webbsite": "https://escapefarm.se/",
         "provinces": "Öland",
         "crit": [
             "N",
@@ -178,7 +178,7 @@
         "lng": "16.408697098832043",
         "outdoors": "Y",
         "rating": "4.9",
-        "website": "http://www.surferscenteroland.se/",
+        "webbsite": "http://www.surferscenteroland.se/",
         "provinces": "Öland",
         "crit": [
             "Y",
@@ -199,7 +199,7 @@
         "lng": "15.858835540713834",
         "outdoors": "Y",
         "rating": "4.2",
-        "website": "https://www.krongarden.se/kanotuthyrning.html",
+        "webbsite": "https://www.krongarden.se/kanotuthyrning.html",
         "provinces": "småland",
         "crit": [
             "N",
@@ -220,7 +220,7 @@
         "lng": "14.136373711835077",
         "outdoors": "Y",
         "rating": "4.3",
-        "website": "https://sjostugan.com/",
+        "webbsite": "https://sjostugan.com/",
         "provinces": "småland",
         "crit": [
             "N",
@@ -241,7 +241,7 @@
         "lng": "16.35583275416865",
         "outdoors": "Y",
         "rating": "4.3",
-        "website": "https://idrottonline.se/KalmarKK-Kanot",
+        "webbsite": "https://idrottonline.se/KalmarKK-Kanot",
         "provinces": "småland",
         "crit": [
             "Y",
@@ -261,7 +261,7 @@
         "lng": "17.013039576914203",
         "outdoors": "N",
         "rating": "4.8",
-        "website": "http://www.escapefarm.se/",
+        "webbsite": "http://www.escapefarm.se/",
         "provinces": "Öland",
         "crit": [
             "Y",
@@ -281,7 +281,7 @@
         "lng": "16.832651644195433",
         "outdoors": "N",
         "rating": "4.3",
-        "website": "",
+        "webbsite": "",
         "provinces": "Öland",
         "crit": [
             "N",
