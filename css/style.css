@@ -14,6 +14,10 @@ body {
     overflow: hidden;
 }
 
+body div {
+    overflow: hidden;
+}
+
 a {
     color: inherit;
 }
@@ -473,14 +477,16 @@ a {
     padding:5px;
 }
 
+#notesDiv div:hover{
+    transform: scale(1.5);
+    transition: transform 1s;
+}
+
 .div3 {
     top: 4vw;
     right: 0vw;
-    transition: transform 2s;
 }
-.div3:hover{
-    transform: scale(1.5);
-}
+
 .div4 {
     top: 20vw;
     right: 17vw;

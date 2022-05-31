@@ -54,12 +54,11 @@ const sorts = [
 
 function init() {
     stepElem = document.getElementById("stepElement");
-    infoElem = document.getElementById ("priset");
     genElem = document.getElementById("genInfo");
     commentElem = document.getElementById("comment");
     extraElem = document.getElementById("extraInfo");
     choiceDivs = document.querySelectorAll(".lazy");
-    mapElem = document.getElementById("map")
+    mapElem = document.getElementById("map");
     fixedCode = fixCode(window.location.search);
 
     if (fixedCode[0] == 0) getController(chosenAct);
@@ -126,7 +125,7 @@ function foodFix(owo,xd) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
+            if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd);
             else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
     };
 }
@@ -153,7 +152,7 @@ function whatJSON(owo,uwu,xd) {
         
         if (xd[4] == najs[4].urlB) {
             for (let k = owo.length-1; k >= 0; k--) {
-                if (owo[k].province == "Småland") owo.splice(k,1)
+                if (owo[k].province == "Småland") owo.splice(k,1);
             }
         }
     }
@@ -185,7 +184,7 @@ function whatJSON(owo,uwu,xd) {
 
     if (owo.length == 0) {
         let girlPower = document.createElement("div");
-        girlPower.innerHTML += "<h2>Finns inga resultat :<</h2>"
+        girlPower.innerHTML += "<h2>Finns inga resultat :<</h2>";
         girlPower.classList.add("error");
         stepElem.appendChild(girlPower);
         return;
@@ -214,7 +213,7 @@ function listAlts(owo) {
         gamerGirlWater.addEventListener("click", function() {
             sort = sorts[i];
             listAlts(owo);
-        })
+        });
         gamerGirlWaterContainer.appendChild(gamerGirlWater);
     }
 
@@ -224,7 +223,7 @@ function listAlts(owo) {
 
         if (owo[i] == undefined) {
             let girlPower = document.createElement("div");
-            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>";
             girlPower.classList.add("error");
             stepElem.appendChild(girlPower);
             break;
@@ -271,7 +270,7 @@ function lploss() {
     }
 
     // Valda alternativet
-    let fix = document.querySelectorAll("#stepElement div")
+    let fix = document.querySelectorAll("#stepElement div");
     for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
     this.classList.add("vald");
     
@@ -298,8 +297,9 @@ function musse(lol,wow) {
     if (lol == null) {
         commentElem.innerHTML= "<h4>Finns inga tyvärr recentioner för denna plats.</h4>";
     }
+
     else {
-        uwu = JSON.parse(lol).payload;
+        let uwu = JSON.parse(lol).payload;
         for (let i = 0; i < uwu.length; i++) {
             let comment = document.createElement("div");
             comment.classList.add("comment");
@@ -311,7 +311,7 @@ function musse(lol,wow) {
     }
   
     initMap(wow);
-};
+}
 
 function initMap(wow) {
     //const eventLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
@@ -331,12 +331,12 @@ function initMap(wow) {
     });
     a.setMap(map);
 
-    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>"
+    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>";
     let minion = document.createElement("button");
     minion.classList.add("buttonR");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion); // KOLLA PÅ SEN
     minion.innerHTML = "Visa från min position";
-    minion.addEventListener("click", function() { getLocation(wow,map) });
+    minion.addEventListener("click", function() { getLocation(wow,map); });
     mapElem.previousElementSibling.appendChild(minion);
 }
 
@@ -358,7 +358,7 @@ function getLocation(wow,map) {
             const flightPlanCoordinates = [
                 {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
                 {lat: p.coords.latitude ,lng:p.coords.longitude},
-            ]
+            ];
 
             const flightPath = new google.maps.Polyline({
                     path: flightPlanCoordinates,
@@ -378,16 +378,16 @@ function getDistance(owo) {
     let hugeAnimeTiddies = new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function (p) {
             let uwu = [
-            lat = p.coords.latitude, 
-            lng = p.coords.longitude
+                p.coords.latitude, 
+                p.coords.longitude
             ];
             for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],uwu);
-            resolve()
-        })
-    })
+            resolve();
+        });
+    });
     hugeAnimeTiddies.then(() => {
         listAlts(owo);
-    })
+    });
 }
 
 function callbackDistance() {
