@@ -290,9 +290,11 @@ a {
     /*background-color: #9c5858;*/
     width: 47vw;
     padding-left: 3vw;
+    overflow: auto;
 }
 
 #stepElement div {
+    overflow: visible;
     margin-bottom: 1vh;
     padding: 1vw;
     padding-left: 3vw;
