@@ -332,6 +332,10 @@ a {
     background-color: red;
 }
 
+#stepElement h4 {
+    float: right;
+}
+
 #stepElement .error {
     background-color: red;
     margin-bottom: 1vh;
