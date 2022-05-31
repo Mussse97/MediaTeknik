@@ -228,7 +228,7 @@ function listAlts(owo) {
 
         if (owo[i] == undefined) {
             let girlPower = document.createElement("div");
-            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            girlPower.innerHTML += "<h2>Finns inga flera resultat </h2>"
             girlPower.classList.add("error");
             stepElem.appendChild(girlPower);
             break;
@@ -301,7 +301,7 @@ function musse(lol,wow) {
     
 
     if (lol == null) { // om det inte finns några kommentarer så får man ett fel meddelande.
-        commentElem.innerHTML= "<h4>Finns inga tyvärr recentioner för denna plats.</h4>";
+        commentElem.innerHTML= "<h4>Finns tyvärr inga recentioner för denna plats.</h4>";
     }
     else {
         uwu = JSON.parse(lol).payload;
