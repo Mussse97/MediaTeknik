@@ -7,7 +7,6 @@ body {
     background-image: url(../bilder/Nöjespark.jpg);
     background-size: cover;
     background-color: #ae7381;
-    /* background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%); */
     margin: 0;
     padding: 0;
     text-align: center;
@@ -366,11 +365,7 @@ a {
 }
 
 #map {
-    /*
-    position: absolute;
-    bottom: 5vh;
-    right: 3vw;
-    */
+
     width: 42vw;
     height: 16vw;
 }
@@ -392,45 +387,6 @@ a {
 .closeDivs + div #map {
     position: relative;
 }
-
-/*
-#stepElement div{
-    grid-area: b;
-    padding: 9px;
-    margin: 40px;
-    overflow-y: auto;
-    background-color: white;
-    outline: thick solid black;
-    width: 40%;
-    height: 230%;
-    text-size-adjust: auto;
-    font-weight: 200;
-    font-style: italic;
-    line-height: 1.0;
-    word-wrap: break-word;
-    text-align: left;
-}
-*/
-
-/*
-#extraInfo  {
-    background-color: white;
-    outline: thick solid black;
-    position: absolute;
-    left: 1000px;
-    top: 300px;
-    width: 30%;
-    height: 60%;
-    font-size: 25px;
-    font-style: italic;
-    word-wrap: break-word;
-    padding-left: 15px;
-    overflow-y: scroll;
-}
-*/
-
-
-
 
 
 
@@ -580,17 +536,6 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* KNAPPAR */
 
  /* Knapp 1, Stor , sätt class till "button" */
@@ -611,75 +556,11 @@ a {
     transition: 500ms;
 }
 
-/*                             Jag tror inte :after gör något här, men jag kan ha fel //Idioten
-.button:after {
-    content: '';
-	position: absolute;
-	transform: translateX(-55px) translateY(-40px);
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: transparent;
-	box-shadow: 0px 0px 50px transparent;
-	transition: 500ms;
-}
-*/
 
 .button:hover {
     transform: translateY(-5px);
 	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-.spinbutton {
-    z-index: 100;
-
-    width: 150px;
-	height: 50px;
-	cursor: pointer;
-	font-size: 20px;
-	font-family: 'Staatliches', cursive;
-	letter-spacing: 5px;
-	background: #ffc421;
-	border: 2px solid black;
-	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
-	transition: 500ms;
-}
-
-.spinbutton:hover {
-    transform: translateY(-5px);
-	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Knapp 2, sexig, sätt class till "sexybutton" och lägg texten i en <span> tagg. Sätt också ett attribut efter classen:   data-sm-link-text="CLICK"   där CLICK är texten som visas då man hovrar */
