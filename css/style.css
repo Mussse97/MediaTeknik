@@ -191,7 +191,7 @@ a {
 
 #progress {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     left: 50vw;
     margin-left: -300px;
     width: 600px;
@@ -694,7 +694,7 @@ a {
 
 
 
-/* Media queries  Sidan är anpassad till minst 320 pixlar, telefoner med mindre skärmar är sälsynta*/
+/* Media queries            Sidan är anpassad till minst 320 pixlar, telefoner med mindre skärmar är sälsynta i vår målgrupp*/
 @media screen and (max-width: 1200px) {
     #container div{
         width: 30vw;
@@ -958,6 +958,11 @@ a {
     #one, #two {
         width: 100vw;
         height: 45vh !important;
+    }
+
+    #choice p, #choice h3 {
+        top: 20%;
+        font-size: 8vw;
     }
 
     #two {
