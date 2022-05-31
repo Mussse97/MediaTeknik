@@ -1,3 +1,4 @@
+// Array som koppplas till den i valt.js, Här så kopplas en del av smapi länken till en text och bild i aktiviteter
 const chosenAct = [
     {altA:"Aktiv", descA:"Vi vill röra oss mycket på dejten", altB:"Lugn", descB:"Ni behöver inte svettas", urlA:"zipline1.jpg", urlB:"lugn1.jpg"},
 
@@ -7,7 +8,7 @@ const chosenAct = [
 
     {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
 ];
-
+// Array som koppplas till den i valt.js, Här så kopplas en del av smapi länken till en text och bild i reasturanger.
 const chosenRes = [
 
     {altA:"Fint", descA:"Bara fina restauranger.", altB:"Casual", descB:"Reasturanger med global inspererad mat", urlA:"fint1.jpg", urlB:"casual3.jpg"}, 
