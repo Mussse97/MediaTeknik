@@ -3,13 +3,13 @@ const val = [30,32,40,46,99,106,452,478,541]; // Lägg i relevant skit här 99-1
 var timeout = 2.1; // Hur länge hjulet ska snurra
 var api_key = "FqZF2ASN";
 var spin;
-var mom;
+var Wtext;
 var sound = new Audio('ljud/wheel_01.mp3');
 
 function init() {
     containElem = document.querySelector("#container div");
     spin = document.getElementById("spin");
-    mom = document.getElementById("wheelText");
+    Wtext = document.getElementById("wheelText");
 
     spin.addEventListener("click",spinny) 
 }
@@ -36,18 +36,18 @@ function work() {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) uwu(request.responseText,owo);
+            if (request.status == 200) resArray(request.responseText,owo);
             else alert("Nåt gick fel");
     };
 }
 
-function uwu(owo,hej) {
+function resArray(owo,hej) {
     val.splice(hej,1);
     spin.disabled = false;
     owo = JSON.parse(owo).payload[0];
     let hjul = document.createElement("div")
     hjul.innerHTML += "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
-    mom.insertBefore(hjul,mom.firstChild);
+    Wtext.insertBefore(hjul,Wtext.firstChild);
     if (val.length == 0) {
         spin.disabled = true;
         spin.style.cursor = "not-allowed"
