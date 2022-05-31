@@ -291,7 +291,9 @@ function lploss() {
 }
 
 function musse(lol,wow) {
-    genElem.innerHTML = "<a href='" + wow.website + "'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
+    if (wow.website != undefined && wow.website != "") genElem.innerHTML = "<a href='" + wow.website + "' target='ref'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
+    else genElem.innerHTML = "<h3>" + wow.name + "</h3><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
+    
 
     if (lol == null) {
         commentElem.innerHTML= "<h4>Finns inga tyvärr recentioner för denna plats.</h4>";
@@ -325,7 +327,7 @@ function initMap(wow) {
 
     let a = new google.maps.Marker({
         position: eventLatLng,
-        icon: "https://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png"
+        icon: "http://maps.google.com/mapfiles/kml/paddle/purple-blank.png"
     });
     a.setMap(map);
 
@@ -350,8 +352,8 @@ function getLocation(wow,map) {
             });
             marker.setMap(map);
             
-            let distance = haversineDistance(marker, wow);
-            mapElem.previousElementSibling.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
+            //let distance = haversineDistance(marker, wow);
+            //mapElem.previousElementSibling.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
                 
             const flightPlanCoordinates = [
                 {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
@@ -398,7 +400,7 @@ function haversineDistance(mk1, mk2) {
     var rlat2;
     var difflon;
 
-    if (typeof mk1.description != undefined) {
+    if (mk1.description != undefined) {
         rlat1 = mk1.lat * (Math.PI/180);
         rlng1 = mk1.lng;
         rlat2 = mk2[0] * (Math.PI/180);

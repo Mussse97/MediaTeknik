@@ -1,13 +1,13 @@
 var containElem;
+const val = [30,32,40,46,99,106,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
 var timeout = 2.1; // Hur länge hjulet ska snurra
-const val = [30,32,40,46,99,106,113,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
 var api_key = "FqZF2ASN";
 var spin;
 var mom;
 var sound = new Audio('ljud/wheel_01.mp3');
 
 function init() {
-    containElem = document.getElementById("container");
+    containElem = document.querySelector("#container div");
     spin = document.getElementById("spin");
     mom = document.getElementById("wheelText");
 
@@ -23,7 +23,7 @@ function spinny() {
     sound.play();
     containElem.style.transition = timeout + "s";
     let l = Math.random()*9000
-    containElem.style.transform = "rotate(" + l + "deg)";
+    containElem.style.webkitTransform = "rotate(" + l + "deg)";
     setTimeout(() => {
         work()
     }, timeout*1000);
@@ -48,4 +48,8 @@ function uwu(owo,hej) {
     let hjul = document.createElement("div")
     hjul.innerHTML += "<h2>" + owo.name + "</h2>" + "<p>" + owo.abstract + "</p>";
     mom.insertBefore(hjul,mom.firstChild);
+    if (val.length == 0) {
+        spin.disabled = true;
+        spin.style.cursor = "not-allowed"
+    }
 }
