@@ -101,7 +101,7 @@ function applyController(xd) {
                 if (xd[0] == "food") foodFix(request.responseText,xd);
                 else addJSON(JSON.parse(request.responseText).payload,xd);
             }
-        else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+        else stepElem.innerHTML = "<h2>något gick fel</h2>";
     };
 }
 
@@ -126,7 +126,7 @@ function foodFix(owo,xd) {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
-            else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+            else stepElem.innerHTML = "<h2>något gick fel</h2>";
     };
 }
 
@@ -203,13 +203,14 @@ function listAlts(owo) {
     else if (sort == "Slumpmässigt") owo.sort((a, b) => 0.5 - Math.random());
     
     let gamerGirlWaterContainer = document.createElement("div");
-    stepElem.appendChild(gamerGirlWaterContainer);
+    gamerGirlWaterContainer.setAttribute("id","sortBtn");
+    gamerGirlWaterContainer.classList.add("GamerGirlsDefyGravity");
+    stepElem.parentElement.appendChild(gamerGirlWaterContainer);
 
     for (let i = 0; i < sorts.length; i++) {
         let gamerGirlWater = document.createElement("button");
         gamerGirlWater.innerHTML += sorts[i];
         gamerGirlWater.classList.add("buttonR");
-        gamerGirlWaterContainer.classList.add("GamerGirlsDefyGravity");
         gamerGirlWater.addEventListener("click", function() {
             sort = sorts[i];
             listAlts(owo);
@@ -218,7 +219,7 @@ function listAlts(owo) {
     }
 
     nerd = [];
-    
+
     for (let i = 0; i < resultat; i++) {
 
         if (owo[i] == undefined) {
@@ -240,9 +241,9 @@ function listAlts(owo) {
         baby.setAttribute("data-ix",i);
         baby.addEventListener("click",listResults);
         baby.style.cursor = "pointer";
-
+        
         stepElem.appendChild(baby);
-        stepElem.insertBefore(number, baby);
+        baby.insertBefore(number, baby.firstChild);
     }
 }
 
@@ -251,6 +252,7 @@ function resultToggle() {
 }
 
 function listResults() { 
+    if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView();
     if (this.classList.contains("vald")) return;
     let wow = this.getAttribute("data-ix");
     wow = nerd[wow];
@@ -283,7 +285,7 @@ function listResults() {
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 if (request.status == 200) musse(request.responseText,wow);
-                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+                else stepElem.innerHTML = "<h2>något gick fel</h2>";
         };
     }
     else musse(null,wow);
