@@ -1,18 +1,21 @@
-var stepElem;
-var fixedCode; 
-var api_key = "FqZF2ASN";
+
+//Globala variabler.
+var stepElem; // Används för att skriva ut information i div element.
+var fixedCode; // Fixar koden som vi får från start.html
+var api_key = "FqZF2ASN"; // Personlig api key.
 var resultat = 4; // Hur många resultat vi vill ha
-var nerd = [];
-var genElem;
-var commentElem;
-var choiceDivs;
-var extraElem;
+var nerd = []; // array med resultaten från  smapi.
+var genElem; // Ett utav extra valen som är generell info om vald plats.
+var commentElem; // Används för kommentarer från smapi.
+var choiceDivs; // Extra valen som finns i resultat sidan.
+var extraElem; // ett div element som skapas för att visa extra information som google maps.
 var l = 0;
-var mapElem;
-var sort = "Betyg";
+var mapElem; // Detta är elementet för google maps.
+var sort = "Betyg"; // Variabel som används för att sortera med betyg från smapi.
+var toggle = 0;
 
 
-
+// array som översätts till val i webbplatsen.
 const chosenAct = [
     {urlA:"establishment&types=activity"}, // Controller
 
@@ -26,6 +29,7 @@ const chosenAct = [
 
 ];
 
+// array som översätts till val i webbplatsen.
 const chosenFood = [
     {urlB:"food"}, // Controller
 
@@ -37,13 +41,13 @@ const chosenFood = [
     
     {urlA:"&provinces=småland", urlB:"&provinces=öland"} //Provinces finns bara i establshment taggen...
 ];
-
-const hatarAllt = [
+// Detta är arrayer som blir extra val i resultat sidan.
+const extraInfo2 = [
     "Generell info",
     "Hitta hit",
     "Recensioner"
 ];
-
+// Detta är nya knapparna som finns i resultatsidan för att kunna filtrera resultaten med betyg och plats.
 const sorts = [
     "Betyg",
     "Plats",
@@ -60,7 +64,7 @@ function init() {
     choiceDivs = document.querySelectorAll(".lazy");
     mapElem = document.getElementById("map")
     fixedCode = fixCode(window.location.search);
-
+// Denna if sats bestämmer om den ska använda sig av arrayen chosen act eller chosenfood beroende på vad användaren klickar på.
     if (fixedCode[0] == 0) getController(chosenAct);
     else getController(chosenFood);
 }
@@ -75,18 +79,18 @@ function fixCode(code) {
     return code;
 }
 
-function getController(uwu) {
+function getController(resArray) {
     let controller = [];
    
-    for (let i = 0; i < uwu.length; i++) {
-        if (fixedCode[i] == 0) controller.push(uwu[i].urlA);
-        else if (fixedCode[i] == 1) controller.push(uwu[i].urlB);
-        else controller.push(uwu[i].urlC);
+    for (let i = 0; i < resArray.length; i++) {
+        if (fixedCode[i] == 0) controller.push(resArray[i].urlA);
+        else if (fixedCode[i] == 1) controller.push(resArray[i].urlB);
+        else controller.push(resArray[i].urlC);
     }
 
     applyController(controller);
 }
-
+// Denna request till smapi så läggs filtreringarna som finns i array chosenfood och cosenact i sökmotorn så att vi får ut informationen vi vill ha.
 function applyController(xd) {
     let fixIt;
     if (xd[0] == "food") fixIt = "https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=" + xd[0] + "&method=getall&order_by=rating&per_page="+ resultat + xd[1] + xd[2] + xd[3];
@@ -118,7 +122,7 @@ function foodFix(owo,xd) {
     for (let i = 0; i < owo.length; i++) {
         quickFix.push(owo[i].id);
     }
-
+// En till smapi request denna gång är det för att få information som finns i establishment.
     quickFix.toString();
     request = new XMLHttpRequest();
     request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food&method=getall&ids=" + quickFix,true);
@@ -129,13 +133,13 @@ function foodFix(owo,xd) {
             else stepElem.innerHTML = "<h2>något gick fel</h2>";
     };
 }
-
+// En request till Json filerna.
 function addJSON(owo,xd) {
-    let najs;
-    if (xd[0] == "food") najs = "restaurang";
-    else najs = "aktivitet";
+    let reasList;
+    if (xd[0] == "food") reasList = "restaurang";
+    else reasList = "aktivitet";
     let request = new XMLHttpRequest(); // AJAX andropningsvariabel
-    request.open("GET","json/"+najs+".json",true);
+    request.open("GET","json/"+reasList+".json",true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4)
@@ -143,48 +147,48 @@ function addJSON(owo,xd) {
     };
 }
 
-function whatJSON(owo,uwu,xd) {
-    uwu = JSON.parse(uwu);
+function whatJSON(owo,resArray,xd) {
+    resArray = JSON.parse(resArray);
     
-    let najs;
+    let reasList;
     if (xd[0] == "food") {
-        najs = chosenFood;
+        reasList = chosenFood;
         
-        if (xd[4] == najs[4].urlB) {
+        if (xd[4] == reasList[4].urlB) {
             for (let k = owo.length-1; k >= 0; k--) {
                 if (owo[k].province == "Småland") owo.splice(k,1)
             }
         }
     }
-    else najs = chosenAct;
+    else reasList = chosenAct;
     
-    let critCheck = [];
+    let critCheck = []; // detta är en array som används för filtrering av information som finns i Json filer.
 
-    if (uwu.length != 0) {
+    if (resArray.length != 0) {
         for (let i = 1; i < xd.length; i++) {
             let criteria;
-            
-            if (xd[i] == najs[i].urlA) criteria = "Y";
+            // I Json filerna finns criterier Y eller N, denna funktion kontrollerar dessa kriterier.
+            if (xd[i] == reasList[i].urlA) criteria = "Y";
             else criteria = "N";
 
             critCheck.push(criteria);
-            for (let k = uwu.length-1; k >= 0; k--) {
+            for (let k = resArray.length-1; k >= 0; k--) {
                 let x = i-1;
                 if (xd[0] == "food" && x == 1) { // Om de måste ha uteservering tar vi bort 
-                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                    if (criteria == "Y" && resArray[k].crit[x] != criteria) resArray.splice(k,1);
                 }
                 else if (xd[0] == "food" && x == 2) {
-                    if (criteria == "Y" && uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                    if (criteria == "Y" && resArray[k].crit[x] != criteria) resArray.splice(k,1);
                 }
-                else if (uwu[k].crit[x] != criteria) uwu.splice(k,1);
+                else if (resArray[k].crit[x] != criteria) resArray.splice(k,1);
             }
         }
-    for (let i = 0; i < uwu.length; i++) owo.push(uwu[i]);
+    for (let i = 0; i < resArray.length; i++) owo.push(resArray[i]);
     }
 
     if (owo.length == 0) {
         let girlPower = document.createElement("div");
-        girlPower.innerHTML += "<h2>Finns inga resultat :<</h2>"
+        girlPower.innerHTML += "<h2>Finns inga resultat</h2>"
         girlPower.classList.add("error");
         stepElem.appendChild(girlPower);
         return;
@@ -218,13 +222,14 @@ function listAlts(owo) {
         gamerGirlWaterContainer.appendChild(gamerGirlWater);
     }
 
-    nerd = [];
-
+    nerd = []; // tom array.
+   
+    // i denna funktion så går vi igenom resultat som är filtrerade resultat från smapi, skapar ett div element där informationen kan visas.
     for (let i = 0; i < resultat; i++) {
 
         if (owo[i] == undefined) {
             let girlPower = document.createElement("div");
-            girlPower.innerHTML += "<h2>Finns inga flera resultat :<</h2>"
+            girlPower.innerHTML += "<h2>Finns inga flera resultat </h2>"
             girlPower.classList.add("error");
             stepElem.appendChild(girlPower);
             break;
@@ -254,18 +259,18 @@ function resultToggle() {
 function listResults() { 
     if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView();
     if (this.classList.contains("vald")) return;
-    let wow = this.getAttribute("data-ix");
-    wow = nerd[wow];
+    let smapObj = this.getAttribute("data-ix");
+    smapObj = nerd[smapObj];
 
     
     if (l == 0) {
-        for (let i = 0; i < hatarAllt.length; i++) {
-            let sixten = document.createElement("div");
-            sixten.classList.add("closeDivs");
-            sixten.addEventListener("click",resultToggle);
-            sixten.style.cursor = "pointer";
-            sixten.innerHTML = "<h1>" + hatarAllt[i] + "</h1>";
-            extraElem.insertBefore(sixten,choiceDivs[i]);
+        for (let i = 0; i < extraInfo2.length; i++) {
+            let newDiv = document.createElement("div");
+            newDiv.classList.add("closeDivs");
+            newDiv.addEventListener("click",resultToggle);
+            newDiv.style.cursor = "pointer";
+            newDiv.innerHTML = "<h1>" + extraInfo2[i] + "</h1>";
+            extraElem.insertBefore(newDiv,choiceDivs[i]);
         }
         l++;
         genElem.previousElementSibling.classList.toggle("closeDivs");
@@ -278,43 +283,47 @@ function listResults() {
     
     commentElem.innerHTML = "";
     
-    if (wow.num_reviews > 0) {
+    // ett api request från smapi
+    if (smapObj.num_reviews > 0) {
         let request = new XMLHttpRequest(); 
-        request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + wow.id ,true);
+        request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&method=getreviews&id=" + smapObj.id ,true);
         request.send(null); 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
-                if (request.status == 200) musse(request.responseText,wow);
-                else stepElem.innerHTML = "<h2>något gick fel</h2>";
+
+                if (request.status == 200) musse(request.responseText,smapObj);
+                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+
         };
     }
-    else musse(null,wow);
+    else musse(null,smapObj);
 }
-
-function musse(lol,wow) {
-    if (wow.website != undefined && wow.website != "") genElem.innerHTML = "<a href='" + wow.website + "' target='ref'><h3>" + wow.name + "</h3></a><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
-    else genElem.innerHTML = "<h3>" + wow.name + "</h3><p>" + wow.abstract +"</p><p>" + wow.text +"</p>";
+// Här så hämtar vi informationen från smapi och skriver ut dom i sidan.
+function musse(commentCheck,smapObj) {
+    if (smapObj.website != undefined && smapObj.website != "") genElem.innerHTML = "<a href='" + smapObj.website + "' target='ref'><h3>" + smapObj.name + "</h3></a><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
+    else genElem.innerHTML = "<h3>" + smapObj.name + "</h3><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     
 
-    if (lol == null) {
-        commentElem.innerHTML= "<h4>Finns inga tyvärr recentioner för denna plats.</h4>";
+    if (commentCheck == null) { // om det inte finns några kommentarer så får man ett fel meddelande.
+        commentElem.innerHTML= "<h4>Finns tyvärr inga recentioner för denna plats.</h4>";
     }
     else {
-        uwu = JSON.parse(lol).payload;
-        for (let i = 0; i < uwu.length; i++) {
+        resArray = JSON.parse(commentCheck).payload;
+        for (let i = 0; i < resArray.length; i++) {
             let comment = document.createElement("div");
             comment.classList.add("comment");
-            comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + uwu[i].comment + "</p>";
+            comment.innerHTML = "<img src='https://pic.onlinewebfonts.com/svg/img_329115.png'><p>" + resArray[i].comment + "</p>";
             commentElem.appendChild(comment);
         }
     }
   
-    initMap(wow);
+    initMap(smapObj);
 };
 
-function initMap(wow) {
+// Denna funktion så skapar vi google mappen och lägger focus på positonen som vald adress ligger i.
+function initMap(smapObj) {
     //const eventLatLng = { lat: 56.90026109693146, lng: 14.55328310345323 };
-    let eventLatLng = new google.maps.LatLng( wow.lat , wow.lng );
+    let eventLatLng = new google.maps.LatLng( smapObj.lat , smapObj.lng );
     let map = new google.maps.Map(mapElem, {
         zoom: 10,
         center: eventLatLng,
@@ -330,16 +339,17 @@ function initMap(wow) {
     });
     a.setMap(map);
 
-    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ wow.address +"</p>"
-    let minion = document.createElement("button");
-    minion.classList.add("buttonR");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(minion); // KOLLA PÅ SEN
-    minion.innerHTML = "Visa från min position";
-    minion.addEventListener("click", function() { getLocation(wow,map) });
-    mapElem.previousElementSibling.appendChild(minion);
+    mapElem.previousElementSibling.innerHTML = "<p>Adress: "+ smapObj.address +"</p>"; // Skriver ut adress.
+    let mapBtn = document.createElement("button");// Skapar en knappp som används för att kunna gemföra avståndet från vald adress till nuvarande position.
+    mapBtn.classList.add("buttonR");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(mapBtn); // KOLLA PÅ SEN
+    mapBtn.innerHTML = "Visa från min position";
+    mapBtn.addEventListener("click", function() { getLocation(smapObj,map) });
+    mapElem.previousElementSibling.appendChild(mapBtn);
 }
 
-function getLocation(wow,map) {
+// I denna funktioin så tar den positionen från vald adress och din nuvarande position och lägger den i variabler.
+function getLocation(smapObj,map) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (p) {
             let LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
@@ -350,11 +360,9 @@ function getLocation(wow,map) {
             });
             marker.setMap(map);
             
-            //let distance = haversineDistance(marker, wow);
-            //mapElem.previousElementSibling.innerHTML+= "<p>"+ wow.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
                 
             const flightPlanCoordinates = [
-                {lat:parseFloat(wow.lat), lng: parseFloat(wow.lng) },
+                {lat:parseFloat(smapObj.lat), lng: parseFloat(smapObj.lng) },
                 {lat: p.coords.latitude ,lng:p.coords.longitude},
             ]
 
@@ -371,23 +379,26 @@ function getLocation(wow,map) {
     } 
     else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
 }
-
+// Hämtar ut din nuvarande position.
 function getDistance(owo) {
-    let hugeAnimeTiddies = new Promise((resolve) => {
+    let mapPromise = new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function (p) {
-            let uwu = [
+            let resArray = [
             lat = p.coords.latitude, 
             lng = p.coords.longitude
             ];
-            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],uwu);
+            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],resArray);
             resolve()
         })
     })
-    hugeAnimeTiddies.then(() => {
+    mapPromise.then(() => {
         listAlts(owo);
     })
 }
-     
+
+
+
+     // Räknar ut avståndet till vald adress.
 function haversineDistance(mk1, mk2) {
     var rlat1;
     var rlng1;

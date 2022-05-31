@@ -7,7 +7,6 @@ body {
     background-image: url(../bilder/Nöjespark.jpg);
     background-size: cover;
     background-color: #ae7381;
-    /* background: linear-gradient(90deg, rgb(238, 225, 167) 0%, rgb(177, 173, 163) 56%, rgb(247, 243, 246) 100%); */
     margin: 0;
     padding: 0;
     text-align: center;
@@ -258,7 +257,6 @@ a {
 
 .comment {
     width: 100%;
-    padding: 1 vw;
     min-height: 8vw;
     display: block;
     border-top: 1px solid black;
@@ -305,7 +303,8 @@ a {
 }
 
 #stepElement h2 {
-    background-color: red;
+    background-color: #692323;
+    color: white;
 }
 
 #stepElement h4 {
@@ -313,11 +312,12 @@ a {
 }
 
 #stepElement .error {
-    background-color: red;
+    background-color: #692323;
     margin-bottom: 1vh;
     width: 100%;
     padding: 0vw;
     text-align: center;
+    color: white;
 }
 
 .GamerGirlsDefyGravity {
@@ -339,7 +339,7 @@ a {
 }
 
 #stepElement .error:hover {
-    background-color: red;
+    background-color:#692323;
 }
 
 #stepElement div:hover {
@@ -369,11 +369,7 @@ a {
 }
 
 #map {
-    /*
-    position: absolute;
-    bottom: 5vh;
-    right: 3vw;
-    */
+
     width: 42vw;
     height: 16vw;
 }
@@ -396,45 +392,6 @@ a {
     position: relative;
 }
 
-/*
-#stepElement div{
-    grid-area: b;
-    padding: 9px;
-    margin: 40px;
-    overflow-y: auto;
-    background-color: white;
-    outline: thick solid black;
-    width: 40%;
-    height: 230%;
-    text-size-adjust: auto;
-    font-weight: 200;
-    font-style: italic;
-    line-height: 1.0;
-    word-wrap: break-word;
-    text-align: left;
-}
-*/
-
-/*
-#extraInfo  {
-    background-color: white;
-    outline: thick solid black;
-    position: absolute;
-    left: 1000px;
-    top: 300px;
-    width: 30%;
-    height: 60%;
-    font-size: 25px;
-    font-style: italic;
-    word-wrap: break-word;
-    padding-left: 15px;
-    overflow-y: scroll;
-}
-*/
-
-
-
-
 
 
 
@@ -447,6 +404,7 @@ a {
 /*dejtingtips*/
 
 #notesDiv div {
+    padding: 100px;
     position: absolute;
     margin-right: 30px;
     font-family: 'Brush Script MT', cursive;
@@ -462,49 +420,18 @@ a {
     linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-    ),
-    
-    
+    );
 }
 
 #notesDiv img {
     height: 35vh;
     width: 50vh;
-    padding:5px;
+  padding-top: 50px;
 }
 
-.div3 {
-    top: 4vw;
-    right: 0vw;
-    transition: transform 2s;
-}
-.div3:hover{
-    transform: scale(1.5);
-}
-.div4 {
-    top: 20vw;
-    right: 17vw;
-}
-   
-.div5 {
-    top: 60vh;
-    right: 35vw;
-}
-
-.div6 {
-    top: 15vh;
-    right: 70vw;
-}
-
-.div7 {
-    top: 20vh;
-    right: 50vw;
-}
-
-.div9 {
-    top: 60vh;
-    right: 70vw;  
-   
+#notesDiv img:hover{
+    transform: scale(1.25);
+    transition: transform 1s;
 }
 
 .p9 {
@@ -601,17 +528,6 @@ a {
     color: white;
     margin:0 auto;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
