@@ -4,7 +4,7 @@ var stepElem; // Används för att skriva ut information i div element.
 var fixedCode; // Fixar koden som vi får från start.html
 var api_key = "FqZF2ASN"; // Personlig api key.
 var resultat = 4; // Hur många resultat vi vill ha
-var nerd = []; // array med resultaten från  smapi.
+var showRes = []; // array med resultaten från  smapi.
 var genElem; // Ett utav extra valen som är generell info om vald plats.
 var commentElem; // Används för kommentarer från smapi.
 var choiceDivs; // Extra valen som finns i resultat sidan.
@@ -110,18 +110,18 @@ function applyController(xd) {
     };
 }
 
-function foodFix(owo,xd) {
-    owo = JSON.parse(owo).payload;
+function foodFix(smapiRes,xd) {
+    smapiRes = JSON.parse(smapiRes).payload;
 
-    if (owo.length == 0) {
-        addJSON(owo,xd);
+    if (smapiRes.length == 0) {
+        addJSON(smapiRes,xd);
         return;
     }
 
     let quickFix = [];
 
-    for (let i = 0; i < owo.length; i++) {
-        quickFix.push(owo[i].id);
+    for (let i = 0; i < smapiRes.length; i++) {
+        quickFix.push(smapiRes[i].id);
     }
 // En till smapi request denna gång är det för att få information som finns i establishment.
     quickFix.toString();
@@ -135,7 +135,7 @@ function foodFix(owo,xd) {
     };
 }
 // En request till Json filerna.
-function addJSON(owo,xd) {
+function addJSON(smapiRes,xd) {
     let reasList;
     if (xd[0] == "food") reasList = "restaurang";
     else reasList = "aktivitet";
@@ -144,11 +144,11 @@ function addJSON(owo,xd) {
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) whatJSON(owo,request.responseText,xd);
+            if (request.status == 200) whatJSON(smapiRes,request.responseText,xd);
     };
 }
 
-function whatJSON(owo,resArray,xd) {
+function whatJSON(smapiRes,resArray,xd) {
     resArray = JSON.parse(resArray);
     
     let reasList;
@@ -156,8 +156,8 @@ function whatJSON(owo,resArray,xd) {
         reasList = chosenFood;
         
         if (xd[4] == reasList[4].urlB) {
-            for (let k = owo.length-1; k >= 0; k--) {
-                if (owo[k].province == "Småland") owo.splice(k,1)
+            for (let k = smapiRes.length-1; k >= 0; k--) {
+                if (smapiRes[k].province == "Småland") smapiRes.splice(k,1)
             }
         }
     }
@@ -184,28 +184,28 @@ function whatJSON(owo,resArray,xd) {
                 else if (resArray[k].crit[x] != criteria) resArray.splice(k,1);
             }
         }
-    for (let i = 0; i < resArray.length; i++) owo.push(resArray[i]);
+    for (let i = 0; i < resArray.length; i++) smapiRes.push(resArray[i]);
     }
 
-    if (owo.length == 0) {
-        let errorElem = document.createElement("div");
-        errorElem.innerHTML += "<h2>Finns inga resultat</h2>"
-        errorElem.classList.add("error");
-        stepElem.appendChild(errorElem);
+    if (smapiRes.length == 0) {
+        let newDiv2 = document.createElement("div");
+        newDiv2.innerHTML += "<h2>Finns inga resultat</h2>"
+        newDiv2.classList.add("error");
+        stepElem.appendChild(newDiv2);
         return;
     }
     
-    listAlts(owo);
+    listAlts(smapiRes);
 }
 
-function listAlts(owo) {
+function listAlts(smapiRes) {
     stepElem.innerHTML = "";
-    if (sort == "Betyg") owo.sort((a,b) => b.rating - a.rating);
+    if (sort == "Betyg") smapiRes.sort((a,b) => b.rating - a.rating);
     else if (sort == "Plats") {
-        if (owo[0].distance == undefined) getDistance(owo); 
-        else if (owo[0].distance != undefined) owo.sort((a,b) => a.distance - b.distance);
+        if (smapiRes[0].distance == undefined) getDistance(smapiRes); 
+        else if (smapiRes[0].distance != undefined) smapiRes.sort((a,b) => a.distance - b.distance);
     }
-    else if (sort == "Slumpmässigt") owo.sort((a, b) => 0.5 - Math.random());
+    else if (sort == "Slumpmässigt") smapiRes.sort((a, b) => 0.5 - Math.random());
     
     if (o == 0) {
         let btnContainer = document.createElement("div");
@@ -226,33 +226,33 @@ function listAlts(owo) {
     }
     
 
-    nerd = []; // tom array.
+    showRes = []; // tom array.
    
     // i denna funktion så går vi igenom resultat som är filtrerade resultat från smapi, skapar ett div element där informationen kan visas.
     for (let i = 0; i < resultat; i++) {
 
-        if (owo[i] == undefined) {
-            let errorElem = document.createElement("div");
-            errorElem.innerHTML += "<h2>Finns inga flera resultat </h2>"
-            errorElem.classList.add("error");
-            stepElem.appendChild(errorElem);
+        if (smapiRes[i] == undefined) {
+            let newDiv2 = document.createElement("div");
+            newDiv2.innerHTML += "<h2>Finns inga flera resultat </h2>"
+            newDiv2.classList.add("error");
+            stepElem.appendChild(newDiv2);
             break;
         }
 
-        let baby = document.createElement("div");
+        let newDiv3 = document.createElement("div");
         let number = document.createElement("h1");
         number.innerHTML = (i+1) + ".";
-        if (owo[i].distance != undefined) baby.innerHTML = "<h3>"+ owo[i].name + "</h3><h4>"+ parseInt(owo[i].distance) + " km bort</h4><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + "<p>Pris: " + owo[i].price_range + " kr (per person)</p>";
-        else baby.innerHTML = "<h3>"+ owo[i].name +"</h3><p>Betyg: " + Math.round(owo[i].rating * 10) /10 +"</p>" + 
-        "<p>Pris: " + owo[i].price_range + " kr (per person)</p>";
+        if (smapiRes[i].distance != undefined) newDiv3.innerHTML = "<h3>"+ smapiRes[i].name + "</h3><h4>"+ parseInt(smapiRes[i].distance) + " km bort</h4><p>Betyg: " + Math.round(smapiRes[i].rating * 10) /10 +"</p>" + "<p>Pris: " + smapiRes[i].price_range + " kr (per person)</p>";
+        else newDiv3.innerHTML = "<h3>"+ smapiRes[i].name +"</h3><p>Betyg: " + Math.round(smapiRes[i].rating * 10) /10 +"</p>" + 
+        "<p>Pris: " + smapiRes[i].price_range + " kr (per person)</p>";
 
-        nerd.push(owo[i]);
-        baby.setAttribute("data-ix",i);
-        baby.addEventListener("click",listResults);
-        baby.style.cursor = "pointer";
+        showRes.push(smapiRes[i]);
+        newDiv3.setAttribute("data-ix",i);
+        newDiv3.addEventListener("click",listResults);
+        newDiv3.style.cursor = "pointer";
         
-        stepElem.appendChild(baby);
-        baby.insertBefore(number, baby.firstChild);
+        stepElem.appendChild(newDiv3);
+        newDiv3.insertBefore(number, newDiv3.firstChild);
     }
 }
 
@@ -264,7 +264,7 @@ function listResults() {
     if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView();
     if (this.classList.contains("vald")) return;
     let smapObj = this.getAttribute("data-ix");
-    smapObj = nerd[smapObj];
+    smapObj = showRes[smapObj];
 
     
     if (l == 0) {
@@ -384,19 +384,19 @@ function getLocation(smapObj,map) {
     else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
 }
 // Hämtar ut din nuvarande position.
-function getDistance(owo) {
+function getDistance(smapiRes) {
     let mapPromise = new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function (p) {
             let resArray = [
             lat = p.coords.latitude, 
             lng = p.coords.longitude
             ];
-            for (let i = 0; i < owo.length; i++) owo[i].distance = haversineDistance(owo[i],resArray);
+            for (let i = 0; i < smapiRes.length; i++) smapiRes[i].distance = haversineDistance(smapiRes[i],resArray);
             resolve()
         })
     })
     mapPromise.then(() => {
-        listAlts(owo);
+        listAlts(smapiRes);
     })
 }
 
