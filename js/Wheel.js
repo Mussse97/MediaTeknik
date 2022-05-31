@@ -36,8 +36,10 @@ function work() {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
+
             if (request.status == 200) resArray(request.responseText,owo);
             else alert("Nåt gick fel");
+
     };
 }
 

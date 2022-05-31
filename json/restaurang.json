@@ -199,8 +199,8 @@
             "Y",
             "N"
         ]
-       
     },
+    
     {
         "description": "CASUAL",
         "name": "Restaurang Pappa Blå",
@@ -220,8 +220,6 @@
             "Y",
             "N"
         ]
-        
     }
-    
 ]
 
