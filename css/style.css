@@ -406,17 +406,11 @@ a {
 
 /*dejtingtips*/
 
-#notesDiv div {
-    padding: 100px;
-    position: absolute;
-    margin-right: 30px;
-    font-family: 'Brush Script MT', cursive;
-}
-
 #notesDiv {
-    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 75px);
     width: 100vw;
-    overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     background-image:
@@ -994,5 +988,12 @@ a {
 @media screen and (max-width: 430px) {
     #wheelBody {
         grid-template-rows: auto auto 65vw auto 50vh;
+    }
+
+    #notesDiv img {
+        margin: 0;
+        margin-left: -20vw;
+        width: 140vw;
+        height: auto;
     }
 }
