@@ -895,6 +895,13 @@ a {
     #stepElement h4 {
         padding-right: 10px;
     }
+
+    #notesDiv img {
+        margin: 0;
+        margin-left: -20vw;
+        width: 140vw;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -988,12 +995,5 @@ a {
 @media screen and (max-width: 430px) {
     #wheelBody {
         grid-template-rows: auto auto 65vw auto 50vh;
-    }
-
-    #notesDiv img {
-        margin: 0;
-        margin-left: -20vw;
-        width: 140vw;
-        height: auto;
     }
 }
