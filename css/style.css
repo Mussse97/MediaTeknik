@@ -423,7 +423,7 @@ a {
 #notesDiv img {
     height: 35vh;
     width: 50vh;
-  padding-top: 50px;
+    padding-top: 50px;
 }
 
 #notesDiv img:hover{
@@ -431,14 +431,8 @@ a {
     transition: transform 1s;
 }
 
-.p9 {
-    position:absolute;
-    bottom: 200px;
-    right: 150px;
-    font : bold 25px arial;
-    text-align:center;
-    width: 250px;
-}
+
+
 
 
 
@@ -927,6 +921,10 @@ a {
 
     #wheelText {
         font-size: x-large;
+    }
+
+    #notesDiv {
+        height: 95vh;
     }
 }
 
