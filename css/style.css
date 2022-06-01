@@ -909,7 +909,9 @@ a {
         max-width: 33vw;
     }
 
-    .header {padding: 0;}
+    .header {
+        padding: 0;
+    }
 
     #indexBody p {
         font-size: 8vw;
