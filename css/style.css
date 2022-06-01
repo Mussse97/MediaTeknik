@@ -382,9 +382,10 @@ a {
     
 }
 
-.closeDivs + div,.closeDivs + div div {
+.closeDivs + div,.closeDivs + div div, .closeDivs + div h3, .closeDivs + div p, .closeDivs + div h4 {
     position: absolute;
     left: 0 !important;
+    top: 0 !important;
     height: 0 !important;
     width: 0 !important;
     opacity: 0 !important;
@@ -854,6 +855,7 @@ a {
         top: 25px;
         grid-area: S;
         margin-left: 0;
+        white-space: pre;
     }
     
     #map {
@@ -965,7 +967,7 @@ a {
     }
 
     #choice p, #choice h3 {
-        top: 20%;
+        top: 10%;
         font-size: 8vw;
     }
 
