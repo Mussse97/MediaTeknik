@@ -11,6 +11,7 @@ body {
     padding: 0;
     text-align: center;
     overflow: hidden;
+    font-family: Helvetica, sans-serif;
 }
 
 a {
@@ -282,7 +283,7 @@ a {
 }
 
 #stepElement {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Helvetica, sans-serif;
     float: left;
     font-size: large;
     width: 47vw;
@@ -364,7 +365,7 @@ a {
     width: 45vw;
     background-color: #DB93A2;
     height: calc(100vh - (50px + 75px));
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Helvetica, sans-serif;
     overflow-y: auto;
     font-size: 20px;
     font-weight: 200;
@@ -473,7 +474,7 @@ a {
 	height: 50px;
 	cursor: pointer;
 	font-size: 20px;
-	font-family: 'Staatliches', cursive;
+    font-family: Helvetica, sans-serif;
 	letter-spacing: 5px;
 	background: #6b1702;
     color:white;
