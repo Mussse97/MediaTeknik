@@ -1,57 +1,75 @@
-var containElem;
-const val = [30,32,40,46,99,106,452,478,541]; // Lägg i relevant skit här 99-112 är bowlinghallar
-var timeout = 2.1; // Hur länge hjulet ska snurra
-var api_key = "FqZF2ASN";
-var spin;
-var Wtext;
-var sound = new Audio('ljud/wheel_01.mp3');
+var containElem; // Elementet med hjulet
+var val = []; // Möjliga valen för hjulet
+const blacklist = ["Paintballcenter","Simhall","Temapark","Älgpark","Gatukök","Hamburgerkedja","Lekland","Golfbana", "Pizzeria"]; // Alla descriptions vi vill sortera bort
+var timeout = 2.1; // Hur länge hjulet ska snurra i sekunder
+var api_key = "FqZF2ASN"; // Vår api nyckel
+var spin; // Används för att stänga av hjulet efter man snurrat
+var Wtext; // Elementet där resultaten läggs
+var sound = new Audio('ljud/wheel_01.mp3'); // Ljudet då hjulet snurrar
 
+// Initierar variablar och lägger till händelsehanterare
 function init() {
     containElem = document.querySelector("#container div");
     spin = document.getElementById("spin");
     Wtext = document.getElementById("wheelText");
+    
+    let request = new XMLHttpRequest(); // AJAX variabel
+    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&types=food,activity&method=getall",true);
+    request.send(null); 
+    request.onreadystatechange = function () {
+        if (request.readyState == 4)
+            if (request.status == 200) fixList(request.responseText);
+            else alert("Nåt gick fel");
+    };;
 
     spin.addEventListener("click",spinny) 
 }
-
-
-
 window.addEventListener("load",init);
 
+// Snurrar hjulet sen stänger av det en stund
 function spinny() {
     spin.disabled = true;
     sound.play();
     containElem.style.transition = timeout + "s";
-    let l = Math.random()*9000
+    let l = Math.random()*9000 // Väljer ett slumpmässigt nummer som hjulet sedan roterar till, står i grader
     containElem.style.webkitTransform = "rotate(" + l + "deg)";
     setTimeout(() => {
-        work()
-    }, timeout*1000);
+        listRes()
+    }, timeout*1000); // *1000 för att omvandla till sekunder
 }
 
-function work() {
-    let smapiRes = Math.floor(Math.random()*val.length)
-    let request = new XMLHttpRequest(); 
-    request.open("GET","https://smapi.lnu.se/api/?api_key=" + api_key + "&controller=establishment&ids=" + val[smapiRes] + "&method=getall",true);
-    request.send(null); 
-    request.onreadystatechange = function () {
-        if (request.readyState == 4)
 
-            if (request.status == 200) resArray(request.responseText,smapiRes);
-            else alert("Något gick fel");
 
-    };
-}
+// Lägger upp resultatet
+function listRes() {
+    let ix = Math.floor(Math.random()*val.length) // Väljer ett slumpmässigt ID i listan val
+    let smapiRes = val[ix];
+    val.splice(ix,1);
 
-function resArray(smapiRes,hej) {
-    val.splice(hej,1);
     spin.disabled = false;
-    smapiRes = JSON.parse(smapiRes).payload[0];
-    let hjul = document.createElement("div")
-    hjul.innerHTML += "<h2>" + smapiRes.name + "</h2>" + "<p>" + smapiRes.abstract + "</p>";
-    Wtext.insertBefore(hjul,Wtext.firstChild);
+    
+    let svar = document.createElement("div"); // Hjulets resultat läggs i denna variabel och den läggs sedan i Wtext
+    svar.innerHTML += "<h2>" + smapiRes.name + "</h2>" + "<p>" + smapiRes.abstract + "</p>";
+    Wtext.insertBefore(svar,Wtext.firstChild);
     if (val.length == 0) {
         spin.disabled = true;
         spin.style.cursor = "not-allowed"
     }
+}
+
+function fixList(code) {
+    code = JSON.parse(code).payload;
+    for (i = code.length; i > 0; i--) {
+        let j = i-1;
+        let u = true;
+        for (k = 0; k < blacklist.length; k++) {
+            if (code[j].description == blacklist[k] || code[j].text == " " || code[j].text == null) {
+                if (u == true) {
+                    code.splice(j,1);
+                    u = false;
+                } 
+            }         
+        }
+    }
+    val = code;
 }

@@ -51,8 +51,7 @@ const extraInfo2 = [
 // Detta är nya knapparna som finns i resultatsidan för att kunna filtrera resultaten med betyg och plats.
 const sorts = [
     "Betyg",
-    "Plats",
-    "Slumpmässigt"
+    "Nära mig",
 ];
 
 
@@ -215,7 +214,7 @@ function listAlts(smapiRes) {
         if (smapiRes[0].distance == undefined) getDistance(smapiRes); 
         else if (smapiRes[0].distance != undefined) smapiRes.sort((a,b) => a.distance - b.distance);
     }
-    else if (sort == "Slumpmässigt") smapiRes.sort((a, b) => 0.5 - Math.random());
+    // else if (sort == "Slumpmässigt") smapiRes.sort((a, b) => 0.5 - Math.random());
     
     // Skapar knapparna första gången funktionen anropas
     if (o == 0) {
@@ -277,7 +276,7 @@ function listResults() {
     if (this.classList.contains("vald")) return; // Klickar man på det valda elementet händer inget
     
     if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView(); // Ifallman klickar på sidan medans den är under 600 pixlar så tas man till #extraInfo, detta för att öka tillgängligheten
-
+    
     let smapObj = this.getAttribute("data-ix"); // Tar fram rätt objekt av alternativen
     smapObj = showRes[smapObj];
 

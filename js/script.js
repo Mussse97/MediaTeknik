@@ -88,7 +88,7 @@ function stuff() {
 	
 
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
-	choiceElem[0].style.backgroundImage =  "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlA +")";
+	choiceElem[0].style.backgroundImage =  "linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlA +")";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 	choiceElem[1].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlB +")";
 
