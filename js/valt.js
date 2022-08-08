@@ -61,7 +61,7 @@ function init() {
     genElem = document.getElementById("genInfo");
     commentElem = document.getElementById("comment");
     extraElem = document.getElementById("extraInfo");
-    choiceDivs = document.querySelectorAll(".lazy");
+    choiceDivs = document.querySelectorAll(".generalInfo");
     mapElem = document.getElementById("map")
     fixedCode = fixCode(window.location.search);
 
@@ -309,15 +309,16 @@ function listResults() {
         request.onreadystatechange = function () {
             if (request.readyState == 4)
 
-                if (request.status == 200) musse(request.responseText,smapObj);
-                else stepElem.innerHTML = "<h2>Något gick fel</h2>";
+
+                if (request.status == 200) smapiInfo(request.responseText,smapObj);
+                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
 
         };
     }
-    else musse(null,smapObj);
+    else smapiInfo(null,smapObj);
 }
 // Här så hämtar vi informationen från smapi och skriver ut dom i sidan.
-function musse(commentCheck,smapObj) {
+function smapiInfo(commentCheck,smapObj) {
     if (smapObj.website != undefined && smapObj.website != "") genElem.innerHTML = "<a href='" + smapObj.website + "' target='ref'><h3>" + smapObj.name + "</h3></a><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     else genElem.innerHTML = "<h3>" + smapObj.name + "</h3><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     
