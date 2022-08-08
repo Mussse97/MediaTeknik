@@ -76,7 +76,12 @@ a {
     background-color: #ae7381 !important;
 }
 
-
+#headerlogga {
+    max-height: 75px;
+    float:right;
+    width: auto;
+    margin-top: -75px;
+}
 
 
 
@@ -86,7 +91,7 @@ a {
 
 #firstPage h1 {
     font-size: 40px;
-    margin-top: 50vh;
+    margin-top: 5vh;
     color: white;
 }
 
@@ -103,6 +108,13 @@ a {
     url(../bilder/förstasida.jpg);
     height: 100vh;
 }
+
+#firstPage img {
+    width: 30%;
+    width: 30%;
+    margin-top: 5vh;
+}
+
 
 
 

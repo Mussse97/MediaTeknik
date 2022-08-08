@@ -38,7 +38,7 @@ function work() {
         if (request.readyState == 4)
 
             if (request.status == 200) resArray(request.responseText,smapiRes);
-            else alert("Nåt gick fel");
+            else alert("Något gick fel");
 
     };
 }
