@@ -136,7 +136,7 @@ function foodFix(smapiRes,xd) {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
-            else stepElem.innerHTML = "<h2>något gick fel</h2>";
+            else stepElem.innerHTML = "<h2>Något gick fel</h2>";
     };
 }
 // En request till JSON filerna.
@@ -311,7 +311,7 @@ function listResults() {
             if (request.readyState == 4)
 
                 if (request.status == 200) musse(request.responseText,smapObj);
-                else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
+                else stepElem.innerHTML = "<h2>Något gick fel</h2>";
 
         };
     }
