@@ -4,9 +4,9 @@ const chosenAct = [
 
     {altA:"Under 250", descA:"Helst en aktivitet under 250kr", altB:"Över 250", descB:"Vi är ute efter en dyr aktivitet", urlA:"billig1.jpg", urlB:"dyr1.jpg"},
 
-    {altA:"Utomhus", descA:"En utomhus aktivitet låter bra", altB:"Inomhus", descB:"Vi skulle vilja ha en inomhus aktivitet", urlA:"utomhus1.jpg", urlB:"inomhus1.jpg"},
+    {altA:"Utomhus", descA:"En utomhusaktivitet låter bra", altB:"Inomhus", descB:"Vi skulle vilja ha en inomhusaktivitet", urlA:"utomhus1.jpg", urlB:"inomhus1.jpg"},
 
-    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara i Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
+    {altA:"Småland", descA:"Aktiviteter bara i Småland", altB:"Öland", descB:"Aktiviteter bara på Öland", urlA:"småland1.jpg", urlB:"öland1.jpg"}
 ];
 // Array som koppplas till den i valt.js, Här så kopplas en del av smapi länken till en text och bild i reasturanger.
 const chosenRes = [
@@ -88,7 +88,7 @@ function kontroller() {
 	
 // Koden nedan kontrollerar vad som är valt av användaren och ger den rätt beskrivning samt bild.
 	choiceElem[0].innerHTML = "<h3>" + chosenThing[fr].altA +"</h3>" + "<p>" + chosenThing[fr].descA +"</p>";
-	choiceElem[0].style.backgroundImage =  "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlA +")";
+	choiceElem[0].style.backgroundImage =  "linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlA +")";
 	choiceElem[1].innerHTML = "<h3>" + chosenThing[fr].altB +"</h3>" + "<p>" + chosenThing[fr].descB +"</p>";
 	choiceElem[1].style.backgroundImage = "linear-gradient(	rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../bilder/"+ chosenThing[fr].urlB +")";
 

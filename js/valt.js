@@ -52,7 +52,6 @@ const extraInfo2 = [
 const sorts = [
     "Betyg",
     "Nära mig",
-    "Slumpmässigt"
 ];
 
 
@@ -136,7 +135,7 @@ function foodFix(smapiRes,xd) {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
-            else stepElem.innerHTML = "<h2>något gick fel</h2>";
+            else stepElem.innerHTML = "<h2>Något gick fel</h2>";
     };
 }
 // En request till JSON filerna.
@@ -215,7 +214,7 @@ function listAlts(smapiRes) {
         if (smapiRes[0].distance == undefined) getDistance(smapiRes); 
         else if (smapiRes[0].distance != undefined) smapiRes.sort((a,b) => a.distance - b.distance);
     }
-    else if (sort == "Slumpmässigt") smapiRes.sort((a, b) => 0.5 - Math.random());
+    // else if (sort == "Slumpmässigt") smapiRes.sort((a, b) => 0.5 - Math.random());
     
     // Skapar knapparna första gången funktionen anropas
     if (o == 0) {
@@ -277,7 +276,7 @@ function listResults() {
     if (this.classList.contains("vald")) return; // Klickar man på det valda elementet händer inget
     
     if (window.innerWidth < 600) document.getElementById('extraInfo').scrollIntoView(); // Ifallman klickar på sidan medans den är under 600 pixlar så tas man till #extraInfo, detta för att öka tillgängligheten
-
+    
     let smapObj = this.getAttribute("data-ix"); // Tar fram rätt objekt av alternativen
     smapObj = showRes[smapObj];
 
@@ -309,6 +308,7 @@ function listResults() {
         request.send(null); 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
+
 
                 if (request.status == 200) smapiInfo(request.responseText,smapObj);
                 else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
