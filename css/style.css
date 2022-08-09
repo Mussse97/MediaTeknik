@@ -250,9 +250,23 @@ a {
     
 }
 
+#progress h3 {
+   color: #e52f2f;
+   font-size: 25px;
+  
+}
 
+/*.blink {
+    animation: blinker 2s step-start infinite;
+}
 
-
+@keyframes blinker {
+    50% {
+        color: green;
+        background-color: rgb(174, 67, 61);
+    }
+}
+*/
 
 
 
