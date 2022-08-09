@@ -251,7 +251,7 @@ a {
 }
 
 
-
+/* Tetxten i tips sidan*/
 
 
 
@@ -436,12 +436,12 @@ a {
 
 #notesDiv img {
     height: 35vh;
-    width: 50vh;
+    width: 55vh;
     padding-top: 50px;
 }
 
 #notesDiv img:hover{
-    transform: scale(1.25);
+    transform: scale(1.3);
     transition: transform 1s;
 }
 
