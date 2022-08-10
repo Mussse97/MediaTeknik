@@ -386,7 +386,7 @@ a {
 }
 
 .vald {
-    background-color: #DB93A2 !important;
+    background-color: #692323ed !important;
 }
 
 #extraInfo {
@@ -395,7 +395,7 @@ a {
     float: right;
     right: 0;
     width: 45vw;
-    background-color: #DB93A2;
+    background-color: #692323e8;
     height: calc(100vh - (50px + 75px));
     font-family: Helvetica, sans-serif;
     overflow-y: auto;
