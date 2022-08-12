@@ -51,7 +51,7 @@ const extraInfo2 = [
 // Detta är nya knapparna som finns i resultatsidan för att kunna filtrera resultaten med betyg och plats.
 const sorts = [
     "Betyg",
-    "Nära mig",
+    "Nära mig"
 ];
 
 
@@ -210,7 +210,7 @@ function listAlts(smapiRes) {
 
     // Sorterar arrayen då man klickar på en knapp
     if (sort == "Betyg") smapiRes.sort((a,b) => b.rating - a.rating);
-    else if (sort == "Plats") {
+    else if (sort == "Nära mig") {
         if (smapiRes[0].distance == undefined) getDistance(smapiRes); 
         else if (smapiRes[0].distance != undefined) smapiRes.sort((a,b) => a.distance - b.distance);
     }
@@ -264,6 +264,8 @@ function listAlts(smapiRes) {
         stepElem.appendChild(newDiv);
         newDiv.insertBefore(number, newDiv.firstChild);
     }
+
+    listResults.call(stepElem.firstChild); // Väljer första alternativet i listan
 }
 
 // Öppnar eller stänger diven som informationen ligger i
@@ -316,7 +318,7 @@ function listResults() {
     }
     else musse(null,smapObj);
 }
-// Här så hämtar vi informationen från smapi och skriver ut dom i sidan.
+// Här så hämtar vi informationen från smapi och skriver ut den i sidan.
 function musse(commentCheck,smapObj) {
     if (smapObj.website != undefined && smapObj.website != "") genElem.innerHTML = "<a href='" + smapObj.website + "' target='ref'><h3>" + smapObj.name + "</h3></a><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     else genElem.innerHTML = "<h3>" + smapObj.name + "</h3><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
