@@ -253,7 +253,9 @@ a {
 #progress h3 {
    color: #e52f2f;
    font-size: 25px;
-  
+   position: fixed;
+   bottom: 0;
+   margin: 0;
 }
 
 
