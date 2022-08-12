@@ -61,7 +61,7 @@ function init() {
     genElem = document.getElementById("genInfo");
     commentElem = document.getElementById("comment");
     extraElem = document.getElementById("extraInfo");
-    choiceDivs = document.querySelectorAll(".lazy");
+    choiceDivs = document.querySelectorAll(".generalInfo");
     mapElem = document.getElementById("map")
     fixedCode = fixCode(window.location.search);
 
@@ -135,7 +135,7 @@ function foodFix(smapiRes,xd) {
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
-            else stepElem.innerHTML = "<h2>något gick fel</h2>";
+            else stepElem.innerHTML = "<h2>Något gick fel</h2>";
     };
 }
 // En request till JSON filerna.
@@ -311,15 +311,16 @@ function listResults() {
         request.onreadystatechange = function () {
             if (request.readyState == 4)
 
-                if (request.status == 200) musse(request.responseText,smapObj);
+
+                if (request.status == 200) smapiInfo(request.responseText,smapObj);
                 else stepElem.innerHTML = "<h2>Nåt gick fel</h2>";
 
         };
     }
-    else musse(null,smapObj);
+    else smapiInfo(null,smapObj);
 }
-// Här så hämtar vi informationen från smapi och skriver ut den i sidan.
-function musse(commentCheck,smapObj) {
+// Här så hämtar vi informationen från smapi och skriver ut dom i sidan.
+function smapiInfo(commentCheck,smapObj) {
     if (smapObj.website != undefined && smapObj.website != "") genElem.innerHTML = "<a href='" + smapObj.website + "' target='ref'><h3>" + smapObj.name + "</h3></a><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     else genElem.innerHTML = "<h3>" + smapObj.name + "</h3><p>" + smapObj.abstract +"</p><p>" + smapObj.text +"</p>";
     
@@ -363,7 +364,10 @@ function initMap(smapObj) {
     mapBtn.classList.add("buttonR");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(mapBtn); // Är slö, därför ser det lite konstigt ut
     mapBtn.innerHTML = "Visa från min position";
-    mapBtn.addEventListener("click", function() { getLocation(smapObj,map) });
+    mapBtn.addEventListener("click", function() {  
+        getLocation(smapObj,map)
+        this.disabled=true; 
+    });
     mapElem.previousElementSibling.appendChild(mapBtn);
 }
 
@@ -378,7 +382,8 @@ function getLocation(smapObj,map) {
                 icon: "https://maps.google.com/mapfiles/kml/shapes/man.png"
             });
             marker.setMap(map);
-            
+            let distance = haversineDistance(marker, smapObj);
+            mapElem.previousElementSibling.innerHTML+= "<p>"+ smapObj.name +" Ligger " + Math.round(distance * 10) /10 + " Km från din nuvarande position" +"</p>";
                 
             const flightPlanCoordinates = [ // Positionerna som används för flightPath
                 {lat:parseFloat(smapObj.lat), lng: parseFloat(smapObj.lng) },
@@ -396,6 +401,7 @@ function getLocation(smapObj,map) {
             flightPath.setMap(map);
         });
     } 
+    
     else alert('Denna funktion är tyvärr inte tillgänglig på din webbläsare.'); // "Geo Location feature is not supported in this browser." stod det först
 }
 
