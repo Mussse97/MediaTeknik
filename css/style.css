@@ -571,6 +571,10 @@ a {
     overflow: auto;
 }
 
+#enlarge button {
+    margin: 20px;
+}
+
 #closeEnlarge {
     position: absolute;
     top: 15vh;
@@ -616,13 +620,13 @@ a {
 /* Knapp 1, Stor , sätt class till "button" */
 
 .button {
-    background:#692323;
+    background:#692323;  
     border-radius: 25px;
     border: 2px solid #0f0f0f;
     color: white;
-    padding: 20px;
+    padding-top: 25px;
     width: 300px;
-    height: 100px;
+    height: 75px;
     font-size: 30px;
     text-align:center;
     text-decoration: none;
