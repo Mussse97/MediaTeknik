@@ -253,7 +253,9 @@ a {
 #progress h3 {
    color: #e52f2f;
    font-size: 25px;
-  
+   position: fixed;
+   bottom: 0;
+   margin: 0;
 }
 
 
@@ -404,7 +406,6 @@ a {
 }
 
 #map {
-
     width: 42vw;
     height: 16vw;
 }
@@ -494,7 +495,7 @@ a {
     background-image:url(../bilder/texture.png);
     background-size: contain;
     right: 10vw;
-    top: 20vh;
+    top: 17.5vh;
 }
 
 #spin {
@@ -525,7 +526,6 @@ a {
 }
 
 #wheelBody {
-    background-image:url(../bilder/wheel.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -547,11 +547,58 @@ a {
     overflow: auto;
 }
 
-#wheeldescription {
+#wheelDescription {
     font-size: 40px;
     color: white;
-    margin:0 auto;
+    margin: 0 auto;
 }
+
+#enlarge {
+    opacity: 0;
+    font-size: x-large;
+    color: white;
+    z-index: -10;
+    position: absolute;
+    top: 15vh;
+    left: 43vw;
+    width: 50vw;
+    height: 70vh;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    );
+    overflow: auto;
+}
+
+#closeEnlarge {
+    position: absolute;
+    top: 15vh;
+    left: 93vw;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    font-size: x-large;
+    color: white;
+    border: none;
+    background-color: transparent;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    );
+}
+
+#closeEnlarge:hover {
+    color: #666666;
+}
+
+#smallMap {
+    margin-left: 10%;
+    width: 80%;
+    height: 30vh;
+}
+
 
 
 
@@ -726,6 +773,22 @@ a {
         top: 20vh;
     }
 
+    #enlarge {
+        width: 55vw;
+        height: 80vh;
+        right: 7vw;
+        top: 20vh;
+    }
+
+    #closeEnlarge {
+        width: 5vw;
+        height: 5vw;
+        top: 20vh;
+        left: 93vw;
+        background-image: none;
+        z-index: 101;
+    }
+
     #spin {
         top: 55vh;
         right: 17vw;
@@ -735,12 +798,12 @@ a {
     }
 
     #wheelText {
-        width: 55vw;
+        width: 40vw;
         height: 80vh;
-        font-size: xx-large;
+        overflow-x: hidden;
     }
 
-    #wheeldescription {
+    #wheelDescription {
         font-size: 30px;
         margin: 0 auto;
     }
@@ -803,7 +866,7 @@ a {
         height: auto;
     }
 
-    #wheeldescription {
+    #wheelDescription {
         position: relative;
         grid-area: A;
     }
@@ -929,6 +992,49 @@ a {
         width: 140vw;
         height: auto;
     }
+
+    #enlarge {
+        top: 150px;
+        width: 80vw;
+        left: 10vw;
+        height: 50vh;
+    }
+
+    #closeEnlarge {
+        left: 80vw;
+        top: 150px;
+        width: 10vw;
+        height: 10vw;
+        font-size: 8vw;
+        background-color: #000;
+    }
+
+    #wheelBody {
+        height: auto;
+        overflow-y: auto;
+        grid-template-areas: 
+            "H"
+            "A"
+            "C"
+            "D"
+            "B";
+        grid-template-rows: auto auto 40vh auto 50vh;
+        grid-template-columns: 100vw;
+    }
+
+    #container div {
+        align-self: center;
+        width: 60vw;
+        height: 60vw;
+    }
+
+    #spin {
+        width: 60vw;
+    }
+
+    #wheelText {
+        width: 95vw;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -968,33 +1074,6 @@ a {
         margin-top: 25vh;
     }
 
-    #wheelBody {
-        height: auto;
-        overflow-y: auto;
-        grid-template-areas: 
-            "H"
-            "A"
-            "C"
-            "D"
-            "B";
-        grid-template-rows: auto auto 40vh auto 50vh;
-        grid-template-columns: 100vw;
-    }
-
-    #container div {
-        align-self: center;
-        width: 60vw;
-        height: 60vw;
-    }
-
-    #spin {
-        width: 60vw;
-    }
-
-    #wheelText {
-        width: 95vw;
-    }
-
     #one, #two {
         width: 100vw;
         height: 45vh !important;
@@ -1028,5 +1107,21 @@ a {
 @media screen and (max-width: 430px) {
     #wheelBody {
         grid-template-rows: auto auto 65vw auto 50vh;
+    }
+
+    #enlarge {
+        top: 150px;
+        width: 100vw;
+        left: 0;
+        height: 35vh;
+    }
+
+    #closeEnlarge {
+        left: 85vw;
+        top: 150px;
+        width: 10vw;
+        height: 10vw;
+        font-size: 8vw;
+        background-color: #000;
     }
 }
