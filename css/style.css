@@ -336,7 +336,9 @@ a {
 
 #stepElement p, #stepElement h3 {
     padding-left: 42px;
+    
 }
+
 
 #stepElement h2 {
     background-color: #692323;
@@ -385,10 +387,12 @@ a {
 #stepElement h1 {
    float: left;
    padding-left: 10px;
+   
 }
 
 .vald {
     background-color: #692323ed !important;
+    color: white;
 }
 
 #extraInfo {
@@ -403,6 +407,7 @@ a {
     overflow-y: auto;
     font-size: 20px;
     font-weight: 200;
+    color: white;
 }
 
 #map {
@@ -935,6 +940,7 @@ a {
         margin-left: 3vw;
         width: 93vw;
         grid-area: C;
+        
     }
 
     #sortBtn {
