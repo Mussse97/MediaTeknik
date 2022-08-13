@@ -387,7 +387,6 @@ a {
 #stepElement h1 {
    float: left;
    padding-left: 10px;
-   
 }
 
 .vald {
@@ -401,7 +400,7 @@ a {
     float: right;
     right: 0;
     width: 45vw;
-    background-color: #692323e8;
+    background-color: #692323;
     height: calc(100vh - (50px + 75px));
     font-family: Helvetica, sans-serif;
     overflow-y: auto;
