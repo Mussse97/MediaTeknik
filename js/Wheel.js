@@ -24,7 +24,7 @@ function init() {
         if (request.readyState == 4)
             if (request.status == 200) fixList(request.responseText);
             else alert("Nåt gick fel");
-    };;
+    };
 
     spin.addEventListener("click",spinny);
 }
@@ -35,7 +35,7 @@ function spinny() {
     spin.disabled = true;
     sound.play();
     containElem.style.transition = timeout + "s";
-    let l = Math.random()*9000 // Väljer ett slumpmässigt nummer som hjulet sedan roterar till, står i grader
+    let l = Math.random()*9000; // Väljer ett slumpmässigt nummer som hjulet sedan roterar till, står i grader
     containElem.style.webkitTransform = "rotate(" + l + "deg)";
     setTimeout(() => {
         listRes();
@@ -44,7 +44,7 @@ function spinny() {
 
 // Lägger upp resultatet
 function listRes() {
-    let ix = Math.floor(Math.random()*val.length) // Väljer slumpmässigt ett alternativ i listan val
+    let ix = Math.floor(Math.random()*val.length); // Väljer slumpmässigt ett alternativ i listan val
     let smapiRes = val[ix]; // Valda alternativet
     val.splice(ix,1);
 
@@ -67,9 +67,13 @@ function listRes() {
 // Sorterar resultaten och tar bort de som finns på blacklisten
 function fixList(code) {
     code = JSON.parse(code).payload;
+
+   
+
     for (i = code.length; i > 0; i--) {
         let j = i-1; // Används för loopen går baklänges, vi vill åt i-1 inte i.
         for (k = 0; k < blacklist.length; k++) {
+
             if (code[j].description == blacklist[k]) {
                 code.splice(j,1);
                 break;
@@ -101,14 +105,17 @@ function enlargeRes(obj) {
     
     initMap(obj);
 
+
+
     let commentCheck; // Om det finns recensioner skapas en knapp som visar dem, annars så skapas en text där det står att det inte finns några recensioner.
+
     if (obj.num_reviews == 0){ 
         commentCheck = document.createElement("p");
         commentCheck.innerHTML = "Finns inga recensioner";}
     else {
         commentCheck = document.createElement("button");
-        commentCheck.style.fontSize = "x-large"
-        commentCheck.innerHTML = "Visa recensioner"
+        commentCheck.style.fontSize = "x-large";
+        commentCheck.innerHTML = "Visa recensioner";
         commentCheck.classList.add("buttonR");
         commentCheck.addEventListener("click",function() {
             let request = new XMLHttpRequest(); // AJAX variabel
@@ -118,8 +125,8 @@ function enlargeRes(obj) {
                 if (request.readyState == 4)
                     if (request.status == 200) showRev(request.responseText);
                     else alert("Nåt gick fel");
-            };;
-        })
+            };
+        });
     }
     enlargeElem.appendChild(commentCheck);
 }   
@@ -151,7 +158,7 @@ function close() {
 // Denna funktion skapar kartan och en marker, sedan skapar den en knapp som frågar om man vill ladda kommentarer om det finns några
 function initMap(obj) {
     let mapElem = document.createElement("div"); // Elementet med kartan
-    mapElem.setAttribute("id",'smallMap')
+    mapElem.setAttribute("id",'smallMap');
     enlargeElem.appendChild(mapElem);
     let eventLatLng = new google.maps.LatLng( obj.lat , obj.lng ); // Positionen för aktiviteten
     let map = new google.maps.Map(mapElem, { // Kartan
