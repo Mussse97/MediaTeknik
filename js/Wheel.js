@@ -38,7 +38,7 @@ function spinny() {
     let l = Math.random()*9000 // Väljer ett slumpmässigt nummer som hjulet sedan roterar till, står i grader
     containElem.style.webkitTransform = "rotate(" + l + "deg)";
     setTimeout(() => {
-        listRes()
+        listRes();
     }, timeout*1000); // *1000 för att omvandla till sekunder
 }
 
@@ -52,9 +52,6 @@ function listRes() {
     
     let svar = document.createElement("div"); // Hjulets resultat läggs i denna variabel och den läggs sedan i Wtext
     svar.innerHTML += "<h2>" + smapiRes.name + "</h2></p><button>Mer info</button>";
-
-    //if (smapiRes.abstract == "" || smapiRes.abstract == " ") svar.innerHTML += "<h2>" + smapiRes.name + "</h2>" + "<p>" + smapiRes.text + "</p><button>Mer info</button>";
-    //else svar.innerHTML += "<h2>" + smapiRes.name + "</h2>" + "<p>" + smapiRes.abstract + "</p><button>Mer info</button>";
     
     Wtext.insertBefore(svar,Wtext.firstChild);
     document.querySelector("#wheelText button:first-of-type").classList.add("buttonR");
@@ -67,17 +64,15 @@ function listRes() {
     }
 }
 
+// Sorterar resultaten och tar bort de som finns på blacklisten
 function fixList(code) {
     code = JSON.parse(code).payload;
     for (i = code.length; i > 0; i--) {
-        let j = i-1;
-        let u = true;
+        let j = i-1; // Används för loopen går baklänges, vi vill åt i-1 inte i.
         for (k = 0; k < blacklist.length; k++) {
             if (code[j].description == blacklist[k]) {
-                if (u == true) {
-                    code.splice(j,1);
-                    u = false;
-                } 
+                code.splice(j,1);
+                break;
             }         
         }
     }
@@ -106,8 +101,7 @@ function enlargeRes(obj) {
     
     initMap(obj);
 
-    console.log(obj)
-    let commentCheck;
+    let commentCheck; // Om det finns recensioner skapas en knapp som visar dem, annars så skapas en text där det står att det inte finns några recensioner.
     if (obj.num_reviews == 0){ 
         commentCheck = document.createElement("p");
         commentCheck.innerHTML = "Finns inga recensioner";}
@@ -130,6 +124,7 @@ function enlargeRes(obj) {
     enlargeElem.appendChild(commentCheck);
 }   
 
+// Visar recensionerna
 function showRev(obj) {
     resArray = JSON.parse(obj).payload;
     for (let i = 0; i < resArray.length; i++) {

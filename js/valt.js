@@ -200,7 +200,7 @@ function whatJSON(smapiRes,resArray,xd) {
         stepElem.appendChild(newDiv);
         return;
     }
-    
+
     listAlts(smapiRes);
 }
 
@@ -263,6 +263,18 @@ function listAlts(smapiRes) {
         
         stepElem.appendChild(newDiv);
         newDiv.insertBefore(number, newDiv.firstChild);
+    }
+
+    // Finns det flera alternativ skapas en knapp som gör att man kan se dem.
+    if (smapiRes.length > resultat) {
+        let btn = document.createElement("button"); // Knappen som visar flera alternativ om det finns
+        btn.innerHTML = "Visa flera resultat";
+        btn.classList.add("buttonR");
+        btn.addEventListener("click", function() {
+            resultat = smapiRes.length;
+            listAlts(smapiRes);
+        })
+        stepElem.appendChild(btn);
     }
 
     listResults.call(stepElem.firstChild); // Väljer första alternativet i listan
