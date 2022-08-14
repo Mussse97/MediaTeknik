@@ -259,20 +259,6 @@ a {
 }
 
 
-/* Tetxten i tips sidan*/
-
-
-/*.blink {
-    animation: blinker 2s step-start infinite;
-}
-
-@keyframes blinker {
-    50% {
-        color: green;
-        background-color: rgb(174, 67, 61);
-    }
-}
-*/
 
 
 
@@ -675,7 +661,7 @@ a {
 
 
 
-/* Knapp 2, sexig, sätt class till "startknapp" och lägg texten i en <span> tagg. Sätt också ett attribut efter classen:   data-sm-link-text="CLICK"   där CLICK är texten som visas då man hovrar */
+/* Knapp 2, sätt class till "startknapp" och lägg texten i en <span> tagg. Sätt också ett attribut efter classen:   data-sm-link-text="CLICK"   där CLICK är texten som visas då man hovrar */
 
 .startknapp {
     --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
