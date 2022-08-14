@@ -351,14 +351,14 @@ a {
     margin-left: 3vw;
 }
 
-#sortBtn .buttonR {
+#sortBtn .buttonR, #stepElement .buttonR {
     background-color: #692323;
     color: white;
     font-size: 20px;
     margin-right: 1vw;
 }
 
-#sortBtn .buttonR:hover {
+#sortBtn .buttonR:hover, #stepElement .buttonR:hover {
     background-color: #9a7575;
 }
 
