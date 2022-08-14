@@ -62,7 +62,7 @@ function init() {
     commentElem = document.getElementById("comment");
     extraElem = document.getElementById("extraInfo");
     choiceDivs = document.querySelectorAll(".generalInfo");
-    mapElem = document.getElementById("map")
+    mapElem = document.getElementById("map");
     fixedCode = fixCode(window.location.search);
 
     // Denna if sats bestämmer om den ska använda sig av arrayen chosen act eller chosenfood beroende på vad användaren klickar på.
@@ -134,7 +134,7 @@ function foodFix(smapiRes,xd) {
     request.send(null); 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd)
+            if (request.status == 200) addJSON(JSON.parse(request.responseText).payload,xd);
             else stepElem.innerHTML = "<h2>Något gick fel</h2>";
     };
 }
@@ -162,7 +162,7 @@ function whatJSON(smapiRes,resArray,xd) {
         
         if (xd[4] == controllerList[4].urlB) {
             for (let k = smapiRes.length-1; k >= 0; k--) {
-                if (smapiRes[k].province == "Småland") smapiRes.splice(k,1)
+                if (smapiRes[k].province == "Småland") smapiRes.splice(k,1);
             }
         }
     }
@@ -195,7 +195,7 @@ function whatJSON(smapiRes,resArray,xd) {
         let newDiv = document.createElement("div"); // Felmeddelandets element
         newDiv.innerHTML += "<h2>Finns inga resultat, prova gärna andra val!</h2>";
         extraElem.style.backgroundColor = "transparent";
-        newDiv.style.width = "94vw"
+        newDiv.style.width = "94vw";
         newDiv.classList.add("error");
         stepElem.appendChild(newDiv);
         return;
@@ -230,7 +230,7 @@ function listAlts(smapiRes) {
             btn.addEventListener("click", function() {
                 sort = sorts[i];
                 listAlts(smapiRes);
-            })
+            });
             btnContainer.appendChild(btn);
         }
     }
@@ -243,7 +243,7 @@ function listAlts(smapiRes) {
 
         if (smapiRes[i] == undefined) { // Avbryt om det inte finns flera resultat
             let newDiv = document.createElement("div"); // Error elementet
-            newDiv.innerHTML += "<h2>Finns inga flera resultat </h2>"
+            newDiv.innerHTML += "<h2>Finns inga flera resultat </h2>";
             newDiv.classList.add("error");
             stepElem.appendChild(newDiv);
             break;
@@ -309,7 +309,7 @@ function listResults() {
     }
 
     // Valda alternativet
-    let fix = document.querySelectorAll("#stepElement div")
+    let fix = document.querySelectorAll("#stepElement div");
     for (let i = 0; i < fix.length; i++) fix[i].classList.remove("vald");
     this.classList.add("vald");
     
@@ -351,7 +351,7 @@ function smapiInfo(commentCheck,smapObj) {
     }
   
     initMap(smapObj);
-};
+}
 
 // Denna funktion skapar kartan och knappen
 function initMap(smapObj) {
@@ -377,7 +377,7 @@ function initMap(smapObj) {
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(mapBtn); // Är slö, därför ser det lite konstigt ut
     mapBtn.innerHTML = "Visa från min position";
     mapBtn.addEventListener("click", function() {  
-        getLocation(smapObj,map)
+        getLocation(smapObj,map);
         this.disabled=true; 
     });
     mapElem.previousElementSibling.appendChild(mapBtn);
@@ -400,7 +400,7 @@ function getLocation(smapObj,map) {
             const flightPlanCoordinates = [ // Positionerna som används för flightPath
                 {lat:parseFloat(smapObj.lat), lng: parseFloat(smapObj.lng) },
                 {lat: p.coords.latitude ,lng:p.coords.longitude},
-            ]
+            ];
 
             const flightPath = new google.maps.Polyline({ // Ritar en linje mellan positionerna
                     path: flightPlanCoordinates,
@@ -428,11 +428,11 @@ function getDistance(smapiRes) {
             ];
             for (let i = 0; i < smapiRes.length; i++) smapiRes[i].distance = haversineDistance(smapiRes[i],resArray);
             resolve();
-        })
-    })
+        });
+    });
     distanceCheck.then(() => {
         listAlts(smapiRes);
-    })
+    });
 }
 
 
